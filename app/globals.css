@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@400;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS — Soft Illustrated Warm Pastel Reference Theme
+   ============================================================ */
+:root {
+  --font-outfit:     'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-jakarta:    'Plus Jakarta Sans', sans-serif;
+  --font-syne:       'Syne', sans-serif;
+  --font-kalam:      'Kalam', cursive, sans-serif;
+  --font-caveat:     'Caveat', cursive, sans-serif;
+  --font-nunito:     'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:       'JetBrains Mono', monospace;
+
+  --bg-page:         #FFF8F5; /* Warm cream / pearl foundation */
+  --bg-surface:      #FFFFFF;
+  --bg-blush:        #FCE8E8;
+  --bg-peach:        #FFF1EC;
+  --bg-card:         #FFFFFF;
+
+  --text-primary:    #302535; /* Dark charcoal plum */
+  --text-secondary:  #756875; /* Soft plum gray */
+  --text-muted:      #A396A3;
+
+  --accent-pink:     #E85D8B; /* Primary personality pink from reference */
+  --accent-coral:    #F29AB2; /* Rose pink */
+  --accent-purple:   #B9A1E8; /* Soft lavender / purple */
+  --accent-cyan:     #8DDDE5; /* Tiny cyan highlight */
+  --accent-yellow:   #FAD074; /* Warm sunny accent */
+  --accent-green:    #82D9A7; /* Soft pastel green */
+
+  --border-subtle:   #F5E6EB; /* Delicate pink-cream border */
+  --border-card:     #EADDE3;
+}
+
+/* ============================================================
+   TYPOGRAPHY — Reference Match (Kalam Display + Nunito Body)
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  font-family: var(--font-nunito), 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Expressive handwritten display headings matching reference */
+h1, h2, h3, h4, h5, h6, .font-display, .font-heading, .font-kalam {
+  font-family: var(--font-kalam), 'Kalam', cursive, sans-serif;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.font-kalam, .font-kalam span {
+  font-family: var(--font-kalam), 'Kalam', cursive, sans-serif !important;
+}
+
+.font-caveat, .font-caveat span {
+  font-family: var(--font-caveat), 'Caveat', cursive, sans-serif !important;
+}
+
+.font-outfit, .font-outfit span {
+  font-family: var(--font-outfit), 'Outfit', sans-serif !important;
+}
+
+.font-sans, p, button, a, input, textarea, .font-body {
+  font-family: var(--font-nunito), 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+span {
+  font-family: inherit;
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+}
+
+/* Hide scrollbar */
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+}
+
+/* ============================================================
+   SOFT ILLUSTRATED PASTEL CARDS & SURFACES (Reference Match)
+   ============================================================ */
+.pastel-card, .editorial-card, .pearl-card {
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-card);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px -6px rgba(232, 93, 139, 0.08), 0 2px 6px rgba(48, 37, 53, 0.03);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pastel-card:hover {
+  transform: translateY(-3px);
+  border-color: #F29AB2;
+  box-shadow: 0 16px 32px -8px rgba(232, 93, 139, 0.16);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #E85D8B 0%, #B9A1E8 60%, #8DDDE5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pink-text {
+  color: #E85D8B;
+}
+
+/* ============================================================
+   SOFT ILLUSTRATED BUTTONS (Reference Match)
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  background: #E85D8B;
+  color: #FFFFFF;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 800;
+  border: none;
+  box-shadow: 0 6px 18px -3px rgba(232, 93, 139, 0.38);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #D94877;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -3px rgba(232, 93, 139, 0.48);
+}
+
+.btn-secondary, .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  color: #302535;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 800;
+  border: 1.5px solid #EADDE3;
+  box-shadow: 0 4px 12px rgba(48, 37, 53, 0.04);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover, .btn-ghost:hover {
+  background: #FFF5F7;
+  border-color: #F29AB2;
+  color: #E85D8B;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(232, 93, 139, 0.15);
+}
+
+/* ============================================================
+   PASTEL ICON BADGE PALETTE (Reference Match)
+   ============================================================ */
+.icon-badge-pink {
+  background: #FCE8E8;
+  border: 1px solid #F8D2D9;
+  color: #E85D8B;
+}
+
+.icon-badge-purple {
+  background: #F3EDFC;
+  border: 1px solid #E4D8FA;
+  color: #B9A1E8;
+}
+
+.icon-badge-cyan {
+  background: #EBF8FA;
+  border: 1px solid #CEF1F5;
+  color: #2BAAB8;
+}
+
+.icon-badge-yellow {
+  background: #FFF9EB;
+  border: 1px solid #FCE8B8;
+  color: #E5A01A;
+}
+
+.icon-badge-green {
+  background: #EDFBF3;
+  border: 1px solid #CEF4DE;
+  color: #2FB86A;
+}
+
+/* ============================================================
+   ORGANIC WAVE BACKGROUNDS
+   ============================================================ */
+.wave-bg-about {
+  background-image: 
+    radial-gradient(ellipse 90% 70% at 85% 15%, #FCE8E8 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 15% 85%, #FFF1EC 0%, transparent 60%);
+}
+
+.wave-bg-design {
+  background-image: 
+    radial-gradient(ellipse 90% 70% at 15% 20%, #FCE8E8 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 85% 80%, #F3EDFC 0%, transparent 60%);
+}
+
+/* Keyframe animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+@keyframes pulseDoodle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.animate-doodle {
+  animation: pulseDoodle 3s ease-in-out infinite;
+}
+
+/* GPU Accelerated Infinite Marquee Keyframes */
+@keyframes marqueeScrollLeft {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marqueeScrollRight {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.animate-marquee-left {
+  animation: marqueeScrollLeft var(--marquee-duration, 32s) linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  animation: marqueeScrollRight var(--marquee-duration, 32s) linear infinite;
+  will-change: transform;
+}
