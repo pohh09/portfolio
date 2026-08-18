@@ -29,7 +29,6 @@ import {
 
 import { VscVscode } from "react-icons/vsc";
 
-
 export type TechCategory = {
   title: string;
   color: string;
@@ -39,7 +38,6 @@ export type TechCategory = {
     color: string;
   }[];
 };
-
 
 export const techStack: TechCategory[] = [
 
@@ -101,7 +99,6 @@ export const techStack: TechCategory[] = [
     ],
   },
 
-
   {
     title: "Tools",
     color: "from-cyan-500 to-sky-500",
@@ -135,7 +132,6 @@ export const techStack: TechCategory[] = [
     ],
   },
 
-
   {
     title: "Deployment & DevOps",
     color: "from-indigo-500 to-violet-500",
@@ -163,7 +159,6 @@ export const techStack: TechCategory[] = [
       },
     ],
   },
-
 
   {
     title: "Currently Exploring",

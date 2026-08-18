@@ -1,4 +1,4 @@
-// Centralized font definitions matching Google Fonts injected in layout.tsx and globals.css
+
 export const display = {
   variable: "--font-display",
   className: "font-display",

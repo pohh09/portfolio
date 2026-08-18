@@ -365,7 +365,7 @@ export default function ProjectShowcase() {
             Projects I&apos;ve
             <br />
             <span className="text-[#E85D8B]">
-              Built &amp; Shipped ♡
+              Built &amp; Shipped.
             </span>
           </h2>
 

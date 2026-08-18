@@ -17,10 +17,9 @@ export default function InfiniteMarquee({ items }: Props) {
 
   return (
     <div className="relative overflow-hidden py-4">
-      {/* Left Fade */}
+
       <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-20 sm:w-32 bg-gradient-to-r from-[#FFF8F6] via-[#FFF8F6]/80 to-transparent" />
 
-      {/* Right Fade */}
       <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-20 sm:w-32 bg-gradient-to-l from-[#FFF8F6] via-[#FFF8F6]/80 to-transparent" />
 
       <motion.div

@@ -35,15 +35,12 @@ export default function Hero() {
   const badgeRef = useRef<HTMLDivElement>(null);
   const titleLine1Ref = useRef<HTMLSpanElement>(null);
   const titleLine2Ref = useRef<HTMLSpanElement>(null);
-  const heartRef = useRef<HTMLSpanElement>(null);
-  const taglineRef = useRef<HTMLDivElement>(null);
   const bioRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const metricsRef = useRef<HTMLDivElement>(null);
   const workspaceRef = useRef<HTMLDivElement>(null);
   const floatingLabelsRef = useRef<HTMLDivElement>(null);
 
-  // GSAP Initial Page Entrance Choreography
   useEffect(() => {
     const ctx = gsap.context(() => {
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -51,46 +48,33 @@ export default function Hero() {
 
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      // 1. Availability badge softly fades & slides upward
       tl.fromTo(
         badgeRef.current,
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.45 }
       )
-      // 2. "Full Stack" reveals first
+
       .fromTo(
         titleLine1Ref.current,
         { opacity: 0, y: 28 },
         { opacity: 1, y: 0, duration: 0.55 },
         "-=0.15"
       )
-      // 3. "Developer." reveals with slight stagger
+
       .fromTo(
         titleLine2Ref.current,
         { opacity: 0, y: 28 },
         { opacity: 1, y: 0, duration: 0.55 },
         "-=0.35"
       )
-      .fromTo(
-        heartRef.current,
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.8)" },
-        "-=0.25"
-      )
-      // 4. Role tag + Description fade upward
-      .fromTo(
-        taglineRef.current,
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.4 },
-        "-=0.25"
-      )
+
       .fromTo(
         bioRef.current,
         { opacity: 0, y: 14 },
         { opacity: 1, y: 0, duration: 0.45 },
         "-=0.25"
       )
-      // 5. CTA buttons & Metrics appear
+
       .fromTo(
         ctaRef.current,
         { opacity: 0, y: 14 },
@@ -103,14 +87,14 @@ export default function Hero() {
         { opacity: 1, y: 0, duration: 0.4 },
         "-=0.2"
       )
-      // 6. Right-side developer panel smoothly enters
+
       .fromTo(
         workspaceRef.current,
         { opacity: 0, x: 25, scale: 0.96 },
         { opacity: 1, x: 0, scale: 1, duration: 0.75, ease: "power2.out" },
         "-=0.45"
       )
-      // 7. Floating tech chips appear
+
       .fromTo(
         floatingLabelsRef.current?.querySelectorAll(".floating-chip") || [],
         { opacity: 0, scale: 0.8, y: 12 },
@@ -122,7 +106,6 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // Subtle Mouse Tracking Micro-Interaction on Desktop (GSAP quickTo)
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
@@ -152,35 +135,27 @@ export default function Hero() {
       ref={containerRef}
       className="relative w-full overflow-hidden select-none"
     >
-      {/* ── Solid Soft Light Pink Hero Body (#FFE8EE) ── */}
+
       <div className="w-full bg-[#FFE8EE] pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-20 relative">
-        
-        {/* Soft Ambient Glows Inside Solid Pink Section */}
+
         <div className="pointer-events-none absolute -top-20 right-10 w-[650px] h-[650px] rounded-full bg-gradient-to-bl from-[#FFF0F4]/90 via-white/40 to-transparent blur-3xl opacity-80 select-none -z-10" />
         <div className="pointer-events-none absolute -bottom-10 left-10 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#E8DDF7]/45 via-[#FFF0F4]/60 to-transparent blur-3xl opacity-75 select-none -z-10" />
         <div className="pointer-events-none absolute top-1/3 right-1/3 w-[400px] h-[400px] rounded-full bg-[#DDF5F8]/40 blur-3xl opacity-50 select-none -z-10" />
 
-        {/* Decorative Subtle Doodles */}
         <div className="pointer-events-none absolute top-28 right-1/4 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
         <div className="pointer-events-none absolute top-44 left-14 text-[#FAD074] text-lg animate-float-slow select-none opacity-50">★</div>
-        <div className="pointer-events-none absolute bottom-24 right-12 text-[#E85D8B] text-2xl animate-doodle select-none opacity-45">♡</div>
+        <div className="pointer-events-none absolute bottom-24 right-12 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
         <div className="pointer-events-none absolute top-36 right-12 text-[#B9A1E8] text-base select-none opacity-45">✿</div>
 
-        {/* ── Responsive Screen Container Occupying 80% on Desktop ── */}
         <div className="relative mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1600px] px-1 sm:px-4 z-10">
-          
-          {/* ── 2-Column Grid Filling Space Harmoniously ── */}
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-10 items-center justify-between">
 
-            {/* ─────────────────────────────────────────────────────────────
-                LEFT COLUMN: Full-Height Dominant Identity & Narrative (6 Cols)
-            ───────────────────────────────────────────────────────────── */}
             <div className="lg:col-span-6 flex flex-col items-start text-left w-full">
-              
-              {/* 1. Availability Status Badge with Micro Glow */}
+
               <div
                 ref={badgeRef}
-                className="inline-flex items-center gap-2 mb-3.5 rounded-full bg-white/95 border border-[#F8D2D9] px-3 sm:px-4 py-1 text-xs font-bold text-[#E85D8B] shadow-2xs transition-all hover:scale-102 max-w-full"
+                className="inline-flex items-center gap-2 mb-5 sm:mb-6 rounded-full bg-white/95 border border-[#F8D2D9] px-3 sm:px-4 py-1 text-xs font-bold text-[#E85D8B] shadow-2xs transition-all hover:scale-102 max-w-full"
               >
                 <span className="h-2 w-2 shrink-0 rounded-full bg-[#E85D8B] animate-ping" />
                 <span className="font-mono text-[10px] sm:text-[11px] tracking-wide font-extrabold uppercase truncate">
@@ -188,29 +163,24 @@ export default function Hero() {
                 </span>
               </div>
 
-              {/* 2. DOMINANT MAIN HEADING: "Full Stack Developer." using Kalam font */}
-              <h1 
-                className="font-kalam font-bold tracking-tight leading-[1.06] mb-3 select-none w-full"
+              <h1
+                className="font-kalam font-bold tracking-tight leading-[1.06] mb-4 sm:mb-5 select-none w-full"
                 style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
               >
-                <span 
+                <span
                   ref={titleLine1Ref}
                   className="text-[#2E2234] block will-change-transform font-kalam font-bold text-[clamp(2.5rem,6.2vw,5.4rem)]"
                   style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
                 >
                   Full Stack
                 </span>
-                <span 
+                <span
                   ref={titleLine2Ref}
                   className="text-[#FF5E86] inline-flex items-center gap-2 sm:gap-3 relative pb-1 will-change-transform font-kalam font-bold text-[clamp(2.5rem,6.2vw,5.4rem)]"
                   style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
                 >
                   <span style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}>Developer.</span>
-                  <span ref={heartRef} className="text-[#FF5E86] text-2xl sm:text-4xl lg:text-5xl animate-doodle inline-block font-kalam">
-                    ♡
-                  </span>
-                  
-                  {/* Hand-Drawn Animated Curved Underline */}
+
                   <motion.svg
                     className="absolute -bottom-2 left-0 w-[95%] h-4 overflow-visible pointer-events-none text-[#FF5E86]"
                     viewBox="0 0 240 14"
@@ -229,19 +199,6 @@ export default function Hero() {
                 </span>
               </h1>
 
-              {/* 3. Role Tag Pill */}
-              <div
-                ref={taglineRef}
-                className="mb-3.5 inline-flex items-center gap-2 sm:gap-2.5 rounded-full bg-[#FFFFFF] border border-[#EADDE3] px-3 sm:px-3.5 py-1 text-[11px] sm:text-xs font-bold text-[#302535] shadow-2xs select-none"
-              >
-                <span className="text-[#E85D8B] font-kalam font-bold">Developer</span>
-                <span className="text-[#E85D8B] text-[10px]">&bull;</span>
-                <span className="text-[#302535] font-kalam font-bold">Creator</span>
-                <span className="text-[#E85D8B] text-[10px]">&bull;</span>
-                <span className="text-[#302535] font-kalam font-bold">Problem Solver</span>
-              </div>
-
-              {/* 4. Professional Description Introducing Pooja Daki & Tech Stack */}
               <p
                 ref={bioRef}
                 className="text-sm sm:text-base lg:text-[1.05rem] leading-relaxed text-[#6D5D70] font-normal mb-5 w-full"
@@ -249,12 +206,11 @@ export default function Hero() {
                 Hi, I&apos;m <strong className="text-[#302535] font-bold">Pooja Daki</strong> — a Full Stack Developer building modern, responsive, and user-friendly web applications with <strong className="text-[#302535] font-bold">React</strong>, <strong className="text-[#302535] font-bold">Next.js</strong>, <strong className="text-[#302535] font-bold">TypeScript</strong>, <strong className="text-[#302535] font-bold">Node.js</strong>, and <strong className="text-[#302535] font-bold">MongoDB</strong>.
               </p>
 
-              {/* 5. CTAs + Social Buttons */}
               <div
                 ref={ctaRef}
                 className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 mb-5 w-full"
               >
-                {/* Primary CTA: View My Work */}
+
                 <a
                   href="#projects"
                   className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#E85D8B] to-[#F29AB2] text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-extrabold shadow-[0_8px_20px_-4px_rgba(232,93,139,0.38)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_26px_-4px_rgba(232,93,139,0.48)] active:translate-y-0"
@@ -263,7 +219,6 @@ export default function Hero() {
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                 </a>
 
-                {/* Secondary CTA: Let's Connect */}
                 <a
                   href="#contact"
                   className="group inline-flex items-center gap-1.5 rounded-full border border-[#EADDE3] bg-white px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-extrabold text-[#302535] shadow-2xs transition-all duration-200 hover:border-[#F29AB2] hover:bg-[#FFF5F7] hover:text-[#E85D8B] hover:-translate-y-0.5 active:translate-y-0"
@@ -272,7 +227,6 @@ export default function Hero() {
                   <ArrowUpRight size={15} className="text-[#E85D8B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
 
-                {/* Clean Circular Social Buttons */}
                 <div className="flex items-center gap-2 pl-0 sm:pl-1">
                   <a
                     href="https://github.com/pohh09"
@@ -295,54 +249,39 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* 6. Creative Feature Badges */}
               <div
                 ref={metricsRef}
-                className="w-full pt-4 border-t border-[#F5D8E2] grid grid-cols-1 xs:grid-cols-3 gap-2 sm:gap-3"
+                className="w-full pt-4 sm:pt-5 border-t border-[#F5D8E2]/90 flex flex-wrap items-center gap-2 sm:gap-2.5"
               >
-                <div className="p-2.5 rounded-2xl bg-white border border-[#F0DCE3] shadow-2xs flex flex-col items-start justify-center transition-transform hover:-translate-y-0.5">
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <Activity size={13} className="text-[#E85D8B]" />
-                    <span className="text-[11px] font-bold text-[#302535]">60 FPS Fluid</span>
-                  </div>
-                  <span className="text-[9px] font-mono text-[#756875]">GSAP Dynamics</span>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#F29AB2] transition-colors">
+                  <Activity size={13} className="text-[#E85D8B]" />
+                  <span>60 FPS Fluid Dynamics</span>
                 </div>
 
-                <div className="p-2.5 rounded-2xl bg-white border border-[#F0DCE3] shadow-2xs flex flex-col items-start justify-center transition-transform hover:-translate-y-0.5">
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <ShieldCheck size={13} className="text-[#8B72D8]" />
-                    <span className="text-[11px] font-bold text-[#302535]">Type-Safe</span>
-                  </div>
-                  <span className="text-[9px] font-mono text-[#756875]">REST &bull; APIs</span>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#8B72D8] transition-colors">
+                  <ShieldCheck size={13} className="text-[#8B72D8]" />
+                  <span>Type-Safe REST &amp; APIs</span>
                 </div>
 
-                <div className="p-2.5 rounded-2xl bg-white border border-[#F0DCE3] shadow-2xs flex flex-col items-start justify-center transition-transform hover:-translate-y-0.5">
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <CheckCircle2 size={13} className="text-[#27AE60]" />
-                    <span className="text-[11px] font-bold text-[#302535]">Full-Stack</span>
-                  </div>
-                  <span className="text-[9px] font-mono text-[#756875]">React + Node</span>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#27AE60] transition-colors">
+                  <CheckCircle2 size={13} className="text-[#27AE60]" />
+                  <span>Full-Stack Architecture</span>
                 </div>
               </div>
 
             </div>
 
-            {/* ─────────────────────────────────────────────────────────────
-                RIGHT COLUMN: Creative Interactive Studio Workbench (6 Cols)
-            ───────────────────────────────────────────────────────────── */}
             <div className="lg:col-span-6 relative flex items-center justify-center w-full">
-              
-              {/* Main Development Canvas Panel */}
+
               <div
                 ref={workspaceRef}
                 className="relative w-full rounded-[24px] sm:rounded-[30px] p-4 sm:p-6 lg:p-7 bg-[#FFFDFC] border-2 border-[#F0DCE3] shadow-[0_20px_55px_-12px_rgba(232,93,139,0.16)] transition-shadow duration-300 hover:shadow-[0_24px_60px_-10px_rgba(232,93,139,0.22)] min-h-[420px] sm:min-h-[490px] flex flex-col justify-between"
               >
-                {/* Cute Sticky Note Corner */}
+
                 <div className="absolute -top-3.5 -right-2 bg-[#FDEEB8] text-[#302535] font-kalam font-bold text-xs px-3 py-0.5 rounded-md shadow-xs rotate-6 border border-[#F8DC82] select-none z-20">
                   Keep Growing 🌱
                 </div>
 
-                {/* Top Window Bar */}
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-3 sm:pb-3.5 mb-3 sm:mb-4 border-b border-[#F5E6EB]">
                     <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
@@ -356,7 +295,6 @@ export default function Hero() {
                       </span>
                     </div>
 
-                    {/* Mode Selector Tabs */}
                     <div className="flex items-center gap-0.5 sm:gap-1 p-0.5 rounded-full bg-[#FFF5F7] border border-[#F0DCE3] shrink-0">
                       <button
                         onClick={() => setActiveTab("ui")}
@@ -391,10 +329,9 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  {/* ── Tab 1: Frontend Canvas ── */}
                   {activeTab === "ui" && (
                     <div className="space-y-3">
-                      {/* Interactive Component Card with Fluid Score */}
+
                       <div className="rounded-2xl border border-[#F0DCE3] bg-gradient-to-r from-[#FFF8F5] via-[#FFF5F7] to-[#FFF8F5] p-3.5 shadow-2xs flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FCE8E8] text-[#E85D8B] font-bold text-xs shadow-2xs">
@@ -418,7 +355,6 @@ export default function Hero() {
                         </button>
                       </div>
 
-                      {/* 2 Miniature Architecture Widgets */}
                       <div className="grid grid-cols-2 gap-3">
                         <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white shadow-2xs">
                           <div className="flex items-center justify-between mb-1.5">
@@ -439,7 +375,6 @@ export default function Hero() {
                         </div>
                       </div>
 
-                      {/* Clean Code Quality Pill */}
                       <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] shadow-2xs flex items-center justify-between">
                         <div className="flex items-center gap-2.5">
                           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FCE8E8] text-[#E85D8B]">
@@ -457,7 +392,6 @@ export default function Hero() {
                     </div>
                   )}
 
-                  {/* ── Tab 2: Backend Architecture ── */}
                   {activeTab === "fullstack" && (
                     <div className="space-y-3">
                       <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between">
@@ -505,7 +439,6 @@ export default function Hero() {
                     </div>
                   )}
 
-                  {/* ── Tab 3: Motion ── */}
                   {activeTab === "motion" && (
                     <div className="space-y-3">
                       {[
@@ -527,7 +460,6 @@ export default function Hero() {
                   )}
                 </div>
 
-                {/* Footer Status Bar */}
                 <div className="mt-4 pt-3 border-t border-[#F5E6EB] flex items-center justify-between text-xs font-bold">
                   <span className="flex items-center gap-2 text-[#756875] text-[11px] sm:text-xs">
                     <span className="h-2 w-2 rounded-full bg-[#27AE60] animate-pulse" />
@@ -537,7 +469,6 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Floating Tech Chips with Gentle Floats */}
               <div ref={floatingLabelsRef} className="pointer-events-none">
                 <div className="floating-chip absolute -bottom-3 -left-3 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3.5 py-1 text-xs font-bold text-[#302535] shadow-xs animate-float-slow">
                   <FaReact size={14} className="text-[#38BDF8]" />
@@ -563,7 +494,6 @@ export default function Hero() {
 
       </div>
 
-      {/* ── Bottom Organic Wave Transition exiting Soft Light Pink (#FFE8EE) into Cream (#FFF8F5) ── */}
       <div className="w-full overflow-hidden leading-none select-none pointer-events-none -mt-[1px] relative z-20">
         <svg
           viewBox="0 0 1440 100"

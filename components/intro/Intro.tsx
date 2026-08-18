@@ -95,7 +95,7 @@ export default function AppleIntro({ onFinish }: Props) {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-0 z-[9999] overflow-hidden bg-[#FFF8F6]"
     >
-      {/* CURTAIN LAYER */}
+
       <div className="absolute inset-0 bg-[#FFF8F6]">
         <motion.div
           className="absolute -left-20 top-0 h-[450px] w-[450px] rounded-full bg-[#FFE8EC] blur-[100px] opacity-70"
@@ -123,7 +123,7 @@ export default function AppleIntro({ onFinish }: Props) {
         {(phase === "portfolioIn" || phase === "portfolioOut") && (
           <div className="flex h-full items-center justify-center px-4">
             <AnimatedLetters
-              text="Portfolio ♡"
+              text="Portfolio"
               exiting={phase === "portfolioOut"}
               onExitComplete={() => setPhase("reveal")}
               className="text-center font-kalam font-bold leading-none tracking-tight text-[#2E2234] text-6xl sm:text-7xl md:text-9xl lg:text-[10rem]"
@@ -142,7 +142,6 @@ export default function AppleIntro({ onFinish }: Props) {
         )}
       </div>
 
-      {/* REVEAL LAYER */}
       {showLight && (
         <motion.div
           initial={{ clipPath: "circle(0% at 50% 50%)" }}

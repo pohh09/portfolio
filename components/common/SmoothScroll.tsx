@@ -12,7 +12,7 @@ export default function SmoothScroll({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Respect reduced motion preferences
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
@@ -29,7 +29,6 @@ export default function SmoothScroll({
 
     lenisRef.current = lenis;
 
-    // Connect Lenis scroll to ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
     const updateTicker = (time: number) => {

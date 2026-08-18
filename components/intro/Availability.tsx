@@ -25,7 +25,7 @@ export default function Availability() {
     <section className="relative flex min-h-screen items-center overflow-hidden bg-[#FFF8F5] py-20 sm:py-24 lg:py-32">
       <div className="w-full">
         <div className="mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1600px] px-2 sm:px-6">
-          {/* Marquee */}
+
           <div
             className="overflow-hidden"
             style={{
@@ -54,7 +54,6 @@ export default function Availability() {
             </motion.div>
           </div>
 
-          {/* Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +72,7 @@ export default function Availability() {
               Let&apos;s Build
               <br />
               <span className="text-[#E85D8B]">
-                Something Amazing. ♡
+                Something Amazing.
               </span>
             </h2>
 

@@ -13,7 +13,6 @@ export type Project = {
 
 export const projects: Project[] = [
 
-
   {
     id: 1,
     title: "GetHired – AI Career Platform",
@@ -42,7 +41,6 @@ export const projects: Project[] = [
     github: "https://github.com/pohh09/gethired",
     live: "https://gethired-sigma.vercel.app",
   },
-
 
   {
     id: 2,
@@ -75,8 +73,6 @@ export const projects: Project[] = [
     figma: "https://www.figma.com/design/q3ND2vCKyM6q9ckcTkCd1E/Design-Systems?t=3eeIRiZMSmXrxYRf-1"
   },
 
-
-
   {
     id: 3,
     title: "NYRA – AI Chatbot Assistant",
@@ -108,8 +104,6 @@ export const projects: Project[] = [
     live: "#",
   },
 
-
-
   {
     id: 4,
     title: "Personal Developer Portfolio",
@@ -117,7 +111,7 @@ export const projects: Project[] = [
     description:
       "A modern developer portfolio built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion. Showcases full-stack applications, interactive devkit consoles, design-to-code workflows, and high-performance micro-interactions.",
 
-    image: "/projects/portfolio.png",
+    image: "/projects/portfolio-showcase.png",
 
     technologies: [
       "Next.js 15",
@@ -137,10 +131,8 @@ export const projects: Project[] = [
     ],
 
     github: "https://github.com/pohh09",
-    live: "#",
+    live: "https://portfolio-poojas-project.vercel.app/",
   },
-
-
 
   {
     id: 5,

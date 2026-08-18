@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { techStack } from "@/data/tech-stack";
 import { Sparkles, ArrowUpRight, Layers, Terminal, Cloud, Compass } from "lucide-react";
 
-// Subtle pastel icon background tints (sticker effect)
 const pastelIconColors: Record<string, { bg: string; border: string }> = {
   "React.js": { bg: "bg-[#FFF5F7]", border: "border-[#FCE8E8]" },
   "Next.js": { bg: "bg-[#FFFDFC]", border: "border-[#EADDE3]" },
@@ -32,7 +31,6 @@ const pastelIconColors: Record<string, { bg: string; border: string }> = {
   "Jest Testing": { bg: "bg-[#FFF5F7]", border: "border-[#FCE8E8]" },
 };
 
-// Category metadata for creative folio cards
 const categoryFolioMeta = [
   {
     subtitle: "Frontend & Full-Stack Core",
@@ -79,7 +77,6 @@ export default function TechStack() {
   const heroItem = currentCategory.items.find((item) => item.name === folioMeta.heroTech) || currentCategory.items[0];
   const mosaicItems = currentCategory.items.filter((item) => item.name !== heroItem.name);
 
-  // All technologies combined for secondary infinite discovery ribbon
   const allTechnologies = techStack.flatMap((cat) => cat.items);
   const secondaryUniverseLoop = [
     ...allTechnologies,
@@ -87,7 +84,6 @@ export default function TechStack() {
     ...allTechnologies,
   ];
 
-  // Auto-cycle categories every ~4.8 seconds
   useEffect(() => {
     if (isPaused) return;
 
@@ -108,13 +104,13 @@ export default function TechStack() {
   };
 
   return (
-    <section 
-      id="skills" 
+    <section
+      id="skills"
       className="relative w-full overflow-hidden bg-transparent scroll-mt-20 select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* ── Top Organic Wave Transition into Soft Light Pink (#FFE8EE) ── */}
+
       <div className="w-full overflow-hidden leading-none select-none pointer-events-none -mb-[1px]">
         <svg
           viewBox="0 0 1440 100"
@@ -130,30 +126,23 @@ export default function TechStack() {
         </svg>
       </div>
 
-      {/* ── Solid Soft Light Pink Body (#FFE8EE) ── */}
       <div className="w-full bg-[#FFE8EE] py-14 sm:py-18 relative">
-        
-        {/* Subtle Ambient Glows Inside Solid Pink Section */}
+
         <div className="pointer-events-none absolute -top-10 left-1/4 w-[600px] h-[550px] rounded-full bg-gradient-to-tr from-[#FFF0F4]/80 via-white/30 to-transparent blur-3xl opacity-70 select-none -z-10" />
         <div className="pointer-events-none absolute -bottom-10 right-1/4 w-[600px] h-[550px] rounded-full bg-gradient-to-bl from-[#E8DDF7]/40 via-[#FFF0F4]/50 to-transparent blur-3xl opacity-65 select-none -z-10" />
 
-        {/* Decorative Doodles */}
         <div className="pointer-events-none absolute top-10 right-14 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
         <div className="pointer-events-none absolute top-1/2 left-8 text-[#FAD074] text-lg animate-float-slow select-none opacity-50">★</div>
-        <div className="pointer-events-none absolute bottom-1/4 right-10 text-[#E85D8B] text-2xl animate-doodle select-none opacity-45">♡</div>
+        <div className="pointer-events-none absolute bottom-1/4 right-10 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
         <div className="pointer-events-none absolute bottom-8 left-12 text-[#B9A1E8] text-base select-none opacity-40">✦</div>
 
         <div className="mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1600px] px-1 sm:px-4 relative z-10">
-        
-        {/* ════════════════════════════════════════════════════════════════════
-            1. SECTION HEADER (Large Expressive Typography)
-        ════════════════════════════════════════════════════════════════════ */}
+
         <div className="max-w-3xl mb-8 sm:mb-12 text-left">
-          
-          {/* Section Tag */}
-          <div className="inline-flex items-center gap-2 mb-3 rounded-full bg-[#FCE8E8] border border-[#F8D2D9] px-3.5 py-0.5 text-xs font-kalam font-bold text-[#E85D8B] shadow-2xs">
+
+          <div className="inline-flex items-center gap-2 mb-4 sm:mb-5 rounded-full bg-[#FCE8E8] border border-[#F8D2D9] px-3.5 py-0.5 text-xs font-kalam font-bold text-[#E85D8B] shadow-2xs">
             <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B] animate-ping" />
-            <span>SKILLS / 03 &bull; TOOLKIT &amp; ECOSYSTEM</span>
+            <span>TECHSTACK</span>
           </div>
 
           <h2 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#302535] font-kalam leading-[1.15]">
@@ -184,14 +173,8 @@ export default function TechStack() {
           </p>
         </div>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            2. CREATIVE ASYMMETRICAL ATELIER SHOWCASE
-        ════════════════════════════════════════════════════════════════════ */}
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-8 items-start">
 
-          {/* ─────────────────────────────────────────────────────────────
-              LEFT SIDE (5 Cols): 4 Creative Domain Folio Cards
-          ───────────────────────────────────────────────────────────── */}
           <div className="lg:col-span-5 flex flex-col space-y-2.5 sm:space-y-3.5">
             <div className="text-[11px] font-mono font-bold text-[#A396A3] uppercase tracking-wider px-1 flex items-center justify-between">
               <span>EXPLORE DOMAINS</span>
@@ -218,7 +201,7 @@ export default function TechStack() {
                 >
                   <div className="flex items-start justify-between gap-3 relative z-10">
                     <div className="flex items-center gap-3">
-                      <div 
+                      <div
                         className={`
                           flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-2xl border transition-all duration-300
                           ${isActive
@@ -248,7 +231,6 @@ export default function TechStack() {
                     </span>
                   </div>
 
-                  {/* Auto-Cycle Progress Indicator */}
                   {isActive && !isPaused && (
                     <div className="w-full h-0.5 bg-[#FCE8E8] rounded-full overflow-hidden mt-3">
                       <motion.div
@@ -265,14 +247,11 @@ export default function TechStack() {
             })}
           </div>
 
-          {/* ─────────────────────────────────────────────────────────────
-              RIGHT SIDE (7 Cols): Dynamic Creative Technology Canvas
-          ───────────────────────────────────────────────────────────── */}
           <div className="lg:col-span-7 w-full">
             <div className="relative rounded-[24px] sm:rounded-[32px] bg-[#FFFDFC] border border-[#F0DCE3] p-4 sm:p-7 lg:p-9 shadow-[0_12px_45px_-12px_rgba(232,93,139,0.1)] min-h-[380px] sm:min-h-[440px] flex flex-col justify-between">
-              
+
               <div>
-                {/* Canvas Header */}
+
                 <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-6 border-b border-[#F5E6EB]">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-mono font-bold text-[#E85D8B] uppercase tracking-wider">
@@ -285,7 +264,6 @@ export default function TechStack() {
                   </span>
                 </div>
 
-                {/* Animated Category Content */}
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentCategory.title}
@@ -295,11 +273,11 @@ export default function TechStack() {
                     transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                     className="space-y-5"
                   >
-                    {/* Spotlight Hero Card */}
+
                     {heroItem && (
                       <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#FFF5F7] via-[#FFFDFC] to-[#FAF7FE] border border-[#F9DDE4] shadow-xs flex items-center justify-between gap-4">
                         <div className="flex items-center gap-3.5">
-                          <div 
+                          <div
                             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white border border-[#F0DCE3] shadow-xs animate-float-slow"
                             style={{ color: heroItem.color }}
                           >
@@ -326,7 +304,6 @@ export default function TechStack() {
                       </div>
                     )}
 
-                    {/* Dynamic Technology Mosaic Capsules */}
                     <div className="flex flex-wrap gap-2.5 sm:gap-3 pt-1">
                       {mosaicItems.map((tech, idx) => {
                         const Icon = tech.icon;
@@ -347,7 +324,7 @@ export default function TechStack() {
                               cursor-default select-none
                             "
                           >
-                            {/* Circular Pastel Sticker Icon */}
+
                             <div
                               className={`
                                 flex h-7 w-7 shrink-0 items-center justify-center rounded-full
@@ -359,14 +336,13 @@ export default function TechStack() {
                               <Icon size={14} />
                             </div>
 
-                            {/* Technology Name */}
                             <span className="text-xs sm:text-sm font-bold text-[#302535] group-hover:text-[#E85D8B] transition-colors whitespace-nowrap">
                               {tech.name}
                             </span>
 
-                            <ArrowUpRight 
-                              size={12} 
-                              className="text-[#A396A3] opacity-0 group-hover:opacity-100 group-hover:text-[#E85D8B] transition-all -ml-1" 
+                            <ArrowUpRight
+                              size={12}
+                              className="text-[#A396A3] opacity-0 group-hover:opacity-100 group-hover:text-[#E85D8B] transition-all -ml-1"
                             />
                           </motion.div>
                         );
@@ -376,13 +352,12 @@ export default function TechStack() {
                 </AnimatePresence>
               </div>
 
-              {/* Micro Footer inside Canvas */}
               <div className="mt-8 pt-3.5 border-t border-[#F5E6EB] flex items-center justify-between text-xs font-mono text-[#A396A3]">
                 <div className="flex items-center gap-1.5">
                   <Sparkles size={11} className="text-[#E85D8B]" />
                   <span>built for production scale</span>
                 </div>
-                <span className="font-kalam text-xs text-[#E85D8B]">my everyday stack ♡</span>
+                <span className="font-kalam text-xs text-[#E85D8B]">my everyday stack</span>
               </div>
 
             </div>
@@ -390,11 +365,8 @@ export default function TechStack() {
 
         </div>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            3. BOTTOM CONTINUOUS DISCOVERY RIBBON (Enlarged Marquee)
-        ════════════════════════════════════════════════════════════════════ */}
         <div className="mt-12 sm:mt-14 pt-3">
-          
+
           <div className="flex items-center justify-between gap-4 mb-3.5">
             <span className="text-xs font-mono font-bold text-[#756875] uppercase tracking-wider">
               ✦ COMPLETE TOOLKIT &bull; CONTINUOUS DISCOVERY STREAM
@@ -404,10 +376,8 @@ export default function TechStack() {
             </span>
           </div>
 
-          {/* Continuous Subtle Marquee Ribbon */}
           <div className="relative w-full overflow-hidden py-2 group/marquee">
-            
-            {/* Edge Masks with Soft Pink Tint */}
+
             <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-16 sm:w-28 bg-gradient-to-r from-[#FFE8EE] to-transparent" />
             <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-16 sm:w-28 bg-gradient-to-l from-[#FFE8EE] to-transparent" />
 
@@ -450,7 +420,6 @@ export default function TechStack() {
       </div>
     </div>
 
-    {/* ── Bottom Organic Wave Transition exiting Soft Light Pink (#FFE8EE) ── */}
     <div className="w-full overflow-hidden leading-none select-none pointer-events-none -mt-[1px]">
       <svg
         viewBox="0 0 1440 100"

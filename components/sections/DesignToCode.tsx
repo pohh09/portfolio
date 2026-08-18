@@ -1,285 +1,374 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, Layers, Code2, Sparkles, ArrowRight, ExternalLink, CheckCircle2 } from "lucide-react";
+import {
+  Search,
+  Layers,
+  Code2,
+  Sparkles,
+  ArrowRight,
+  ExternalLink,
+  CheckCircle2,
+  Copy,
+  Check,
+  Eye,
+  Sliders,
+  ShieldCheck,
+  Zap,
+  Layout
+} from "lucide-react";
 import { FaFigma } from "react-icons/fa";
 
 const steps = [
   {
     step: "01",
-    title: "Research & Spec",
-    description: "Analyzing user flows, component hierarchy, and responsive constraints before coding.",
-    icon: Search,
-    color: "from-[#FF5E86] to-[#9D80E4]",
-    tag: "Planning",
-  },
-  {
-    step: "02",
-    title: "Figma Deconstruction",
-    description: "Inspecting auto-layouts, spacing tokens, typography scales, and color variables.",
+    title: "Design Tokens & Spec",
+    description: "Inspecting auto-layouts, spacing tokens, color variables, and fluid typography scales.",
     icon: FaFigma,
-    color: "from-[#9D80E4] to-[#FF5E86]",
+    color: "from-[#E85D8B] to-[#B9A1E8]",
     tag: "Tokens",
   },
   {
-    step: "03",
+    step: "02",
     title: "Component Architecture",
-    description: "Designing modular, reusable React component interfaces with strict TypeScript typing.",
+    description: "Structuring modular, reusable React component interfaces with strict TypeScript typing.",
     icon: Layers,
-    color: "from-[#9D80E4] to-[#52D1DC]",
+    color: "from-[#B9A1E8] to-[#8DDDE5]",
     tag: "Architecture",
   },
   {
-    step: "04",
-    title: "Production Coding",
-    description: "Crafting 60 FPS fluid interactions with Next.js, Tailwind CSS, and Framer Motion.",
+    step: "03",
+    title: "Pixel-Perfect Coding",
+    description: "Building responsive, zero-layout-shift UI using Next.js 15, Tailwind CSS, and semantic HTML5.",
     icon: Code2,
-    color: "from-[#52D1DC] to-[#9D80E4]",
+    color: "from-[#8DDDE5] to-[#B9A1E8]",
     tag: "Development",
   },
   {
-    step: "05",
-    title: "QA & Optimization",
-    description: "Auditing accessibility (a11y), Core Web Vitals, performance, and SEO optimization.",
+    step: "04",
+    title: "Micro-Animations",
+    description: "Crafting fluid, 60fps spring physics and gesture animations with Framer Motion and GSAP.",
     icon: Sparkles,
-    color: "from-[#FF5E86] to-[#9D80E4]",
+    color: "from-[#E85D8B] to-[#FAD074]",
+    tag: "Motion",
+  },
+  {
+    step: "05",
+    title: "QA & Performance",
+    description: "Auditing accessibility (a11y), Core Web Vitals, cross-browser compatibility, and SEO.",
+    icon: ShieldCheck,
+    color: "from-[#82D9A7] to-[#8DDDE5]",
     tag: "Delivery",
   },
 ];
 
+const superpowers = [
+  {
+    icon: Zap,
+    title: "1:1 Pixel-Perfect Fidelity",
+    desc: "Strict adherence to Figma auto-layouts, 4px/8px spacing grids, and component tokens.",
+    color: "bg-[#FFF5F7] text-[#E85D8B] border-[#F8D2D9]",
+  },
+  {
+    icon: Layout,
+    title: "Zero Layout Shift (CLS = 0)",
+    desc: "Optimized aspect ratios, skeleton loaders, and responsive container constraints.",
+    color: "bg-[#FAF7FE] text-[#B9A1E8] border-[#E5DBF8]",
+  },
+  {
+    icon: ShieldCheck,
+    title: "A11y & Keyboard Navigation",
+    desc: "WCAG-compliant contrast ratios, ARIA landmarks, focus-visible states, and screen reader ready.",
+    color: "bg-[#F4FCF7] text-[#2FB86A] border-[#CEF4DE]",
+  },
+];
+
 export default function DesignToCode() {
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [activeTab, setActiveTab] = useState<"code" | "tokens">("code");
+
+  const sampleCode = `import { motion } from "framer-motion";
+
+export default function AtelierCard() {
   return (
-    <section id="workflow" className="relative overflow-hidden py-20 sm:py-28 scroll-mt-28 bg-[#FFF8F5]">
-      {/* ── Large Organic Wave Background ── */}
+    <motion.div
+      whileHover={{ y: -4 }}
+      className="p-5 rounded-2xl bg-white border-2 border-[#F0DCE3] shadow-md"
+    >
+      <Badge variant="pastel">Auto Layout Spec</Badge>
+      <h3 className="font-kalam font-bold text-[#302535]">Design Tokens</h3>
+      <ActionButton variant="primary">Get Started &rarr;</ActionButton>
+    </motion.div>
+  );
+}`;
+
+  const handleCopyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(sampleCode);
+      setCopiedCode(true);
+      setTimeout(() => setCopiedCode(false), 2000);
+    } catch {
+
+    }
+  };
+
+  return (
+    <section id="workflow" className="relative overflow-hidden py-16 sm:py-24 scroll-mt-28 bg-[#FFF8F5]">
+
       <div className="pointer-events-none absolute inset-0 w-full h-full overflow-hidden select-none -z-10">
-        <svg
-          className="absolute w-full h-full"
-          viewBox="0 0 1440 1000"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,0 C340,90 640,20 840,230 C1040,440 590,660 1040,830 C1240,910 1360,890 1440,990 L1440,1000 L0,1000 Z"
-            fill="#FCE8E8"
-            opacity="0.65"
-          />
-          <path
-            d="M0,150 C240,250 490,190 690,390 C890,590 540,760 1090,930 L0,1000 Z"
-            fill="#F3EDFC"
-            opacity="0.45"
-          />
-        </svg>
+        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-[#E85D8B]/5 blur-3xl" />
+        <div className="absolute bottom-1/3 right-1/4 h-96 w-96 rounded-full bg-[#B9A1E8]/6 blur-3xl" />
       </div>
 
-      {/* Decorative Doodles */}
-      <div className="pointer-events-none absolute top-16 left-16 text-[#E85D8B] text-xl animate-float-slow select-none opacity-50">✦</div>
-      <div className="pointer-events-none absolute bottom-20 right-12 text-[#FAD074] text-lg animate-float-slow select-none opacity-60">★</div>
+      <div className="pointer-events-none absolute top-16 left-16 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
+      <div className="pointer-events-none absolute top-1/2 right-12 text-[#FAD074] text-lg animate-float-slow select-none opacity-50">★</div>
+      <div className="pointer-events-none absolute bottom-20 left-12 text-[#B9A1E8] text-base select-none opacity-40">✦</div>
 
       <div className="mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1600px] px-1 sm:px-4 relative z-10">
-        
-        {/* Section Tag */}
-        <div className="inline-flex items-center gap-2 mb-3 rounded-full bg-[#FFE8EE] border border-[#FFD0DC] px-3.5 py-0.5 text-xs font-kalam font-bold text-[#FF5E86] shadow-xs">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#FF5E86]" />
-          <span>FRONTEND CRAFT &bull; FIGMA TO CODE</span>
-        </div>
 
-        {/* Section Header with Kalam */}
-        <div className="max-w-3xl mb-8 sm:mb-14 text-left">
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#2E2234] font-kalam leading-tight"
+        <div className="max-w-3xl mb-8 sm:mb-12 text-left">
+
+          <div className="inline-flex items-center gap-2 mb-4 sm:mb-5 rounded-full bg-[#FCE8E8] border border-[#F8D2D9] px-3.5 py-0.5 text-xs font-kalam font-bold text-[#E85D8B] shadow-2xs">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B] animate-ping" />
+            <span>FIGMA TO CODE</span>
+          </div>
+
+          <h2
+            className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#302535] font-kalam leading-[1.15]"
             style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
           >
-            From Figma Blueprint to <span className="text-[#FF5E86]">Production Code.</span> <span className="text-[#FF5E86] text-2xl animate-doodle">♡</span>
-          </motion.h2>
+            From Figma Blueprint to{" "}
+            <span className="text-[#E85D8B] relative inline-block">
+              Production Code.
+              <motion.svg
+                className="absolute -bottom-1.5 left-0 w-full h-3.5 overflow-visible pointer-events-none text-[#E85D8B]"
+                viewBox="0 0 200 12"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+              >
+                <motion.path
+                  d="M2,7 C50,2 150,11 198,5"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </motion.svg>
+            </span>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ delay: 0.1 }}
-            className="mt-2.5 text-xs sm:text-sm lg:text-base text-[#6D5D70] font-normal leading-relaxed"
-          >
-            Translating visual design tokens into responsive, accessible, and high-performance React components with zero layout shift.
-          </motion.p>
+          <p className="mt-3 text-xs sm:text-sm lg:text-base text-[#756875] font-normal leading-relaxed">
+            Translating complex design systems into responsive, accessible, and high-performance React components with strict token adherence and zero layout shift.
+          </p>
         </div>
 
-        {/* ── Perfectly Matched Figma vs Code Screens ── */}
-        <div className="max-w-5xl mx-auto">
-          <div className="grid items-stretch gap-4 sm:gap-5 lg:gap-8 lg:grid-cols-[1fr_auto_1fr]">
-            
-            {/* 1. Figma Screen Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              className="rounded-[24px] sm:rounded-[28px] p-4 sm:p-6 bg-white border-2 border-[#F0DCE3] shadow-[0_10px_30px_-10px_rgba(232,93,139,0.1)] flex flex-col justify-between h-full"
-            >
-              {/* Header Bar */}
-              <div className="flex items-center justify-between pb-3 border-b border-[#F0DCE3] mb-3.5">
-                <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#FFE8EE] border border-[#FFD0DC] text-[#FF5E86] shadow-2xs">
-                    <FaFigma size={15} />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#2E2234] font-kalam leading-tight">Figma Design Spec</h3>
-                    <p className="text-[11px] font-mono text-[#6D5D70]">Auto Layout &bull; Tokens</p>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mb-10 sm:mb-14">
+          {superpowers.map((power, idx) => {
+            const Icon = power.icon;
+            return (
+              <motion.div
+                key={power.title}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08 }}
+                className="rounded-[22px] bg-white border-2 border-[#F0DCE3] p-4 sm:p-5 shadow-2xs hover:shadow-xs transition-all flex items-start gap-3.5"
+              >
+                <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${power.color}`}>
+                  <Icon size={18} />
                 </div>
-                <a
-                  href="https://www.figma.com/design/q3ND2vCKyM6q9ckcTkCd1E/Design-Systems?t=3eeIRiZMSmXrxYRf-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-full bg-[#FFE8EE] border border-[#FFD0DC] px-3 py-1 text-xs font-bold text-[#FF5E86] hover:bg-[#FFE8EE]/80 transition-all shadow-2xs"
-                >
-                  <span>Figma</span>
-                  <ExternalLink size={11} />
-                </a>
+                <div>
+                  <h3 className="text-xs sm:text-sm font-bold text-[#302535] font-mono leading-snug">
+                    {power.title}
+                  </h3>
+                  <p className="mt-1 text-[11px] sm:text-xs text-[#756875] leading-relaxed">
+                    {power.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <div className="rounded-[28px] sm:rounded-[32px] bg-gradient-to-br from-[#FFFDFC] via-[#FFF9FA] to-[#FAF7FE] border-2 border-[#F0DCE3] p-4 sm:p-7 shadow-[0_16px_45px_-15px_rgba(232,93,139,0.12)] mb-12 sm:mb-16">
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-5 border-b border-[#F0DCE3]">
+            <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#E85D8B]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#FAD074]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#82D9A7]" />
               </div>
-
-              {/* Interactive Figma Design Canvas Frame (Matched Dimensions) */}
-              <div className="relative overflow-hidden rounded-2xl border-2 border-[#0D99FF]/40 bg-[#F5F5F7] p-3.5 sm:p-4 min-h-[240px] sm:h-[270px] flex flex-col justify-between shadow-inner">
-                
-                {/* Figma Frame Top Breadcrumb & Dev Mode */}
-                <div className="flex items-center justify-between pb-2 border-b border-[#E5E5EA]">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-mono font-bold text-[#0D99FF] bg-[#0D99FF]/10 px-2.5 py-0.5 rounded flex items-center gap-1">
-                      <span>❖</span>
-                      <span>FRAME: UI Components</span>
-                    </span>
-                    <span className="text-[10px] font-mono text-[#8E8E93] hidden sm:inline">16px auto-layout</span>
-                  </div>
-                  <div className="flex items-center gap-1 text-[10px] font-mono text-[#0D99FF] font-bold">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#0D99FF] animate-pulse" />
-                    <span>Dev Mode</span>
-                  </div>
-                </div>
-
-                {/* Inside Canvas: Designed UI Components */}
-                <div className="space-y-2.5 my-auto">
-                  
-                  {/* Button Group Spec */}
-                  <div className="relative rounded-xl border border-dashed border-[#0D99FF]/40 p-2.5 bg-white/90">
-                    <span className="absolute -top-2 left-2.5 px-1 text-[8px] font-mono text-[#0D99FF] bg-white font-bold rounded">
-                      ❖ Button Group &bull; gap: 10px
-                    </span>
-                    <div className="flex items-center gap-2.5 pt-0.5">
-                      <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#E85D8B] text-white text-xs font-bold shadow-xs">
-                        <span>Get Started</span>
-                        <ArrowRight size={11} />
-                      </div>
-                      <div className="px-3 py-1.5 rounded-full bg-white border border-[#EADDE3] text-[#302535] text-xs font-bold shadow-2xs">
-                        <span>Preview</span>
-                      </div>
-                      <span className="text-[10px] font-mono text-[#756875] ml-auto hidden sm:inline">
-                        radius: 999px
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Design Card Component Spec */}
-                  <div className="relative rounded-xl border border-dashed border-[#0D99FF]/40 p-2.5 bg-white shadow-2xs flex items-center justify-between">
-                    <span className="absolute -top-2 left-2.5 px-1 text-[8px] font-mono text-[#0D99FF] bg-white font-bold rounded">
-                      ❖ DesignCard Spec
-                    </span>
-                    <div>
-                      <span className="text-xs font-bold text-[#302535]">DesignCard Spec</span>
-                      <p className="text-[10px] text-[#756875]">Pixel-perfect token match</p>
-                    </div>
-                    <span className="text-[10px] font-mono bg-[#FCE8E8] text-[#E85D8B] px-2.5 py-0.5 rounded-md font-bold">
-                      #FFF8F5 &bull; #E85D8B
-                    </span>
-                  </div>
-
-                </div>
-
-                {/* Bottom Figma Spec Bar */}
-                <div className="flex items-center justify-between pt-2 border-t border-[#E5E5EA] text-[10px] font-mono text-[#756875]">
-                  <span className="text-[#0D99FF] font-bold">Tokens: #E85D8B, #302535</span>
-                  <span className="text-[#8E8E93]">100% Token Match ❖</span>
-                </div>
-
-              </div>
-            </motion.div>
-
-            {/* Center Transition Icon */}
-            <div className="flex items-center justify-center my-1 lg:my-0">
-              <div className="rounded-full border-2 border-[#F0DCE3] bg-white p-2.5 sm:p-3 text-[#FF5E86] shadow-xs rotate-90 lg:rotate-0">
-                <ArrowRight size={18} />
-              </div>
+              <span className="text-xs font-mono font-bold text-[#302535] pl-1.5">
+                Figma_Spec_to_React_Output.tsx
+              </span>
             </div>
 
-            {/* 2. TSX Code Card (Matched Dimensions) */}
-            <motion.div
-              initial={{ opacity: 0, x: 16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              className="rounded-[24px] sm:rounded-[28px] p-4 sm:p-6 bg-white border-2 border-[#F0DCE3] shadow-[0_10px_30px_-10px_rgba(232,93,139,0.1)] flex flex-col justify-between h-full"
-            >
-              {/* Header Bar */}
-              <div className="flex items-center justify-between pb-3 border-b border-[#F0DCE3] mb-3.5">
-                <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#E8DDF7] border border-[#D6C4F0] text-[#8B72D8] shadow-2xs">
-                    <Code2 size={15} />
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.figma.com/design/q3ND2vCKyM6q9ckcTkCd1E/Design-Systems?t=3eeIRiZMSmXrxYRf-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF5F7] border border-[#F8D2D9] px-3 py-1 text-xs font-mono font-bold text-[#E85D8B] hover:bg-[#FFE8EE] transition-all shadow-2xs"
+              >
+                <FaFigma size={12} />
+                <span>Open in Figma</span>
+                <ExternalLink size={10} />
+              </a>
+
+              <a
+                href="https://react-design-system-umber.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#302535] text-white px-3.5 py-1 text-xs font-mono font-bold hover:bg-[#E85D8B] transition-all shadow-2xs"
+              >
+                <Eye size={12} />
+                <span>Live Storybook Demo</span>
+                <ExternalLink size={10} />
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-stretch">
+
+            <div className="lg:col-span-6 flex flex-col justify-between rounded-[22px] bg-white border-2 border-[#0D99FF]/30 p-4 sm:p-5 shadow-2xs">
+
+              <div className="flex items-center justify-between pb-3 border-b border-[#E5E5EA] mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#0D99FF]/10 text-[#0D99FF]">
+                    <FaFigma size={14} />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#2E2234] font-kalam leading-tight">Production TSX</h3>
-                    <p className="text-[11px] font-mono text-[#6D5D70]">React 19 &bull; Tailwind CSS</p>
+                    <h4 className="text-xs font-bold text-[#302535] font-mono leading-tight">
+                      Figma Frame: UI Atelier Card
+                    </h4>
+                    <p className="text-[10px] font-mono text-[#756875]">Auto Layout &bull; 16px padding &bull; 24px radius</p>
                   </div>
                 </div>
-                <a
-                  href="https://react-design-system-umber.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-full bg-[#E8DDF7] border border-[#D6C4F0] px-3 py-1 text-xs font-bold text-[#8B72D8] hover:bg-[#D6C4F0]/80 transition-all shadow-2xs"
-                >
-                  <span>Live Demo</span>
-                  <ExternalLink size={11} />
-                </a>
+
+                <span className="text-[10px] font-mono font-bold text-[#0D99FF] bg-[#0D99FF]/10 px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#0D99FF] animate-pulse" />
+                  <span>Dev Mode</span>
+                </span>
               </div>
 
-              {/* Code Window with Charcoal Base (Matched Dimensions) */}
-              <div className="overflow-hidden rounded-2xl border border-[#3E3247] bg-[#221927] font-mono text-xs leading-relaxed text-slate-300 min-h-[240px] sm:h-[270px] flex flex-col justify-between p-3.5 sm:p-4 relative shadow-inner">
-                <div className="space-y-1 overflow-x-auto text-[11px] sm:text-xs">
-                  <div><span className="text-[#9D80E4]">import</span> {"{ motion }"} <span className="text-[#9D80E4]">from</span> <span className="text-[#52D1DC]">&quot;framer-motion&quot;</span>;</div>
-                  <div className="text-slate-500">// Pixel-perfect Figma token spec</div>
-                  <div><span className="text-[#9D80E4]">export default function</span> <span className="text-[#FF5E86] font-bold">DesignCard</span>() {"{"}</div>
-                  <div className="pl-3.5"><span className="text-[#9D80E4]">return</span> (</div>
-                  <div className="pl-7 text-[#52D1DC]">&lt;<span className="text-[#FF5E86]">motion.div</span> <span className="text-amber-300">className</span>=<span className="text-[#52D1DC]">&quot;p-5 rounded-2xl&quot;</span>&gt;</div>
-                  <div className="pl-11 text-slate-200">&lt;<span className="text-[#FF5E86]">DesignTokens</span> <span className="text-amber-300">theme</span>=<span className="text-[#52D1DC]">&quot;aurora&quot;</span> /&gt;</div>
-                  <div className="pl-11 text-slate-200">&lt;<span className="text-[#FF5E86]">ActionButton</span> <span className="text-amber-300">variant</span>=<span className="text-[#52D1DC]">&quot;primary&quot;</span> /&gt;</div>
-                  <div className="pl-7 text-[#52D1DC]">&lt;/<span className="text-[#FF5E86]">motion.div</span>&gt;</div>
-                  <div className="pl-3.5">);</div>
-                  <div>{"}"}</div>
-                </div>
+              <div className="my-auto py-2 space-y-3">
 
-                <div className="flex items-center justify-between border-t border-slate-700/60 pt-2 text-[10px] text-slate-400">
-                  <span className="text-emerald-400 flex items-center gap-1 font-bold">
-                    <CheckCircle2 size={12} className="text-emerald-400 inline-block" />
-                    <span>Zero Layout Shift</span>
+                <div className="relative rounded-2xl border border-dashed border-[#0D99FF]/40 p-3.5 bg-[#FFF9F6]">
+                  <span className="absolute -top-2 left-3 px-1.5 text-[9px] font-mono text-[#0D99FF] bg-white font-bold rounded shadow-2xs">
+                    ❖ Button Group &bull; gap: 8px &bull; radius: full
                   </span>
-                  <span className="text-slate-400">Type-Safe TSX</span>
+                  <div className="flex items-center gap-2.5 pt-1">
+                    <button type="button" className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#E85D8B] text-white text-xs font-bold shadow-xs hover:scale-105 transition-transform cursor-pointer">
+                      <span>Primary Action</span>
+                      <ArrowRight size={12} />
+                    </button>
+                    <button type="button" className="px-3.5 py-2 rounded-full bg-white border border-[#EADDE3] text-[#302535] text-xs font-bold shadow-2xs hover:bg-[#FFF5F7] transition-colors cursor-pointer">
+                      <span>Secondary</span>
+                    </button>
+                  </div>
                 </div>
+
+                <div className="relative rounded-2xl border border-dashed border-[#0D99FF]/40 p-3.5 bg-white shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <span className="absolute -top-2 left-3 px-1.5 text-[9px] font-mono text-[#0D99FF] bg-white font-bold rounded shadow-2xs">
+                    ❖ Token System Match
+                  </span>
+                  <div>
+                    <span className="text-xs font-bold text-[#302535]">Color &amp; Typography Tokens</span>
+                    <p className="text-[10px] text-[#756875]">Var: --font-kalam, --color-pink-500 (#E85D8B)</p>
+                  </div>
+                  <span className="text-[10px] font-mono bg-[#EDFBF3] text-[#2FB86A] border border-[#CEF4DE] px-2.5 py-0.5 rounded-full font-bold self-start sm:self-auto">
+                    100% Spec Match ✓
+                  </span>
+                </div>
+
               </div>
-            </motion.div>
+
+              <div className="flex items-center justify-between pt-3 border-t border-[#E5E5EA] text-[10px] font-mono text-[#756875]">
+                <span className="text-[#0D99FF] font-bold">Auto Layout: Vertical &bull; Spacing: 16px</span>
+                <span className="text-[#8E8E93]">Figma Web API Ready</span>
+              </div>
+
+            </div>
+
+            <div className="lg:col-span-6 flex flex-col justify-between rounded-[22px] bg-[#221927] border-2 border-[#3E3247] p-4 sm:p-5 text-slate-300 shadow-inner">
+
+              <div className="flex items-center justify-between pb-3 border-b border-slate-700/60 mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#E8DDF7] text-[#8B72D8]">
+                    <Code2 size={14} />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-white font-mono leading-tight">
+                      Production React + Tailwind
+                    </h4>
+                    <p className="text-[10px] font-mono text-slate-400">TypeScript &bull; Framer Motion &bull; Next.js 15</p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleCopyCode}
+                  className={`
+                    px-3 py-1 rounded-full text-[10px] font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-95
+                    ${copiedCode
+                      ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
+                      : "bg-slate-800 text-slate-300 border border-slate-700 hover:text-white hover:bg-slate-700"
+                    }
+                  `}
+                >
+                  {copiedCode ? (
+                    <>
+                      <Check size={11} className="text-emerald-400" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={11} />
+                      <span>Copy TSX</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <div className="my-auto py-1 font-mono text-[11px] sm:text-xs leading-relaxed overflow-x-auto text-slate-300 space-y-1">
+                <div><span className="text-[#B9A1E8]">import</span> {"{ motion }"} <span className="text-[#B9A1E8]">from</span> <span className="text-[#8DDDE5]">&quot;framer-motion&quot;</span>;</div>
+                <div><span className="text-[#B9A1E8]">export default function</span> <span className="text-[#E85D8B] font-bold">AtelierCard</span>() {"{"}</div>
+                <div className="pl-3.5"><span className="text-[#B9A1E8]">return</span> (</div>
+                <div className="pl-7 text-[#8DDDE5]">&lt;<span className="text-[#E85D8B]">motion.div</span> <span className="text-[#FAD074]">whileHover</span>=<span className="text-slate-300">{"{{ y: -4 }}"}</span></div>
+                <div className="pl-10 text-[#FAD074]">className=<span className="text-[#8DDDE5]">&quot;p-5 rounded-2xl bg-white border-2 border-[#F0DCE3]&quot;</span>&gt;</div>
+                <div className="pl-10 text-slate-300">&lt;<span className="text-[#E85D8B]">ActionButton</span> <span className="text-[#FAD074]">variant</span>=<span className="text-[#8DDDE5]">&quot;primary&quot;</span> /&gt;</div>
+                <div className="pl-7 text-[#8DDDE5]">&lt;/<span className="text-[#E85D8B]">motion.div</span>&gt;</div>
+                <div className="pl-3.5">);</div>
+                <div>{"}"}</div>
+              </div>
+
+              <div className="flex items-center justify-between pt-3 border-t border-slate-700/60 text-[10px] font-mono">
+                <span className="text-emerald-400 flex items-center gap-1 font-bold">
+                  <CheckCircle2 size={12} className="text-emerald-400" />
+                  <span>Zero Layout Shift (CLS = 0)</span>
+                </span>
+                <span className="text-slate-400">Strict Type-Checking ✓</span>
+              </div>
+
+            </div>
 
           </div>
         </div>
 
-        {/* ── 5-Step Engineering Pipeline (Compact Cards) ── */}
-        <div className="mt-12 sm:mt-18 pt-4">
+        <div className="pt-2">
           <div className="text-center max-w-xl mx-auto mb-6 sm:mb-8">
-            <h3 
-              className="text-xl sm:text-2xl font-bold tracking-tight text-[#2E2234] font-kalam"
+            <h3
+              className="text-xl sm:text-2xl font-bold tracking-tight text-[#302535] font-kalam"
               style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
             >
-              End-to-End Implementation Workflow
+              5-Step Implementation Pipeline
             </h3>
-            <p className="mt-1 text-xs sm:text-sm text-[#6D5D70]">
-              A disciplined, step-by-step engineering pipeline from initial concept to deployment.
+            <p className="mt-1 text-xs sm:text-sm text-[#756875]">
+              A disciplined, production-proven engineering pipeline from design tokens to live delivery.
             </p>
           </div>
 
@@ -291,40 +380,37 @@ export default function DesignToCode() {
                   key={item.step}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.15 }}
-                  transition={{ delay: index * 0.06 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
                   whileHover={{ y: -3 }}
-                  className="relative rounded-[20px] p-4 bg-white border-2 border-[#F0DCE3] flex flex-col justify-between group shadow-2xs hover:border-[#FF94AF] transition-all"
+                  className="relative rounded-[20px] p-4 bg-white border-2 border-[#F0DCE3] flex flex-col justify-between group shadow-2xs hover:border-[#F29AB2] hover:shadow-xs transition-all"
                 >
                   <div>
-                    {/* Step Header */}
+
                     <div className="flex items-center justify-between mb-2.5">
-                      <span className="text-xs font-kalam font-bold px-2 py-0.5 rounded-full bg-[#FFE8EE] border border-[#FFD0DC] text-[#FF5E86]">
+                      <span className="text-xs font-kalam font-bold px-2.5 py-0.5 rounded-full bg-[#FCE8E8] border border-[#F8D2D9] text-[#E85D8B]">
                         {item.step}
                       </span>
-                      <span className="text-[9px] font-mono font-bold text-[#6D5D70] uppercase tracking-wider">
+                      <span className="text-[9px] font-mono font-bold text-[#756875] uppercase tracking-wider">
                         {item.tag}
                       </span>
                     </div>
 
-                    {/* Step Icon */}
                     <div className={`flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${item.color} text-white shadow-2xs mb-2.5 group-hover:scale-105 transition-transform`}>
                       <Icon size={15} />
                     </div>
 
-                    {/* Step Content */}
-                    <h4 className="text-sm font-bold text-[#2E2234] font-kalam tracking-tight group-hover:text-[#FF5E86] transition-colors leading-tight">
+                    <h4 className="text-sm font-bold text-[#302535] font-kalam tracking-tight group-hover:text-[#E85D8B] transition-colors leading-tight">
                       {item.title}
                     </h4>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#6D5D70]">
+                    <p className="mt-1 text-[11px] leading-relaxed text-[#756875]">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* Step Progress Line */}
-                  <div className="mt-3 pt-2 border-t border-[#F0DCE3] flex items-center justify-between text-[10px] font-mono text-[#6D5D70]">
+                  <div className="mt-3 pt-2 border-t border-[#F0DCE3] flex items-center justify-between text-[10px] font-mono text-[#756875]">
                     <span>Phase {index + 1} of 5</span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#FF5E86]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B]" />
                   </div>
                 </motion.div>
               );

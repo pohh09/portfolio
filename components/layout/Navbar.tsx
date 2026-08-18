@@ -19,7 +19,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
-  // Lock scroll when mobile menu is open
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -29,7 +28,6 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  // Close mobile menu on ESC
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -38,7 +36,6 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
@@ -51,7 +48,6 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
-  // Optimized Scroll state listener
   useEffect(() => {
     let lastScrolled = false;
     const onScroll = () => {
@@ -66,7 +62,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // IntersectionObserver for active section tracking
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
@@ -89,25 +84,24 @@ export default function Navbar() {
         ref={navRef}
         className={`
           relative transition-all duration-300
-          ${open 
-            ? "rounded-[24px] sm:rounded-[28px] border border-[#F0DCE3] bg-white/95 shadow-[0_16px_40px_-10px_rgba(232,93,139,0.18)] backdrop-blur-2xl px-3.5 sm:px-4 py-2.5 sm:py-3" 
+          ${open
+            ? "rounded-[24px] sm:rounded-[28px] border border-[#F0DCE3] bg-white/95 shadow-[0_16px_40px_-10px_rgba(232,93,139,0.18)] backdrop-blur-2xl px-3.5 sm:px-4 py-2.5 sm:py-3"
             : scrolled
               ? "rounded-full border border-[#F0DCE3] bg-white/90 shadow-[0_10px_30px_-10px_rgba(232,93,139,0.12)] backdrop-blur-xl py-1.5 px-3.5 sm:px-5 -translate-y-0.5"
               : "rounded-full border border-[#F0DCE3] bg-[rgba(255,255,255,0.85)] backdrop-blur-xl py-1.5 sm:py-2 px-3.5 sm:px-5 shadow-[0_8px_24px_-8px_rgba(232,93,139,0.08)]"
           }
         `}
       >
-        {/* ── Main Floating Capsule Bar ── */}
+
         <div className="relative z-10 flex h-9 sm:h-11 items-center justify-between">
 
-          {/* ── LEFT: Small PD Monogram + Pooja Daki + Tiny Subtitle ── */}
           <div className="flex items-center justify-start min-w-0">
-            <a 
-              href="#home" 
+            <a
+              href="#home"
               onClick={() => setOpen(false)}
               className="group flex items-center gap-2 sm:gap-2.5"
             >
-              {/* Refined Monogram Circle */}
+
               <div className="flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-[#E85D8B] to-[#F29AB2] text-white font-bold text-[11px] sm:text-xs shadow-[0_3px_10px_rgba(232,93,139,0.3)] transition-transform duration-200 group-hover:scale-105">
                 PD
               </div>
@@ -116,7 +110,6 @@ export default function Navbar() {
                   <span className="text-sm sm:text-base font-bold tracking-tight text-[#302535] font-kalam truncate">
                     Pooja Daki
                   </span>
-                  <span className="text-[10px] text-[#E85D8B] animate-doodle shrink-0">♡</span>
                 </div>
                 <span className="text-[7.5px] sm:text-[9px] font-mono font-extrabold uppercase tracking-wider sm:tracking-widest text-[#E85D8B] leading-none truncate">
                   Full Stack Dev
@@ -125,7 +118,6 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* ── CENTER: Navigation Links with Soft Pink Pill for Active Item ── */}
           <nav className="hidden items-center justify-center gap-1 md:flex">
             {navLinks.map((item) => {
               const isActive = active === item.href;
@@ -155,9 +147,8 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* ── RIGHT: Compact Social Icons + "Let's Connect →" Pill Button ── */}
           <div className="flex items-center justify-end gap-1.5 sm:gap-2.5 shrink-0">
-            {/* Social Icons */}
+
             {[
               { href: "https://github.com/pohh09", Icon: FaGithub, label: "GitHub" },
               { href: "https://www.linkedin.com/in/pooja-daki/", Icon: FaLinkedin, label: "LinkedIn" },
@@ -174,7 +165,6 @@ export default function Navbar() {
               </a>
             ))}
 
-            {/* Let's Connect CTA Pill */}
             <a
               href="#contact"
               onClick={() => setOpen(false)}
@@ -185,7 +175,6 @@ export default function Navbar() {
               <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
-            {/* Mobile Hamburger Button */}
             <button
               onClick={() => setOpen(!open)}
               aria-label="Toggle navigation menu"
@@ -197,7 +186,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* ── Responsive Mobile Menu Drawer ── */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -224,7 +212,6 @@ export default function Navbar() {
                       `}
                     >
                       <span>{item.name}</span>
-                      {isActive && <span className="text-xs text-[#E85D8B]">♡</span>}
                     </a>
                   );
                 })}

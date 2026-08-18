@@ -8,7 +8,7 @@ export default function CinematicIntro() {
   const [showIntro, setShowIntro] = useState(false);
 
   useEffect(() => {
-    // Only show once per session for high performance and smooth first impression
+
     const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
     if (!hasSeenIntro) {
       setShowIntro(true);

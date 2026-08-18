@@ -11,13 +11,12 @@ export default function MouseSpotlight() {
   const rawMouseX = useMotionValue(-500);
   const rawMouseY = useMotionValue(-500);
 
-  // Buttery smooth physics-based trailing spring
   const springConfig = { damping: 26, stiffness: 220, mass: 0.4 };
   const smoothX = useSpring(rawMouseX, springConfig);
   const smoothY = useSpring(rawMouseY, springConfig);
 
   useEffect(() => {
-    // Only run on desktop pointer devices with motion enabled
+
     if (
       typeof window === "undefined" ||
       window.matchMedia("(pointer: coarse)").matches ||
@@ -54,7 +53,6 @@ export default function MouseSpotlight() {
     };
   }, [rawMouseX, rawMouseY, isVisible]);
 
-  // Luxury editorial multi-tone spotlight matching warm pastel theme
   const radius = isClicking ? "520px" : "680px";
   const coreOpacity = isClicking ? "0.18" : "0.13";
   const midOpacity = isClicking ? "0.12" : "0.08";

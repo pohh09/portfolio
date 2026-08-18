@@ -19,13 +19,13 @@ export default function ProjectCard({ project, reverse = false }: Props) {
         reverse ? "lg:[&>*:first-child]:order-2" : ""
       }`}
     >
-      {/* ── Visual Browser Preview (6 cols) ── */}
+
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ duration: 0.3 }}
         className="lg:col-span-6 group relative overflow-hidden rounded-[22px] border border-slate-200/90 bg-white/90 p-2.5 sm:p-3 backdrop-blur-2xl shadow-[0_15px_35px_rgba(100,116,139,0.12)] transition-all duration-500 hover:border-pink-300 hover:shadow-[0_20px_40px_rgba(236,72,153,0.15)]"
       >
-        {/* Browser Top Navigation Bar */}
+
         <div className="mb-2.5 flex items-center justify-between px-2">
           <div className="flex gap-1.5">
             <div className="h-2.5 w-2.5 rounded-full bg-rose-400" />
@@ -34,11 +34,10 @@ export default function ProjectCard({ project, reverse = false }: Props) {
           </div>
           <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-[10px] font-mono text-slate-600">
             <span className="h-1.5 w-1.5 rounded-full bg-pink-500 animate-pulse" />
-            <span className="truncate max-w-[180px]">https://{project.title.toLowerCase().replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-")}.app</span>
+            <span className="truncate max-w-[180px]">{project.github.replace("https://github.com/", "")}</span>
           </div>
         </div>
 
-        {/* Project Thumbnail Image */}
         <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-50 relative group-hover:border-pink-300 transition-colors">
           <Image
             src={project.image}
@@ -56,7 +55,6 @@ export default function ProjectCard({ project, reverse = false }: Props) {
         </div>
       </motion.div>
 
-      {/* ── Content Details Panel (6 cols) ── */}
       <motion.div
         initial={{ opacity: 0, x: reverse ? -20 : 20 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -76,7 +74,6 @@ export default function ProjectCard({ project, reverse = false }: Props) {
           {project.description}
         </p>
 
-        {/* Tech badges */}
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.technologies.map((tech) => (
             <span
@@ -88,7 +85,6 @@ export default function ProjectCard({ project, reverse = false }: Props) {
           ))}
         </div>
 
-        {/* Feature Highlights */}
         <div className="mt-5 space-y-1.5 border-t border-slate-200/80 pt-4">
           {project.features.slice(0, 5).map((feature) => (
             <div key={feature} className="flex items-center gap-2">
@@ -100,7 +96,6 @@ export default function ProjectCard({ project, reverse = false }: Props) {
           ))}
         </div>
 
-        {/* Action buttons */}
         <div className="mt-6 flex flex-wrap items-center gap-2.5">
           {project.live && project.live !== "#" && (
             <a
