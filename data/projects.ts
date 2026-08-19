@@ -70,42 +70,11 @@ export const projects: Project[] = [
 
     github: "https://github.com/pohh09/react-design-system.git",
     live: "https://react-design-system-umber.vercel.app/",
-    figma: "https://www.figma.com/design/q3ND2vCKyM6q9ckcTkCd1E/Design-Systems?t=3eeIRiZMSmXrxYRf-1"
+    figma: "https://www.figma.com/design/q3ND2vCKyM6q9ckcTkCd1E/Design-Systems?t=3eeIRiZMSmXrxYRf-1",
   },
 
   {
     id: 3,
-    title: "NYRA – AI Chatbot Assistant",
-    subtitle: "Conversational AI Web Application",
-    description:
-      "An intelligent, context-aware AI chatbot assistant powered by Gemini API and Next.js. Features real-time streaming dialogue, prompt templates, conversation history memory, code generation, and a modern glassmorphic chat interface.",
-
-    image: "/projects/nyra-chatbot.png",
-
-    technologies: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Gemini AI",
-      "Tailwind CSS",
-      "Framer Motion",
-    ],
-
-    features: [
-      "Real-Time Streaming Responses",
-      "Context-Aware Chat History",
-      "Code Syntax Highlighting",
-      "Prebuilt Prompt Templates",
-      "Voice & File Upload Support",
-      "Mobile-First Responsive Layout",
-    ],
-
-    github: "https://github.com/pohh09",
-    live: "#",
-  },
-
-  {
-    id: 4,
     title: "Personal Developer Portfolio",
     subtitle: "Interactive Engineering Portfolio",
     description:
@@ -135,7 +104,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: 5,
+    id: 4,
     title: "Gym Website",
     subtitle: "Frontend React Application",
     description:

@@ -30,16 +30,6 @@ const projectStyles = [
     role: "Figma to Code",
   },
   {
-    wash: "from-[#F4FCFD]/80 via-[#FFFDFC] to-transparent",
-    glow: "rgba(56, 189, 248, 0.12)",
-    tagBg: "bg-[#DDF5F8]",
-    tagText: "text-[#289BB5]",
-    tagBorder: "border-[#BCE8EE]",
-    badge: "CONVERSATIONAL AI &bull; NEXT.JS",
-    domain: "nyra-chatbot.dev",
-    role: "AI Integration",
-  },
-  {
     wash: "from-[#FFF5F7]/70 via-[#FFFDFC] to-transparent",
     glow: "rgba(232, 93, 139, 0.12)",
     tagBg: "bg-[#FCE8E8]",
