@@ -1,4 +1,4 @@
-# 🌸 Pooja Daki — Developer Portfolio
+# Pooja Daki — Developer Portfolio
 
 A modern, responsive personal portfolio website built with **Next.js 15**, **React 19**, **TypeScript**, and **Tailwind CSS**.
 
@@ -6,7 +6,7 @@ A modern, responsive personal portfolio website built with **Next.js 15**, **Rea
 
 ---
 
-## ⚡ Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 15 (App Router)
 - **Library**: React 19
@@ -18,7 +18,7 @@ A modern, responsive personal portfolio website built with **Next.js 15**, **Rea
 
 ---
 
-## 🚀 Featured Projects
+## Featured Projects
 
 - **[GetHired](https://gethired-sigma.vercel.app/)** — AI-powered career platform with ATS resume analysis, mock interviews, and application tracking. ([Source Code](https://github.com/pohh09/gethired))
 - **[Design System](https://react-design-system-umber.vercel.app/)** — Pixel-perfect Figma-to-code implementation with reusable components and smooth interactions. ([Source Code](https://github.com/pohh09/react-design-system.git))
@@ -26,7 +26,7 @@ A modern, responsive personal portfolio website built with **Next.js 15**, **Rea
 
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### 1. Clone the repository
 ```bash
@@ -48,7 +48,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the r
 
 ---
 
-## 📬 Contact
+## Contact
 
 - **GitHub**: [@pohh09](https://github.com/pohh09)
 - **LinkedIn**: [Pooja Daki](https://www.linkedin.com/in/pooja-daki/)
