@@ -39,7 +39,7 @@ export const projects: Project[] = [
       "Light/Dark Theme & Responsive UI",
     ],
     github: "https://github.com/pohh09/gethired",
-    live: "https://gethired-sigma.vercel.app",
+    live: "https://gethired-aicareerplatform.vercel.app/",
   },
 
   {
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     ],
 
     github: "https://github.com/pohh09/react-design-system.git",
-    live: "https://react-design-system-umber.vercel.app/",
+    live: "https://reactdesignsystem.vercel.app/",
     figma: "https://www.figma.com/design/q3ND2vCKyM6q9ckcTkCd1E/Design-Systems?t=3eeIRiZMSmXrxYRf-1",
   },
 
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     ],
 
     github: "https://github.com/pohh09",
-    live: "https://portfolio-poojas-project.vercel.app/",
+    live: "https://poojadaki-portfoliowebsite.vercel.app/",
   },
 
   {

@@ -2,7 +2,7 @@
 
 A modern, responsive personal portfolio website built with **Next.js 15**, **React 19**, **TypeScript**, and **Tailwind CSS**.
 
-🔗 **Live Website**: [portfolio-poojas-project.vercel.app](https://portfolio-poojas-project.vercel.app/)
+🔗 **Live Website**: [poojadaki-portfoliowebsite.vercel.app](https://poojadaki-portfoliowebsite.vercel.app/)
 
 ---
 
@@ -20,8 +20,8 @@ A modern, responsive personal portfolio website built with **Next.js 15**, **Rea
 
 ## Featured Projects
 
-- **[GetHired](https://gethired-sigma.vercel.app/)** — AI-powered career platform with ATS resume analysis, mock interviews, and application tracking. ([Source Code](https://github.com/pohh09/gethired))
-- **[Design System](https://react-design-system-umber.vercel.app/)** — Pixel-perfect Figma-to-code implementation with reusable components and smooth interactions. ([Source Code](https://github.com/pohh09/react-design-system.git))
+- **[GetHired](https://gethired-aicareerplatform.vercel.app/)** — AI-powered career platform with ATS resume analysis, mock interviews, and application tracking. ([Source Code](https://github.com/pohh09/gethired))
+- **[Design System](https://reactdesignsystem.vercel.app/)** — Pixel-perfect Figma-to-code implementation with reusable components and smooth interactions. ([Source Code](https://github.com/pohh09/react-design-system.git))
 - **[Gym Website](https://gym-website-three-sable.vercel.app/)** — Responsive fitness web application featuring membership plans, trainer profiles, and a BMI calculator. ([Source Code](https://github.com/pohh09/gym-website.git))
 
 ---

@@ -16,7 +16,7 @@ const projectStyles = [
     tagText: "text-[#E85D8B]",
     tagBorder: "border-[#F8D2D9]",
     badge: "FULL-STACK MERN + AI PLATFORM",
-    domain: "gethired-sigma.vercel.app",
+    domain: "gethired-aicareerplatform.vercel.app",
     role: "Full-Stack + AI",
   },
   {
@@ -26,7 +26,7 @@ const projectStyles = [
     tagText: "text-[#8B72D8]",
     tagBorder: "border-[#D6C4F0]",
     badge: "FRONTEND SYSTEM &bull; FIGMA TO CODE",
-    domain: "react-design-system-umber.vercel.app",
+    domain: "reactdesignsystem.vercel.app",
     role: "Figma to Code",
   },
   {
@@ -36,7 +36,7 @@ const projectStyles = [
     tagText: "text-[#E85D8B]",
     tagBorder: "border-[#F8D2D9]",
     badge: "INTERACTIVE PORTFOLIO &bull; REACT 19",
-    domain: "portfolio-poojas-project.vercel.app",
+    domain: "poojadaki-portfoliowebsite.vercel.app",
     role: "Portfolio Engineering",
   },
   {

@@ -220,7 +220,7 @@ export default function AtelierCard() {
               </a>
 
               <a
-                href="https://react-design-system-umber.vercel.app/"
+                href="https://reactdesignsystem.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full bg-[#302535] text-white px-3.5 py-1 text-xs font-mono font-bold hover:bg-[#E85D8B] transition-all shadow-2xs"
