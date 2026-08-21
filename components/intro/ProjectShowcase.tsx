@@ -242,7 +242,7 @@ const projects: Project[] = [
   {
     title: "Design System",
     category: "Figma to Code",
-    description: "Component-driven documentation site turning design tokens into production-ready UI.",
+    description: "Component-driven documentation site turning design tokens into working UI components.",
     mockup: "designSystem",
     accent: "maroon",
     tags: [{ label: "React" }, { label: "Figma" }, { label: "Storybook" }],

@@ -24,7 +24,7 @@ const quickTopics = [
   },
   {
     label: "Figma to Code Project",
-    message: "Hi Pooja, we have a Figma design system and need a pixel-perfect, high-performance React + Tailwind CSS implementation."
+    message: "Hi Pooja, we have a Figma design and need a clean, responsive React + Tailwind CSS implementation."
   },
   {
     label: "Freelance / MVP Build",

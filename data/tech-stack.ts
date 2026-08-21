@@ -1,11 +1,12 @@
+import React from "react";
 import {
   FaReact,
   FaNodeJs,
   FaGithub,
   FaFigma,
   FaDocker,
-  FaRobot,
   FaAws,
+  FaPaw,
 } from "react-icons/fa";
 
 import { RiNextjsFill } from "react-icons/ri";
@@ -19,12 +20,14 @@ import {
   SiMongodb,
   SiPostman,
   SiVercel,
-  SiNetlify,
-  SiPrisma,
   SiGit,
   SiJest,
   SiPostgresql,
   SiTanstack,
+  SiFramer,
+  SiGreensock,
+  SiRender,
+  SiGooglegemini,
 } from "react-icons/si";
 
 import { VscVscode } from "react-icons/vsc";
@@ -40,11 +43,9 @@ export type TechCategory = {
 };
 
 export const techStack: TechCategory[] = [
-
   {
-    title: "Development",
+    title: "Frontend & UI Core",
     color: "from-violet-500 to-fuchsia-500",
-
     items: [
       {
         name: "React.js",
@@ -77,6 +78,33 @@ export const techStack: TechCategory[] = [
         color: "#764ABC",
       },
       {
+        name: "Zustand",
+        icon: FaPaw,
+        color: "#E85D8B",
+      },
+      {
+        name: "TanStack Query",
+        icon: SiTanstack,
+        color: "#FF4154",
+      },
+      {
+        name: "Framer Motion",
+        icon: SiFramer,
+        color: "#0055FF",
+      },
+      {
+        name: "GSAP",
+        icon: SiGreensock,
+        color: "#88CE02",
+      },
+    ],
+  },
+
+  {
+    title: "Backend & Database",
+    color: "from-emerald-500 to-teal-500",
+    items: [
+      {
         name: "Node.js",
         icon: FaNodeJs,
         color: "#3C873A",
@@ -91,19 +119,18 @@ export const techStack: TechCategory[] = [
         icon: SiMongodb,
         color: "#47A248",
       },
-      {
-        name: "PostgreSQL",
-        icon: SiPostgresql,
-        color: "#4169E1",
-      },
     ],
   },
 
   {
-    title: "Tools",
+    title: "Tools & Workflow",
     color: "from-cyan-500 to-sky-500",
-
     items: [
+      {
+        name: "VS Code",
+        icon: VscVscode,
+        color: "#007ACC",
+      },
       {
         name: "Git",
         icon: SiGit,
@@ -113,11 +140,6 @@ export const techStack: TechCategory[] = [
         name: "GitHub",
         icon: FaGithub,
         color: "#181717",
-      },
-      {
-        name: "VS Code",
-        icon: VscVscode,
-        color: "#007ACC",
       },
       {
         name: "Postman",
@@ -133,9 +155,8 @@ export const techStack: TechCategory[] = [
   },
 
   {
-    title: "Deployment & DevOps",
+    title: "Deployment & AI",
     color: "from-indigo-500 to-violet-500",
-
     items: [
       {
         name: "Vercel",
@@ -143,10 +164,22 @@ export const techStack: TechCategory[] = [
         color: "#000000",
       },
       {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
+        name: "Render",
+        icon: SiRender,
+        color: "#46E3B7",
       },
+      {
+        name: "Gemini AI",
+        icon: SiGooglegemini,
+        color: "#1A73E8",
+      },
+    ],
+  },
+
+  {
+    title: "Currently Exploring",
+    color: "from-amber-500 to-orange-500",
+    items: [
       {
         name: "Docker",
         icon: FaDocker,
@@ -157,35 +190,16 @@ export const techStack: TechCategory[] = [
         icon: FaAws,
         color: "#FF9900",
       },
-    ],
-  },
-
-  {
-    title: "Currently Exploring",
-    color: "from-emerald-500 to-cyan-500",
-
-    items: [
       {
-        name: "AI Integration",
-        icon: FaRobot,
-        color: "#10A37F",
-      },
-      {
-        name: "TanStack Query",
-        icon: SiTanstack,
-        color: "#FF4154",
+        name: "PostgreSQL",
+        icon: SiPostgresql,
+        color: "#4169E1",
       },
       {
         name: "Jest Testing",
         icon: SiJest,
         color: "#C21325",
       },
-      {
-        name: "AWS",
-        icon: FaAws,
-        color: "#FF9900",
-      },
     ],
   },
-
 ];

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Search,
   Layers,
   Code2,
   Sparkles,
@@ -13,7 +12,6 @@ import {
   Copy,
   Check,
   Eye,
-  Sliders,
   ShieldCheck,
   Zap,
   Layout
@@ -24,7 +22,7 @@ const steps = [
   {
     step: "01",
     title: "Design Tokens & Spec",
-    description: "Inspecting auto-layouts, spacing tokens, color variables, and fluid typography scales.",
+    description: "Inspecting auto-layouts, spacing tokens, color variables, and typography scales.",
     icon: FaFigma,
     color: "from-[#E85D8B] to-[#B9A1E8]",
     tag: "Tokens",
@@ -39,8 +37,8 @@ const steps = [
   },
   {
     step: "03",
-    title: "Pixel-Perfect Coding",
-    description: "Building responsive, zero-layout-shift UI using Next.js 15, Tailwind CSS, and semantic HTML5.",
+    title: "Component Implementation",
+    description: "Building responsive, clean UI using Next.js, Tailwind CSS, and semantic HTML5.",
     icon: Code2,
     color: "from-[#8DDDE5] to-[#B9A1E8]",
     tag: "Development",
@@ -48,45 +46,44 @@ const steps = [
   {
     step: "04",
     title: "Micro-Animations",
-    description: "Crafting fluid, 60fps spring physics and gesture animations with Framer Motion and GSAP.",
+    description: "Crafting fluid spring physics and gesture animations with Framer Motion and GSAP.",
     icon: Sparkles,
     color: "from-[#E85D8B] to-[#FAD074]",
     tag: "Motion",
   },
   {
     step: "05",
-    title: "QA & Performance",
-    description: "Auditing accessibility (a11y), Core Web Vitals, cross-browser compatibility, and SEO.",
+    title: "QA & Refinement",
+    description: "Reviewing responsiveness, keyboard navigation, cross-browser styling, and performance.",
     icon: ShieldCheck,
     color: "from-[#82D9A7] to-[#8DDDE5]",
-    tag: "Delivery",
+    tag: "Refinement",
   },
 ];
 
 const superpowers = [
   {
     icon: Zap,
-    title: "1:1 Pixel-Perfect Fidelity",
-    desc: "Strict adherence to Figma auto-layouts, 4px/8px spacing grids, and component tokens.",
+    title: "Design Token Translation",
+    desc: "I follow Figma auto-layout and spacing tokens closely when translating designs to components.",
     color: "bg-[#FFF5F7] text-[#E85D8B] border-[#F8D2D9]",
   },
   {
     icon: Layout,
-    title: "Zero Layout Shift (CLS = 0)",
-    desc: "Optimized aspect ratios, skeleton loaders, and responsive container constraints.",
+    title: "Responsive & Stable Layouts",
+    desc: "Structure components with container constraints, aspect ratios, and skeleton states to minimize layout shifts.",
     color: "bg-[#FAF7FE] text-[#B9A1E8] border-[#E5DBF8]",
   },
   {
     icon: ShieldCheck,
-    title: "A11y & Keyboard Navigation",
-    desc: "WCAG-compliant contrast ratios, ARIA landmarks, focus-visible states, and screen reader ready.",
+    title: "Accessible Markup",
+    desc: "I aim for accessible markup — semantic HTML, keyboard-navigable interactive elements, and clear focus states.",
     color: "bg-[#F4FCF7] text-[#2FB86A] border-[#CEF4DE]",
   },
 ];
 
 export default function DesignToCode() {
   const [copiedCode, setCopiedCode] = useState(false);
-  const [activeTab, setActiveTab] = useState<"code" | "tokens">("code");
 
   const sampleCode = `import { motion } from "framer-motion";
 
@@ -140,7 +137,7 @@ export default function AtelierCard() {
           >
             From Figma Blueprint to{" "}
             <span className="text-[#E85D8B] relative inline-block">
-              Production Code.
+              Working Code.
               <motion.svg
                 className="absolute -bottom-1.5 left-0 w-full h-3.5 overflow-visible pointer-events-none text-[#E85D8B]"
                 viewBox="0 0 200 12"
@@ -161,7 +158,7 @@ export default function AtelierCard() {
           </h2>
 
           <p className="mt-3 text-xs sm:text-sm lg:text-base text-[#756875] font-normal leading-relaxed">
-            Translating complex design systems into responsive, accessible, and high-performance React components with strict token adherence and zero layout shift.
+            Translating design concepts into responsive, accessible, and maintainable React components with careful attention to layout and tokens.
           </p>
         </div>
 
@@ -281,7 +278,7 @@ export default function AtelierCard() {
                     <p className="text-[10px] text-[#756875]">Var: --font-kalam, --color-pink-500 (#E85D8B)</p>
                   </div>
                   <span className="text-[10px] font-mono bg-[#EDFBF3] text-[#2FB86A] border border-[#CEF4DE] px-2.5 py-0.5 rounded-full font-bold self-start sm:self-auto">
-                    100% Spec Match ✓
+                    Design Token Match ✓
                   </span>
                 </div>
 
@@ -289,7 +286,7 @@ export default function AtelierCard() {
 
               <div className="flex items-center justify-between pt-3 border-t border-[#E5E5EA] text-[10px] font-mono text-[#756875]">
                 <span className="text-[#0D99FF] font-bold">Auto Layout: Vertical &bull; Spacing: 16px</span>
-                <span className="text-[#8E8E93]">Figma Web API Ready</span>
+                <span className="text-[#8E8E93]">Figma Component</span>
               </div>
 
             </div>
@@ -303,9 +300,9 @@ export default function AtelierCard() {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-white font-mono leading-tight">
-                      Production React + Tailwind
+                      React + Tailwind Component
                     </h4>
-                    <p className="text-[10px] font-mono text-slate-400">TypeScript &bull; Framer Motion &bull; Next.js 15</p>
+                    <p className="text-[10px] font-mono text-slate-400">TypeScript &bull; Framer Motion &bull; Next.js</p>
                   </div>
                 </div>
 
@@ -349,7 +346,7 @@ export default function AtelierCard() {
               <div className="flex items-center justify-between pt-3 border-t border-slate-700/60 text-[10px] font-mono">
                 <span className="text-emerald-400 flex items-center gap-1 font-bold">
                   <CheckCircle2 size={12} className="text-emerald-400" />
-                  <span>Zero Layout Shift (CLS = 0)</span>
+                  <span>Stable Layout Structure</span>
                 </span>
                 <span className="text-slate-400">Strict Type-Checking ✓</span>
               </div>
@@ -368,7 +365,7 @@ export default function AtelierCard() {
               5-Step Implementation Pipeline
             </h3>
             <p className="mt-1 text-xs sm:text-sm text-[#756875]">
-              A disciplined, production-proven engineering pipeline from design tokens to live delivery.
+              My workflow for turning a design into a working, responsive UI.
             </p>
           </div>
 

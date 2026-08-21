@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { techStack } from "@/data/tech-stack";
-import { Sparkles, ArrowUpRight, Layers, Terminal, Cloud, Compass } from "lucide-react";
+import { Sparkles, ArrowUpRight, Layers, Terminal, Cloud, Compass, Server } from "lucide-react";
 
 const pastelIconColors: Record<string, { bg: string; border: string }> = {
   "React.js": { bg: "bg-[#FFF5F7]", border: "border-[#FCE8E8]" },
@@ -12,53 +12,62 @@ const pastelIconColors: Record<string, { bg: string; border: string }> = {
   "JavaScript": { bg: "bg-[#FFFDF4]", border: "border-[#FDEEB8]" },
   "Tailwind CSS": { bg: "bg-[#F4FCFD]", border: "border-[#DDF5F8]" },
   "Redux Toolkit": { bg: "bg-[#FAF7FE]", border: "border-[#E8DDF7]" },
+  "Zustand": { bg: "bg-[#FFF5F7]", border: "border-[#F8D2D9]" },
+  "TanStack Query": { bg: "bg-[#FFF5F7]", border: "border-[#FCE8E8]" },
+  "Framer Motion": { bg: "bg-[#FAF7FE]", border: "border-[#E8DDF7]" },
+  "GSAP": { bg: "bg-[#F4FDF8]", border: "border-[#D4F7E4]" },
   "Node.js": { bg: "bg-[#F4FDF8]", border: "border-[#D4F7E4]" },
   "Express.js": { bg: "bg-[#FFFDFC]", border: "border-[#EADDE3]" },
   "MongoDB": { bg: "bg-[#F4FDF8]", border: "border-[#D4F7E4]" },
-  "Prisma ORM": { bg: "bg-[#FAF7FE]", border: "border-[#E8DDF7]" },
-  "PostgreSQL": { bg: "bg-[#F4FCFD]", border: "border-[#DDF5F8]" },
+  "VS Code": { bg: "bg-[#F4FCFD]", border: "border-[#DDF5F8]" },
   "Git": { bg: "bg-[#FFF5F7]", border: "border-[#FCE8E8]" },
   "GitHub": { bg: "bg-[#FFFDFC]", border: "border-[#EADDE3]" },
-  "VS Code": { bg: "bg-[#F4FCFD]", border: "border-[#DDF5F8]" },
   "Postman": { bg: "bg-[#FFF8F6]", border: "border-[#FCE8E8]" },
   "Figma": { bg: "bg-[#FAF7FE]", border: "border-[#E8DDF7]" },
   "Vercel": { bg: "bg-[#FFFDFC]", border: "border-[#EADDE3]" },
-  "Netlify": { bg: "bg-[#F4FCFD]", border: "border-[#DDF5F8]" },
+  "Render": { bg: "bg-[#F4FDF8]", border: "border-[#D4F7E4]" },
+  "Gemini AI": { bg: "bg-[#F4FCFD]", border: "border-[#DDF5F8]" },
   "Docker": { bg: "bg-[#F4FCFD]", border: "border-[#DDF5F8]" },
   "AWS": { bg: "bg-[#FFFDF4]", border: "border-[#FDEEB8]" },
-  "AI Integration": { bg: "bg-[#F4FDF8]", border: "border-[#D4F7E4]" },
-  "TanStack Query": { bg: "bg-[#FFF5F7]", border: "border-[#FCE8E8]" },
+  "PostgreSQL": { bg: "bg-[#F4FCFD]", border: "border-[#DDF5F8]" },
   "Jest Testing": { bg: "bg-[#FFF5F7]", border: "border-[#FCE8E8]" },
 };
 
 const categoryFolioMeta = [
   {
-    subtitle: "Frontend & Full-Stack Core",
+    subtitle: "Modern UI, State & Motion",
     icon: Layers,
     heroTech: "React.js",
     heroRole: "Frontend Core",
-    heroNote: "one of my daily drivers ↗",
+    heroNote: "daily driver ↗",
   },
   {
-    subtitle: "Craft & Development Environment",
+    subtitle: "APIs, Servers & Data Stores",
+    icon: Server,
+    heroTech: "Node.js",
+    heroRole: "Backend Runtime",
+    heroNote: "REST & async ↗",
+  },
+  {
+    subtitle: "Workflow, Versioning & Design",
     icon: Terminal,
     heroTech: "VS Code",
     heroRole: "Primary IDE",
     heroNote: "coding habitat ↗",
   },
   {
-    subtitle: "Cloud Platforms & Pipelines",
+    subtitle: "Cloud Hosting & AI Integrations",
     icon: Cloud,
     heroTech: "Vercel",
-    heroRole: "Edge Deployment",
-    heroNote: "instant production ship ↗",
+    heroRole: "Deployment",
+    heroNote: "fast deployment ↗",
   },
   {
-    subtitle: "Next-Gen AI & Modern Tooling",
+    subtitle: "Technologies I'm Actively Learning",
     icon: Compass,
-    heroTech: "AI Integration",
-    heroRole: "Agentic Systems",
-    heroNote: "next-gen exploration ↗",
+    heroTech: "Docker",
+    heroRole: "Exploring",
+    heroNote: "active exploration ↗",
   },
 ];
 
@@ -169,7 +178,7 @@ export default function TechStack() {
           </h2>
 
           <p className="mt-3 text-xs sm:text-sm lg:text-base text-[#756875] font-normal leading-relaxed">
-            Core technologies and tools I leverage daily to engineer robust, full-stack web applications.
+            Technologies and tools I work with to build responsive, full-stack web applications.
           </p>
         </div>
 
@@ -260,7 +269,7 @@ export default function TechStack() {
                   </div>
 
                   <span className="text-xs font-kalam text-[#756875] select-none">
-                    curated workspace <span className="text-[#E85D8B]">↗</span>
+                    tooling overview <span className="text-[#E85D8B]">↗</span>
                   </span>
                 </div>
 
@@ -355,9 +364,9 @@ export default function TechStack() {
               <div className="mt-8 pt-3.5 border-t border-[#F5E6EB] flex items-center justify-between text-xs font-mono text-[#A396A3]">
                 <div className="flex items-center gap-1.5">
                   <Sparkles size={11} className="text-[#E85D8B]" />
-                  <span>built for production scale</span>
+                  <span>modern &amp; reliable tools</span>
                 </div>
-                <span className="font-kalam text-xs text-[#E85D8B]">my everyday stack</span>
+                <span className="font-kalam text-xs text-[#E85D8B]">technologies I build with</span>
               </div>
 
             </div>

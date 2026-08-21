@@ -21,6 +21,6 @@ export const journey = [
     year: "Today",
     title: "Building Modern Applications",
     description:
-      "Creating production-ready applications while looking for Frontend and Full Stack opportunities.",
+      "Building full-stack and frontend web applications while looking for exciting opportunities.",
   },
 ];

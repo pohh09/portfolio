@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Pooja Daki — Full-Stack & Frontend Developer",
   description:
-    "Editorial animation-first developer portfolio of Pooja Daki. Showcasing production applications, fluid interactions, design-to-code workflows, and scalable full-stack engineering.",
+    "Portfolio of Pooja Daki — Full Stack & Frontend Developer showcasing full-stack applications, responsive UI, design-to-code workflows, and modern web development.",
   keywords: [
     "Pooja Daki",
     "Frontend Developer",

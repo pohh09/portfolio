@@ -253,19 +253,19 @@ export default function Hero() {
                 ref={metricsRef}
                 className="w-full pt-4 sm:pt-5 border-t border-[#F5D8E2]/90 flex flex-wrap items-center gap-2 sm:gap-2.5"
               >
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#F29AB2] transition-colors">
-                  <Activity size={13} className="text-[#E85D8B]" />
-                  <span>60 FPS Fluid Dynamics</span>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#E85D8B] transition-colors">
+                  <Layers size={13} className="text-[#E85D8B]" />
+                  <span>Component-driven UI</span>
                 </div>
 
                 <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#8B72D8] transition-colors">
                   <ShieldCheck size={13} className="text-[#8B72D8]" />
-                  <span>Type-Safe REST &amp; APIs</span>
+                  <span>Type-safe with TypeScript</span>
                 </div>
 
                 <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#27AE60] transition-colors">
                   <CheckCircle2 size={13} className="text-[#27AE60]" />
-                  <span>Full-Stack Architecture</span>
+                  <span>Built with modern React tooling</span>
                 </div>
               </div>
 
@@ -351,7 +351,7 @@ export default function Hero() {
                           className="px-3 py-1.5 rounded-full bg-white border border-[#EADDE3] text-[11px] font-bold text-[#302535] hover:bg-[#FFF5F7] transition-all shadow-2xs flex items-center gap-1.5 cursor-pointer"
                         >
                           <MousePointerClick size={12} className="text-[#E85D8B]" />
-                          <span>{fluidityPercent}% Fluid</span>
+                          <span>Interactive Preview</span>
                         </button>
                       </div>
 
@@ -370,8 +370,8 @@ export default function Hero() {
                             <span className="text-[10px] font-mono text-[#756875] font-bold uppercase">Kinetic UI</span>
                             <Sparkles size={14} className="text-[#E85D8B]" />
                           </div>
-                          <p className="text-xs sm:text-sm font-bold text-[#302535]">GSAP Dynamic</p>
-                          <span className="text-[11px] text-[#8B72D8] font-bold mt-1 inline-block">60 FPS Smooth</span>
+                          <p className="text-xs sm:text-sm font-bold text-[#302535]">Motion &amp; Transitions</p>
+                          <span className="text-[11px] text-[#8B72D8] font-bold mt-1 inline-block">GSAP &amp; Framer</span>
                         </div>
                       </div>
 
@@ -382,11 +382,11 @@ export default function Hero() {
                           </div>
                           <div>
                             <p className="text-xs sm:text-sm font-bold text-[#302535]">Clean Component Architecture</p>
-                            <p className="text-[10px] font-mono text-[#756875]">TypeScript &bull; Tailwind CSS 3.4</p>
+                            <p className="text-[10px] font-mono text-[#756875]">TypeScript &bull; Tailwind CSS</p>
                           </div>
                         </div>
                         <span className="text-[10px] font-mono font-bold text-[#E85D8B] px-2.5 py-1 rounded-full bg-white border border-[#F0DCE3]">
-                          Pixel-Perfect
+                          Modular &amp; Clean
                         </span>
                       </div>
                     </div>
@@ -401,7 +401,7 @@ export default function Hero() {
                           </div>
                           <div>
                             <p className="text-xs sm:text-sm font-bold text-[#302535]">Node.js &amp; Express REST API</p>
-                            <p className="text-[10px] font-mono text-[#8B72D8]">JWT Auth &bull; Scalable Controllers</p>
+                            <p className="text-[10px] font-mono text-[#8B72D8]">JWT Auth &bull; Structured Controllers</p>
                           </div>
                         </div>
                         <button
@@ -420,11 +420,11 @@ export default function Hero() {
                           </div>
                           <div>
                             <p className="text-xs sm:text-sm font-bold text-[#302535]">MongoDB &amp; Mongoose</p>
-                            <p className="text-[10px] font-mono text-[#756875]">Indexed Collections &bull; Aggregations</p>
+                            <p className="text-[10px] font-mono text-[#756875]">Indexed Collections &bull; Schemas</p>
                           </div>
                         </div>
                         <span className="text-[10px] font-mono font-bold text-[#8B72D8] px-2.5 py-1 rounded-md bg-[#FFF5F7] border border-[#F0DCE3]">
-                          Cluster 0 Active
+                          Database Connected
                         </span>
                       </div>
 
@@ -463,9 +463,9 @@ export default function Hero() {
                 <div className="mt-4 pt-3 border-t border-[#F5E6EB] flex items-center justify-between text-xs font-bold">
                   <span className="flex items-center gap-2 text-[#756875] text-[11px] sm:text-xs">
                     <span className="h-2 w-2 rounded-full bg-[#27AE60] animate-pulse" />
-                    <span>Real Production Codebase</span>
+                    <span>Full-Stack Architecture</span>
                   </span>
-                  <span className="font-mono text-[11px] text-[#8B72D8]">100% Responsive</span>
+                  <span className="font-mono text-[11px] text-[#8B72D8]">Responsive Design</span>
                 </div>
               </div>
 

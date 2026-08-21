@@ -18,14 +18,14 @@ export const services = [
   {
     title: "UI Engineering",
     description:
-      "Modern design systems, reusable components and pixel-perfect layouts.",
+      "Modern design systems, reusable components and clean, responsive layouts.",
     icon: Palette,
     gradient: "from-pink-500 to-rose-500",
   },
   {
     title: "Full Stack Apps",
     description:
-      "Scalable MERN applications with secure authentication and REST APIs.",
+      "Full-stack MERN applications with authentication, REST APIs and MongoDB.",
     icon: Database,
     gradient: "from-cyan-500 to-blue-500",
   },
@@ -39,14 +39,14 @@ export const services = [
   {
     title: "Responsive Design",
     description:
-      "Perfectly crafted experiences across desktop, tablet and mobile.",
+      "Carefully crafted experiences across desktop, tablet and mobile.",
     icon: Smartphone,
     gradient: "from-emerald-500 to-green-500",
   },
   {
     title: "Clean Code",
     description:
-      "Reusable architecture with maintainable, production-ready code.",
+      "Reusable architecture with clean, maintainable code.",
     icon: Sparkles,
     gradient: "from-fuchsia-500 to-violet-500",
   },
