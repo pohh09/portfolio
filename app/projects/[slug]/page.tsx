@@ -350,7 +350,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 className="text-2xl sm:text-3xl font-bold text-[#302535] font-kalam leading-tight"
                 style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
               >
-                Engineering Challenges &amp; Solutions
+                Challenges &amp; Solutions
               </h2>
             </div>
           </div>
@@ -486,58 +486,48 @@ export default async function CaseStudyPage({ params }: PageProps) {
                   <span>Send Suggestions via Gmail</span>
                   <ArrowUpRight size={13} />
                 </a>
-
-                <div className="flex items-center gap-1.5 text-xs font-mono text-[#756875]">
-                  <span>or directly to:</span>
-                  <a
-                    href={suggestionMailto}
-                    className="font-bold text-[#E85D8B] hover:underline"
-                  >
-                    poojadaki09@gmail.com
-                  </a>
-                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Bottom Callout & Navigation */}
-        <section className="rounded-[28px] sm:rounded-[32px] bg-gradient-to-br from-[#FFFDFC] via-[#FFF9FA] to-[#FAF7FE] border-2 border-[#F0DCE3] p-6 sm:p-10 shadow-[0_16px_45px_-15px_rgba(232,93,139,0.15)] text-center space-y-5">
-          <div className="max-w-xl mx-auto space-y-2">
-            <h3
-              className="text-2xl sm:text-3xl font-bold text-[#302535] font-kalam"
-              style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
-            >
-              Interested in seeing more?
-            </h3>
-            <p className="text-xs sm:text-sm text-[#756875] leading-relaxed">
-              Explore the live GetHired web platform or check out the rest of the projects in the portfolio.
-            </p>
-          </div>
+      {/* Bottom Callout & Navigation */}
+      <section className="rounded-[28px] sm:rounded-[32px] bg-gradient-to-br from-[#FFFDFC] via-[#FFF9FA] to-[#FAF7FE] border-2 border-[#F0DCE3] p-6 sm:p-10 shadow-[0_16px_45px_-15px_rgba(232,93,139,0.15)] text-center space-y-5">
+        <div className="max-w-xl mx-auto space-y-2">
+          <h3
+            className="text-2xl sm:text-3xl font-bold text-[#302535] font-kalam"
+            style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+          >
+            Interested in seeing more?
+          </h3>
+          <p className="text-xs sm:text-sm text-[#756875] leading-relaxed">
+            Explore the live GetHired web platform or check out the rest of the projects in the portfolio.
+          </p>
+        </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#E85D8B] text-white px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-bold shadow-xs hover:bg-[#D44776] transition-all hover:-translate-y-0.5"
-              >
-                <span>Try GetHired Live</span>
-                <ArrowUpRight size={14} />
-              </a>
-            )}
-
-            <Link
-              href="/#projects"
-              className="inline-flex items-center gap-2 rounded-full border border-[#EADDE3] bg-white px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-bold text-[#302535] shadow-2xs hover:border-[#F29AB2] hover:bg-[#FFF5F7] hover:text-[#E85D8B] transition-all"
+        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#E85D8B] text-white px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-bold shadow-xs hover:bg-[#D44776] transition-all hover:-translate-y-0.5"
             >
-              <ArrowLeft size={14} />
-              <span>Back to All Projects</span>
-            </Link>
-          </div>
-        </section>
-      </main>
+              <span>Try GetHired Live</span>
+              <ArrowUpRight size={14} />
+            </a>
+          )}
+
+          <Link
+            href="/#projects"
+            className="inline-flex items-center gap-2 rounded-full border border-[#EADDE3] bg-white px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-bold text-[#302535] shadow-2xs hover:border-[#F29AB2] hover:bg-[#FFF5F7] hover:text-[#E85D8B] transition-all"
+          >
+            <ArrowLeft size={14} />
+            <span>Back to All Projects</span>
+          </Link>
+        </div>
+      </section>
+    </main>
 
       {/* Reusable Footer */}
       <Footer />
