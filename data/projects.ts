@@ -1,5 +1,6 @@
 export type Project = {
   id: number;
+  slug?: string;
   title: string;
   subtitle: string;
   description: string;
@@ -9,12 +10,19 @@ export type Project = {
   github: string;
   live: string;
   figma?: string;
+  caseStudy?: {
+    problem: string;
+    decisions: { title: string; detail: string }[];
+    challenges: { title: string; detail: string }[];
+    nextSteps: string[];
+  };
 };
 
 export const projects: Project[] = [
 
   {
     id: 1,
+    slug: "gethired",
     title: "GetHired – AI Career Platform",
     subtitle: "Full-Stack MERN + AI Platform",
     description:
@@ -40,6 +48,59 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/pohh09/gethired",
     live: "https://gethired-aicareerplatform.vercel.app/",
+    caseStudy: {
+      problem:
+        "Job seekers often juggle multiple disconnected tools — one for resume building, another for interview prep, another for tracking applications. GetHired brings these into a single workspace: AI-assisted resume/ATS analysis, mock interview preparation, job-match guidance, and application tracking in one place.",
+      decisions: [
+        {
+          title: "State management",
+          detail:
+            "Used Zustand for lightweight global state (auth, session data) and TanStack Query for server-state — caching, refetching, and loading/error handling — kept separate from local UI state.",
+        },
+        {
+          title: "Authentication",
+          detail:
+            "Built JWT-based authentication to protect routes and persist sessions across the dashboard.",
+        },
+        {
+          title: "AI integration structure",
+          detail:
+            "Structured the Gemini AI integration as a dedicated service layer so resume analysis, job-match scoring, and cover letter generation each call the model with tailored prompts, instead of one monolithic AI call.",
+        },
+      ],
+      challenges: [
+        {
+          title: "Aggregating jobs from 9 external APIs",
+          detail:
+            "Providers like Adzuna, Jooble, RemoteOK, Greenhouse, and Lever return inconsistent data shapes, rate-limit unpredictably, and often list the same job twice. Built a shared provider abstraction with a query normalizer, ran requests concurrently with Promise.allSettled so one slow API doesn't block the rest, and added caching plus deduplication to merge results cleanly.",
+        },
+        {
+          title: "Making AI features reliable, not fragile",
+          detail:
+            "Gemini responses sometimes came back as malformed JSON or wrapped in markdown, and calls could time out. Built a fallback path: if the AI call fails, the app switches to a local heuristic scoring method and shows which mode produced the result (AI vs Fallback), so nothing fails silently.",
+        },
+        {
+          title: "Parsing real-world resumes",
+          detail:
+            "Uploaded resumes come in messy formats — multi-column PDFs, scanned images, inconsistent headers/footers. Built a parsing pipeline (pdf-parse plus mammoth for Word docs) with cleanup logic to strip artifacts like page-number headers, and early detection for scanned PDFs so users get a clear message instead of a silent failure.",
+        },
+        {
+          title: "Keeping state in sync across views",
+          detail:
+            "The same application data shows up in a Kanban board, table view, and calendar, with AI actions triggerable from any of them. Used Zustand for UI/session state and TanStack Query with optimistic updates, so drag-and-drop status changes feel instant while staying consistent with the database.",
+        },
+        {
+          title: "Multi-round AI mock interviews",
+          detail:
+            "Interview sessions needed to stay coherent across multiple questions and score open-ended answers against a rubric (accuracy, relevance, clarity). Structured the AI prompts to carry conversation context across turns so scoring and follow-ups stay consistent with what was already asked.",
+        },
+      ],
+      nextSteps: [
+        "Move job caching from an in-memory Map to Redis — the current cache resets on every server restart and doesn't scale across multiple instances, so results and provider health metrics don't persist.",
+        "Switch from eager 3-page concurrent requests to lazy, cursor-based pagination per provider, since most users only view the top few results and the current approach burns API quota unnecessarily.",
+        "Add mocked unit tests that simulate Gemini API failures (429s, timeouts) to verify the heuristic fallback produces the exact same JSON shape the frontend expects — current tests only run against the live API.",
+      ],
+    },
   },
 
   {

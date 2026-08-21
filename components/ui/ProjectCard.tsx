@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
 import { FaGithub, FaFigma } from "react-icons/fa";
@@ -131,6 +132,16 @@ export default function ProjectCard({ project, reverse = false }: Props) {
               <FaFigma size={13} />
               Figma Spec
             </a>
+          )}
+
+          {project.caseStudy && (
+            <Link
+              href={`/projects/${project.slug || "gethired"}`}
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#F8D2D9] bg-[#FFF5F7] px-3.5 py-2 text-xs font-bold text-[#E85D8B] shadow-2xs transition-all hover:border-[#E85D8B] hover:bg-[#FFE8EE]"
+            >
+              <span>Read Full Case Study</span>
+              <span>&rarr;</span>
+            </Link>
           )}
         </div>
       </motion.div>

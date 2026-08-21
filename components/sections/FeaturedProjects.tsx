@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink, ArrowRight, CheckCircle2, Sparkles, Code2 } from "lucide-react";
 import { FaGithub, FaFigma, FaLinkedin } from "react-icons/fa";
@@ -299,6 +300,16 @@ export default function FeaturedProjects() {
                             <span>Figma Blueprint</span>
                             <ExternalLink size={9} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                           </a>
+                        )}
+
+                        {project.caseStudy && (
+                          <Link
+                            href={`/projects/${project.slug || "gethired"}`}
+                            className="inline-flex items-center gap-1 rounded-full bg-[#FFF5F7] text-[#E85D8B] border border-[#F8D2D9] px-3.5 py-1 text-xs font-bold shadow-2xs transition-all duration-200 hover:bg-[#E85D8B] hover:text-white hover:-translate-y-0.5 active:translate-y-0 group"
+                          >
+                            <span>Read Full Case Study</span>
+                            <ArrowRight size={11} className="transition-transform group-hover:translate-x-0.5" />
+                          </Link>
                         )}
 
                       </div>
