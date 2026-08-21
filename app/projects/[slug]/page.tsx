@@ -61,15 +61,16 @@ export default async function CaseStudyPage({ params }: PageProps) {
   }
 
   const { caseStudy } = project;
-
   const decisionIcons = [Layers, ShieldCheck, Sparkles];
   const challengeIcons = [Network, Zap, FileText, RefreshCw, MessageSquare];
 
-  const suggestionEmailSubject = encodeURIComponent(`Suggestions for ${project.title}`);
+  const emailAddress = "poojadaki09@gmail.com";
+  const suggestionEmailSubject = encodeURIComponent(`Suggestions & Feedback for ${project.title}`);
   const suggestionEmailBody = encodeURIComponent(
     `Hi Pooja,\n\nI explored your ${project.title} case study and had some suggestions/feedback regarding:\n\n`
   );
-  const suggestionMailto = `mailto:poojadaki09@gmail.com?subject=${suggestionEmailSubject}&body=${suggestionEmailBody}`;
+  const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=${suggestionEmailSubject}&body=${suggestionEmailBody}`;
+  const suggestionMailto = `mailto:${emailAddress}?subject=${suggestionEmailSubject}&body=${suggestionEmailBody}`;
 
   return (
     <div className="min-h-screen bg-[#FFF8F5] text-[#302535] selection:bg-[#FCE8E8] selection:text-[#E85D8B]">
@@ -476,16 +477,25 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
               <div className="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-2.5 shrink-0">
                 <a
-                  href={suggestionMailto}
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#E85D8B] to-[#F29AB2] text-white px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-extrabold shadow-[0_8px_20px_-4px_rgba(232,93,139,0.38)] transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_26px_-4px_rgba(232,93,139,0.48)] w-full sm:w-auto justify-center"
+                  href={gmailComposeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#E85D8B] to-[#F29AB2] text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-extrabold shadow-[0_8px_20px_-4px_rgba(232,93,139,0.38)] transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_26px_-4px_rgba(232,93,139,0.48)] w-full sm:w-auto justify-center cursor-pointer"
                 >
-                  <Mail size={14} />
-                  <span>Send Suggestions via Email</span>
+                  <Mail size={15} />
+                  <span>Send Suggestions via Gmail</span>
+                  <ArrowUpRight size={13} />
                 </a>
 
-                <span className="text-[11px] font-mono text-[#A396A3] pl-2 sm:pl-0">
-                  poojadaki09@gmail.com
-                </span>
+                <div className="flex items-center gap-1.5 text-xs font-mono text-[#756875]">
+                  <span>or directly to:</span>
+                  <a
+                    href={suggestionMailto}
+                    className="font-bold text-[#E85D8B] hover:underline"
+                  >
+                    poojadaki09@gmail.com
+                  </a>
+                </div>
               </div>
             </div>
           </div>
