@@ -21,41 +21,42 @@ export default function About() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 85%",
-          end: "bottom 15%",
-          toggleActions: "play reverse play reverse",
+          once: true,
+          toggleActions: "play none none none",
         },
         defaults: { ease: "power3.out" },
       });
 
       tl.fromTo(
         tagRef.current,
-        { opacity: 0, y: 16, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.4 }
+        { opacity: 0, y: 16, scale: 0.96 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.45 }
       )
         .fromTo(
           statementRef.current,
-          { opacity: 0, y: 22 },
-          { opacity: 1, y: 0, duration: 0.5 },
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.55 },
           "-=0.2"
         )
         .fromTo(
           introTextRef.current,
-          { opacity: 0, y: 18 },
-          { opacity: 1, y: 0, duration: 0.45 },
-          "-=0.25"
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.5 },
+          "-=0.3"
         )
         .fromTo(
           eduCardRef.current,
-          { opacity: 0, y: 24, scale: 0.96 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.5 },
+          { opacity: 0, y: 22, scale: 0.98 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.55 },
           "-=0.3"
         )
         .fromTo(
           processLineRef.current,
-          { opacity: 0, y: 20 },
+          { opacity: 0, y: 18 },
           { opacity: 1, y: 0, duration: 0.45 },
           "-=0.2"
         );
+
 
       // Subtle parallax on decorative floating elements
       const floatingSparkles = sectionRef.current?.querySelectorAll(".about-parallax-item");

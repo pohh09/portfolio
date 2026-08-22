@@ -55,10 +55,10 @@ export default function Availability() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             className="mx-auto mt-20 max-w-5xl text-center sm:mt-24"
           >
             <span className="inline-flex items-center gap-2 rounded-full bg-[#FCE8E8] border border-[#F8D2D9] px-4 py-1 text-xs font-kalam font-bold text-[#E85D8B] shadow-xs mx-auto w-fit">

@@ -62,16 +62,16 @@ export default function Contact() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 85%",
-            end: "bottom 12%",
-            toggleActions: "play reverse play reverse",
+            once: true,
+            toggleActions: "play none none none",
           },
           defaults: { ease: "power3.out" },
         });
 
         tl.fromTo(
           headerRef.current,
-          { opacity: 0, y: 22 },
-          { opacity: 1, y: 0, duration: 0.5 }
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.55 }
         );
 
         if (underlinePathRef.current) {
@@ -82,7 +82,7 @@ export default function Contact() {
           });
           tl.to(
             underlinePathRef.current,
-            { strokeDashoffset: 0, duration: 0.65, ease: "power2.out" },
+            { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" },
             "-=0.2"
           );
         }
@@ -90,9 +90,9 @@ export default function Contact() {
         if (leftColRef.current && formCardRef.current) {
           tl.fromTo(
             [leftColRef.current, formCardRef.current],
-            { opacity: 0, y: 24 },
-            { opacity: 1, y: 0, duration: 0.55, stagger: 0.12 },
-            "-=0.35"
+            { opacity: 0, y: 22 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.12 },
+            "-=0.3"
           );
         }
       }

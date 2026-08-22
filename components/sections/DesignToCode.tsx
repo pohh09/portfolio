@@ -144,7 +144,7 @@ export default function AtelierCard() {
                 fill="none"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
                 <motion.path
@@ -168,10 +168,10 @@ export default function AtelierCard() {
             return (
               <motion.div
                 key={power.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ delay: idx * 0.1, duration: 0.5, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ delay: idx * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 className="rounded-[22px] bg-white border-2 border-[#F0DCE3] p-4 sm:p-5 shadow-2xs hover:shadow-xs transition-all flex items-start gap-3.5"
               >
@@ -192,10 +192,10 @@ export default function AtelierCard() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.12 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="rounded-[28px] sm:rounded-[32px] bg-gradient-to-br from-[#FFFDFC] via-[#FFF9FA] to-[#FAF7FE] border-2 border-[#F0DCE3] p-4 sm:p-7 shadow-[0_16px_45px_-15px_rgba(232,93,139,0.12)] mb-12 sm:mb-16"
         >
 
@@ -382,10 +382,10 @@ export default function AtelierCard() {
               return (
                 <motion.div
                   key={item.step}
-                  initial={{ opacity: 0, y: 22 }}
+                  initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.15 }}
-                  transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ delay: index * 0.07, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   className="relative rounded-[20px] p-4 bg-white border-2 border-[#F0DCE3] flex flex-col justify-between group shadow-2xs hover:border-[#F29AB2] hover:shadow-xs transition-all"
                 >

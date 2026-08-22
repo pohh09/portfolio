@@ -338,135 +338,170 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  {activeTab === "ui" && (
-                    <div className="space-y-3">
-
-                      <div className="rounded-2xl border border-[#F0DCE3] bg-gradient-to-r from-[#FFF8F5] via-[#FFF5F7] to-[#FFF8F5] p-3.5 shadow-2xs flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FCE8E8] text-[#E85D8B] font-bold text-xs shadow-2xs">
-                            <Layout size={18} />
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-1.5">
-                              <h4 className="text-xs sm:text-sm font-bold text-[#302535]">Interactive UI Engine</h4>
-                              <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B] animate-pulse" />
+                  <AnimatePresence mode="wait">
+                    {activeTab === "ui" && (
+                      <motion.div
+                        key="ui-tab"
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="space-y-3"
+                      >
+                        <div className="rounded-2xl border border-[#F0DCE3] bg-gradient-to-r from-[#FFF8F5] via-[#FFF5F7] to-[#FFF8F5] p-3.5 shadow-2xs flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FCE8E8] text-[#E85D8B] font-bold text-xs shadow-2xs">
+                              <Layout size={18} />
                             </div>
-                            <p className="text-[11px] font-mono text-[#8B72D8]">React 19 &bull; Next.js 15 &bull; TS</p>
+                            <div>
+                              <div className="flex items-center gap-1.5">
+                                <h4 className="text-xs sm:text-sm font-bold text-[#302535]">Interactive UI Engine</h4>
+                                <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B] animate-pulse" />
+                              </div>
+                              <p className="text-[11px] font-mono text-[#8B72D8]">React 19 &bull; Next.js 15 &bull; TS</p>
+                            </div>
                           </div>
+
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              setFluidityPercent((l) => (l >= 98 ? 88 : l + 2));
+                              setMotionTrigger((prev) => !prev);
+                            }}
+                            className="px-3 py-1.5 rounded-full bg-white border border-[#EADDE3] text-[11px] font-bold text-[#302535] hover:border-[#F29AB2] hover:bg-[#FFF5F7] transition-colors shadow-2xs flex items-center gap-1.5 cursor-pointer"
+                          >
+                            <MousePointerClick size={12} className={`text-[#E85D8B] transition-transform duration-300 ${motionTrigger ? "rotate-12 scale-110" : ""}`} />
+                            <span>Fluidity: {fluidityPercent}%</span>
+                          </motion.button>
                         </div>
 
-                        <button
-                          onClick={() => setFluidityPercent((l) => (l >= 98 ? 88 : l + 2))}
-                          className="px-3 py-1.5 rounded-full bg-white border border-[#EADDE3] text-[11px] font-bold text-[#302535] hover:bg-[#FFF5F7] transition-all shadow-2xs flex items-center gap-1.5 cursor-pointer"
-                        >
-                          <MousePointerClick size={12} className="text-[#E85D8B]" />
-                          <span>Interactive Preview</span>
-                        </button>
-                      </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <motion.div
+                            whileHover={{ y: -2 }}
+                            className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white shadow-2xs transition-colors hover:border-[#F8DC82]"
+                          >
+                            <div className="flex items-center justify-between mb-1.5">
+                              <span className="text-[10px] font-mono text-[#756875] font-bold uppercase">Architecture</span>
+                              <Zap size={14} className="text-[#FAD074]" />
+                            </div>
+                            <p className="text-xs sm:text-sm font-bold text-[#302535]">Full-Stack App</p>
+                            <span className="text-[11px] text-[#27AE60] font-bold mt-1 inline-block">✓ Node + Express</span>
+                          </motion.div>
 
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white shadow-2xs">
-                          <div className="flex items-center justify-between mb-1.5">
-                            <span className="text-[10px] font-mono text-[#756875] font-bold uppercase">Architecture</span>
-                            <Zap size={14} className="text-[#FAD074]" />
-                          </div>
-                          <p className="text-xs sm:text-sm font-bold text-[#302535]">Full-Stack App</p>
-                          <span className="text-[11px] text-[#27AE60] font-bold mt-1 inline-block">✓ Node + Express</span>
+                          <motion.div
+                            whileHover={{ y: -2 }}
+                            className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white shadow-2xs transition-colors hover:border-[#F8D2D9]"
+                          >
+                            <div className="flex items-center justify-between mb-1.5">
+                              <span className="text-[10px] font-mono text-[#756875] font-bold uppercase">Kinetic UI</span>
+                              <Sparkles size={14} className="text-[#E85D8B]" />
+                            </div>
+                            <p className="text-xs sm:text-sm font-bold text-[#302535]">Motion &amp; Transitions</p>
+                            <span className="text-[11px] text-[#8B72D8] font-bold mt-1 inline-block">GSAP &amp; Framer</span>
+                          </motion.div>
                         </div>
 
-                        <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white shadow-2xs">
-                          <div className="flex items-center justify-between mb-1.5">
-                            <span className="text-[10px] font-mono text-[#756875] font-bold uppercase">Kinetic UI</span>
-                            <Sparkles size={14} className="text-[#E85D8B]" />
+                        <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] shadow-2xs flex items-center justify-between">
+                          <div className="flex items-center gap-2.5">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FCE8E8] text-[#E85D8B]">
+                              <Code2 size={16} />
+                            </div>
+                            <div>
+                              <p className="text-xs sm:text-sm font-bold text-[#302535]">Clean Component Architecture</p>
+                              <p className="text-[10px] font-mono text-[#756875]">TypeScript &bull; Tailwind CSS</p>
+                            </div>
                           </div>
-                          <p className="text-xs sm:text-sm font-bold text-[#302535]">Motion &amp; Transitions</p>
-                          <span className="text-[11px] text-[#8B72D8] font-bold mt-1 inline-block">GSAP &amp; Framer</span>
-                        </div>
-                      </div>
-
-                      <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] shadow-2xs flex items-center justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FCE8E8] text-[#E85D8B]">
-                            <Code2 size={16} />
-                          </div>
-                          <div>
-                            <p className="text-xs sm:text-sm font-bold text-[#302535]">Clean Component Architecture</p>
-                            <p className="text-[10px] font-mono text-[#756875]">TypeScript &bull; Tailwind CSS</p>
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-mono font-bold text-[#E85D8B] px-2.5 py-1 rounded-full bg-white border border-[#F0DCE3]">
-                          Modular &amp; Clean
-                        </span>
-                      </div>
-                    </div>
-                  )}
-
-                  {activeTab === "fullstack" && (
-                    <div className="space-y-3">
-                      <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#E8DDF7] text-[#8B72D8]">
-                            <Server size={16} />
-                          </div>
-                          <div>
-                            <p className="text-xs sm:text-sm font-bold text-[#302535]">Node.js &amp; Express REST API</p>
-                            <p className="text-[10px] font-mono text-[#8B72D8]">JWT Auth &bull; Structured Controllers</p>
-                          </div>
-                        </div>
-                        <button
-                          onClick={() => setApiPing((p) => (p === 24 ? 18 : 24))}
-                          className="text-[10px] font-mono font-bold text-[#27AE60] px-2.5 py-1 rounded-md bg-white border border-[#F0DCE3] flex items-center gap-1 cursor-pointer"
-                        >
-                          <span>200 OK</span>
-                          <span className="text-[9px] text-[#756875]">({apiPing}ms)</span>
-                        </button>
-                      </div>
-
-                      <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#DDF5F8] text-[#2EA043]">
-                            <Database size={16} />
-                          </div>
-                          <div>
-                            <p className="text-xs sm:text-sm font-bold text-[#302535]">MongoDB &amp; Mongoose</p>
-                            <p className="text-[10px] font-mono text-[#756875]">Indexed Collections &bull; Schemas</p>
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-mono font-bold text-[#8B72D8] px-2.5 py-1 rounded-md bg-[#FFF5F7] border border-[#F0DCE3]">
-                          Database Connected
-                        </span>
-                      </div>
-
-                      <div className="p-3 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between text-xs">
-                        <span className="font-mono text-[10px] text-[#302535] font-bold">
-                          GET /api/v1/projects → 200 Success
-                        </span>
-                        <span className="text-[10px] font-mono text-[#E85D8B] font-bold">
-                          REST Endpoint
-                        </span>
-                      </div>
-                    </div>
-                  )}
-
-                  {activeTab === "motion" && (
-                    <div className="space-y-3">
-                      {[
-                        { label: "Hardware Easing", value: "power3.out / cubic-bezier", tech: "GPU Layer" },
-                        { label: "Mask Clip-Path", value: "polygon(0 0, 100% 0...)", tech: "CSS Mask" },
-                        { label: "ScrollTrigger", value: "Timeline choreography", tech: "GSAP Engine" },
-                      ].map((item) => (
-                        <div key={item.label} className="p-3 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between">
-                          <div>
-                            <p className="text-xs sm:text-sm font-bold text-[#302535]">{item.label}</p>
-                            <p className="text-[10px] font-mono text-[#8B72D8]">{item.value}</p>
-                          </div>
-                          <span className="text-[10px] font-mono font-bold text-[#E85D8B] px-2.5 py-1 rounded-md bg-white border border-[#F0DCE3]">
-                            {item.tech}
+                          <span className="text-[10px] font-mono font-bold text-[#E85D8B] px-2.5 py-1 rounded-full bg-white border border-[#F0DCE3]">
+                            Modular &amp; Clean
                           </span>
                         </div>
-                      ))}
-                    </div>
-                  )}
+                      </motion.div>
+                    )}
+
+                    {activeTab === "fullstack" && (
+                      <motion.div
+                        key="fullstack-tab"
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="space-y-3"
+                      >
+                        <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#E8DDF7] text-[#8B72D8]">
+                              <Server size={16} />
+                            </div>
+                            <div>
+                              <p className="text-xs sm:text-sm font-bold text-[#302535]">Node.js &amp; Express REST API</p>
+                              <p className="text-[10px] font-mono text-[#8B72D8]">JWT Auth &bull; Structured Controllers</p>
+                            </div>
+                          </div>
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setApiPing((p) => (p === 24 ? 18 : 24))}
+                            className="text-[10px] font-mono font-bold text-[#27AE60] px-2.5 py-1 rounded-md bg-white border border-[#F0DCE3] flex items-center gap-1 cursor-pointer shadow-2xs"
+                          >
+                            <span>200 OK</span>
+                            <span className="text-[9px] text-[#756875]">({apiPing}ms)</span>
+                          </motion.button>
+                        </div>
+
+                        <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#DDF5F8] text-[#2EA043]">
+                              <Database size={16} />
+                            </div>
+                            <div>
+                              <p className="text-xs sm:text-sm font-bold text-[#302535]">MongoDB &amp; Mongoose</p>
+                              <p className="text-[10px] font-mono text-[#756875]">Indexed Collections &bull; Schemas</p>
+                            </div>
+                          </div>
+                          <span className="text-[10px] font-mono font-bold text-[#8B72D8] px-2.5 py-1 rounded-md bg-[#FFF5F7] border border-[#F0DCE3]">
+                            Database Connected
+                          </span>
+                        </div>
+
+                        <div className="p-3 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between text-xs">
+                          <span className="font-mono text-[10px] text-[#302535] font-bold">
+                            GET /api/v1/projects → 200 Success
+                          </span>
+                          <span className="text-[10px] font-mono text-[#E85D8B] font-bold">
+                            REST Endpoint
+                          </span>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === "motion" && (
+                      <motion.div
+                        key="motion-tab"
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="space-y-3"
+                      >
+                        {[
+                          { label: "Hardware Easing", value: "power3.out / cubic-bezier", tech: "GPU Layer" },
+                          { label: "Mask Clip-Path", value: "polygon(0 0, 100% 0...)", tech: "CSS Mask" },
+                          { label: "ScrollTrigger", value: "Timeline choreography", tech: "GSAP Engine" },
+                        ].map((item) => (
+                          <div key={item.label} className="p-3 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between">
+                            <div>
+                              <p className="text-xs sm:text-sm font-bold text-[#302535]">{item.label}</p>
+                              <p className="text-[10px] font-mono text-[#8B72D8]">{item.value}</p>
+                            </div>
+                            <span className="text-[10px] font-mono font-bold text-[#E85D8B] px-2.5 py-1 rounded-md bg-white border border-[#F0DCE3]">
+                              {item.tech}
+                            </span>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-[#F5E6EB] flex items-center justify-between text-xs font-bold">
@@ -479,12 +514,12 @@ export default function Hero() {
               </div>
 
               <div ref={floatingLabelsRef} className="pointer-events-none">
-                <div className="floating-chip absolute -bottom-3 -left-3 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3.5 py-1 text-xs font-bold text-[#302535] shadow-xs animate-float-slow">
+                <div className="floating-chip absolute -bottom-3 -left-3 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3.5 py-1 text-xs font-bold text-[#302535] shadow-xs animate-float-harmonic">
                   <FaReact size={14} className="text-[#38BDF8]" />
                   <span>React 19</span>
                 </div>
 
-                <div className="floating-chip absolute -top-3 left-4 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3.5 py-1 text-xs font-bold text-[#302535] shadow-xs animate-float-slow">
+                <div className="floating-chip absolute -top-3 left-4 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3.5 py-1 text-xs font-bold text-[#302535] shadow-xs animate-float-delayed">
                   <SiTypescript size={13} className="text-[#3178C6]" />
                   <span>TypeScript</span>
                 </div>
@@ -494,6 +529,7 @@ export default function Hero() {
                   <span>Next.js 15</span>
                 </div>
               </div>
+
 
             </div>
 

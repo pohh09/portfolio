@@ -171,11 +171,11 @@ function ProjectCard({
 
   const card = (
     <motion.div
-      initial={disableAnimation ? false : { opacity: 0, y: 60 }}
+      initial={disableAnimation ? false : { opacity: 0, y: 32 }}
       whileInView={disableAnimation ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-      whileHover={disableAnimation ? undefined : { y: -10, scale: 1.02 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={disableAnimation ? undefined : { y: -8, scale: 1.02, transition: { duration: 0.25 } }}
       className={fixedWidth ? "w-full" : "w-[230px] flex-shrink-0 sm:w-[260px] md:w-[280px]"}
     >
       <div

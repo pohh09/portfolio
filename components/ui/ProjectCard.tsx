@@ -12,10 +12,10 @@ type Props = { project: Project; reverse?: boolean };
 export default function ProjectCard({ project, reverse = false }: Props) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 35 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.15 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`grid items-center gap-8 lg:gap-12 lg:grid-cols-12 ${
         reverse ? "lg:[&>*:first-child]:order-2" : ""
       }`}
@@ -23,7 +23,7 @@ export default function ProjectCard({ project, reverse = false }: Props) {
 
       <motion.div
         whileHover={{ y: -4 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.25 }}
         className="lg:col-span-6 group relative overflow-hidden rounded-[22px] border border-slate-200/90 bg-white/90 p-2.5 sm:p-3 backdrop-blur-2xl shadow-[0_15px_35px_rgba(100,116,139,0.12)] transition-all duration-500 hover:border-pink-300 hover:shadow-[0_20px_40px_rgba(236,72,153,0.15)]"
       >
 
@@ -59,8 +59,8 @@ export default function ProjectCard({ project, reverse = false }: Props) {
       <motion.div
         initial={{ opacity: 0, x: reverse ? -20 : 20 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, amount: 0.15 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         className="lg:col-span-6 flex flex-col justify-center"
       >
         <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-pink-600">

@@ -14,10 +14,10 @@ interface RevealProps {
 export default function Reveal({
   children,
   delay = 0,
-  y = 30,
-  duration = 0.6,
+  y = 20,
+  duration = 0.65,
   className = "",
-  once = false,
+  once = true,
 }: RevealProps) {
   return (
     <motion.div
@@ -32,12 +32,13 @@ export default function Reveal({
       }}
       viewport={{
         once,
-        amount: 0.15,
+        margin: "-40px 0px -40px 0px",
+        amount: 0.1,
       }}
       transition={{
         duration,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}

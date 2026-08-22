@@ -225,21 +225,51 @@ body::-webkit-scrollbar {
 
 /* Keyframe animations */
 @keyframes floatSlow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-6px) rotate(2deg); }
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -6px, 0) rotate(2deg); }
+}
+
+@keyframes floatHarmonic {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+}
+
+@keyframes floatDelayed {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -5px, 0) rotate(-2deg); }
 }
 
 .animate-float-slow {
   animation: floatSlow 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-harmonic {
+  animation: floatHarmonic 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-delayed {
+  animation: floatDelayed 5.5s ease-in-out 1s infinite;
+  will-change: transform;
 }
 
 @keyframes pulseDoodle {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  50% { transform: scale(1.08); }
 }
 
 .animate-doodle {
   animation: pulseDoodle 3s ease-in-out infinite;
+}
+
+@keyframes shimmerRibbon {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-shimmer {
+  animation: shimmerRibbon 2.5s infinite;
 }
 
 /* GPU Accelerated Infinite Marquee Keyframes */

@@ -64,17 +64,17 @@ export default function FeaturedProjects() {
 
       gsap.fromTo(
         headerRef.current,
-        { opacity: 0, y: 28 },
+        { opacity: 0, y: 24 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.7,
+          duration: 0.65,
           ease: "power3.out",
           scrollTrigger: {
             trigger: headerRef.current,
             start: "top 88%",
-            end: "bottom 12%",
-            toggleActions: "play reverse play reverse",
+            once: true,
+            toggleActions: "play none none none",
           },
         }
       );
@@ -90,8 +90,8 @@ export default function FeaturedProjects() {
           scrollTrigger: {
             trigger: row,
             start: "top 85%",
-            end: "bottom 15%",
-            toggleActions: "play reverse play reverse",
+            once: true,
+            toggleActions: "play none none none",
           },
           defaults: { ease: "power3.out" },
         });
@@ -99,26 +99,26 @@ export default function FeaturedProjects() {
         if (infoEl) {
           tl.fromTo(
             infoEl,
-            { opacity: 0, y: 28 },
-            { opacity: 1, y: 0, duration: 0.6 }
+            { opacity: 0, y: 22 },
+            { opacity: 1, y: 0, duration: 0.55 }
           );
         }
 
         if (frameEl) {
           tl.fromTo(
             frameEl,
-            { opacity: 0, scale: 0.95, y: 24 },
-            { opacity: 1, scale: 1, y: 0, duration: 0.65 },
-            "-=0.4"
+            { opacity: 0, scale: 0.97, y: 18 },
+            { opacity: 1, scale: 1, y: 0, duration: 0.6 },
+            "-=0.35"
           );
         }
 
         if (imageEl) {
           tl.fromTo(
             imageEl,
-            { opacity: 0.8, scale: 1.04 },
-            { opacity: 1, scale: 1, duration: 0.75, ease: "power2.out" },
-            "-=0.5"
+            { opacity: 0.85, scale: 1.02 },
+            { opacity: 1, scale: 1, duration: 0.65, ease: "power2.out" },
+            "-=0.45"
           );
         }
       });
@@ -178,7 +178,7 @@ export default function FeaturedProjects() {
                 fill="none"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
                 <motion.path

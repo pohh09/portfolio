@@ -16,10 +16,10 @@ export default function FadeIn({
   children,
   delay = 0,
   direction = "up",
-  distance = 30,
+  distance = 24,
   duration = 0.6,
   className,
-  once = false,
+  once = true,
 }: FadeInProps) {
   const getInitialOffset = () => {
     switch (direction) {
@@ -51,11 +51,11 @@ export default function FadeIn({
         x: 0,
         y: 0,
       }}
-      viewport={{ once, amount: 0.15 }}
+      viewport={{ once, amount: 0.12 }}
       transition={{
         duration,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}
