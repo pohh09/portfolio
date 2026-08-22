@@ -61,15 +61,16 @@ export default function Contact() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 78%",
-            once: true,
+            start: "top 85%",
+            end: "bottom 12%",
+            toggleActions: "play reverse play reverse",
           },
           defaults: { ease: "power3.out" },
         });
 
         tl.fromTo(
           headerRef.current,
-          { opacity: 0, y: 16 },
+          { opacity: 0, y: 22 },
           { opacity: 1, y: 0, duration: 0.5 }
         );
 
@@ -89,7 +90,7 @@ export default function Contact() {
         if (leftColRef.current && formCardRef.current) {
           tl.fromTo(
             [leftColRef.current, formCardRef.current],
-            { opacity: 0, y: 20 },
+            { opacity: 0, y: 24 },
             { opacity: 1, y: 0, duration: 0.55, stagger: 0.12 },
             "-=0.35"
           );

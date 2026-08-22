@@ -20,45 +20,57 @@ export default function About() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 80%",
-          once: true,
+          start: "top 85%",
+          end: "bottom 15%",
+          toggleActions: "play reverse play reverse",
         },
         defaults: { ease: "power3.out" },
       });
 
       tl.fromTo(
         tagRef.current,
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.4 }
+        { opacity: 0, y: 16, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.4 }
       )
-
         .fromTo(
           statementRef.current,
-          { opacity: 0, y: 16 },
+          { opacity: 0, y: 22 },
           { opacity: 1, y: 0, duration: 0.5 },
           "-=0.2"
         )
-
         .fromTo(
           introTextRef.current,
-          { opacity: 0, y: 14 },
+          { opacity: 0, y: 18 },
           { opacity: 1, y: 0, duration: 0.45 },
           "-=0.25"
         )
-
         .fromTo(
           eduCardRef.current,
-          { opacity: 0, y: 18, scale: 0.98 },
+          { opacity: 0, y: 24, scale: 0.96 },
           { opacity: 1, y: 0, scale: 1, duration: 0.5 },
           "-=0.3"
         )
-
         .fromTo(
           processLineRef.current,
-          { opacity: 0, y: 16 },
+          { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.45 },
           "-=0.2"
         );
+
+      // Subtle parallax on decorative floating elements
+      const floatingSparkles = sectionRef.current?.querySelectorAll(".about-parallax-item");
+      if (floatingSparkles && floatingSparkles.length > 0) {
+        gsap.to(floatingSparkles, {
+          y: -25,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.5,
+          },
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -92,8 +104,8 @@ export default function About() {
         </svg>
       </div>
 
-      <div className="pointer-events-none absolute top-8 right-12 text-[#E85D8B] text-sm animate-float-slow select-none opacity-35">✦</div>
-      <div className="pointer-events-none absolute bottom-10 left-8 text-[#FAD074] text-xs animate-float-slow select-none opacity-45">★</div>
+      <div className="about-parallax-item pointer-events-none absolute top-8 right-12 text-[#E85D8B] text-sm animate-float-slow select-none opacity-35">✦</div>
+      <div className="about-parallax-item pointer-events-none absolute bottom-10 left-8 text-[#FAD074] text-xs animate-float-slow select-none opacity-45">★</div>
 
       <div className="mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1600px] px-1 sm:px-4 relative z-10">
 

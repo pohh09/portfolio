@@ -173,7 +173,7 @@ function ProjectCard({
     <motion.div
       initial={disableAnimation ? false : { opacity: 0, y: 60 }}
       whileInView={disableAnimation ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.6 }}
       whileHover={disableAnimation ? undefined : { y: -10, scale: 1.02 }}
       className={fixedWidth ? "w-full" : "w-[230px] flex-shrink-0 sm:w-[260px] md:w-[280px]"}

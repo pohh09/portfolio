@@ -144,7 +144,7 @@ export default function AtelierCard() {
                 fill="none"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
                 <motion.path
@@ -168,10 +168,11 @@ export default function AtelierCard() {
             return (
               <motion.div
                 key={power.title}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ delay: idx * 0.1, duration: 0.5, ease: "easeOut" }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 className="rounded-[22px] bg-white border-2 border-[#F0DCE3] p-4 sm:p-5 shadow-2xs hover:shadow-xs transition-all flex items-start gap-3.5"
               >
                 <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${power.color}`}>
@@ -190,7 +191,13 @@ export default function AtelierCard() {
           })}
         </div>
 
-        <div className="rounded-[28px] sm:rounded-[32px] bg-gradient-to-br from-[#FFFDFC] via-[#FFF9FA] to-[#FAF7FE] border-2 border-[#F0DCE3] p-4 sm:p-7 shadow-[0_16px_45px_-15px_rgba(232,93,139,0.12)] mb-12 sm:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="rounded-[28px] sm:rounded-[32px] bg-gradient-to-br from-[#FFFDFC] via-[#FFF9FA] to-[#FAF7FE] border-2 border-[#F0DCE3] p-4 sm:p-7 shadow-[0_16px_45px_-15px_rgba(232,93,139,0.12)] mb-12 sm:mb-16"
+        >
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-5 border-b border-[#F0DCE3]">
             <div className="flex items-center gap-2.5">
@@ -354,7 +361,7 @@ export default function AtelierCard() {
             </div>
 
           </div>
-        </div>
+        </motion.div>
 
         <div className="pt-2">
           <div className="text-center max-w-xl mx-auto mb-6 sm:mb-8">
@@ -375,11 +382,11 @@ export default function AtelierCard() {
               return (
                 <motion.div
                   key={item.step}
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 22 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  whileHover={{ y: -3 }}
+                  viewport={{ once: false, amount: 0.15 }}
+                  transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   className="relative rounded-[20px] p-4 bg-white border-2 border-[#F0DCE3] flex flex-col justify-between group shadow-2xs hover:border-[#F29AB2] hover:shadow-xs transition-all"
                 >
                   <div>

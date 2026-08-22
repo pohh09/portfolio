@@ -64,16 +64,17 @@ export default function FeaturedProjects() {
 
       gsap.fromTo(
         headerRef.current,
-        { opacity: 0, y: 25 },
+        { opacity: 0, y: 28 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.75,
+          duration: 0.7,
           ease: "power3.out",
           scrollTrigger: {
             trigger: headerRef.current,
-            start: "top 85%",
-            once: true,
+            start: "top 88%",
+            end: "bottom 12%",
+            toggleActions: "play reverse play reverse",
           },
         }
       );
@@ -88,8 +89,9 @@ export default function FeaturedProjects() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: row,
-            start: "top 80%",
-            once: true,
+            start: "top 85%",
+            end: "bottom 15%",
+            toggleActions: "play reverse play reverse",
           },
           defaults: { ease: "power3.out" },
         });
@@ -97,7 +99,7 @@ export default function FeaturedProjects() {
         if (infoEl) {
           tl.fromTo(
             infoEl,
-            { opacity: 0, y: 24 },
+            { opacity: 0, y: 28 },
             { opacity: 1, y: 0, duration: 0.6 }
           );
         }
@@ -105,7 +107,7 @@ export default function FeaturedProjects() {
         if (frameEl) {
           tl.fromTo(
             frameEl,
-            { opacity: 0, scale: 0.96, y: 20 },
+            { opacity: 0, scale: 0.95, y: 24 },
             { opacity: 1, scale: 1, y: 0, duration: 0.65 },
             "-=0.4"
           );
@@ -114,12 +116,26 @@ export default function FeaturedProjects() {
         if (imageEl) {
           tl.fromTo(
             imageEl,
-            { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)", scale: 1.05 },
-            { clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)", scale: 1, duration: 0.75, ease: "power3.inOut" },
+            { opacity: 0.8, scale: 1.04 },
+            { opacity: 1, scale: 1, duration: 0.75, ease: "power2.out" },
             "-=0.5"
           );
         }
       });
+
+      const decorItems = sectionRef.current?.querySelectorAll(".projects-parallax-item");
+      if (decorItems && decorItems.length > 0) {
+        gsap.to(decorItems, {
+          y: -30,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.5,
+          },
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -135,10 +151,10 @@ export default function FeaturedProjects() {
       <div className="pointer-events-none absolute top-1/4 -left-20 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#FCE8E8]/70 via-[#FFF1EC]/40 to-transparent blur-3xl opacity-75 select-none -z-10" />
       <div className="pointer-events-none absolute bottom-1/4 -right-20 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#E8DDF7]/55 via-[#FCE8E8]/45 to-transparent blur-3xl opacity-70 select-none -z-10" />
 
-      <div className="pointer-events-none absolute top-16 right-16 text-[#E85D8B] text-xl animate-float-slow select-none opacity-40">✦</div>
-      <div className="pointer-events-none absolute top-1/3 left-8 text-[#FAD074] text-lg animate-float-slow select-none opacity-45">★</div>
-      <div className="pointer-events-none absolute bottom-1/4 right-10 text-[#E85D8B] text-xl animate-float-slow select-none opacity-40">✦</div>
-      <div className="pointer-events-none absolute bottom-14 left-14 text-[#B9A1E8] text-base select-none opacity-35">✦</div>
+      <div className="projects-parallax-item pointer-events-none absolute top-16 right-16 text-[#E85D8B] text-xl animate-float-slow select-none opacity-40">✦</div>
+      <div className="projects-parallax-item pointer-events-none absolute top-1/3 left-8 text-[#FAD074] text-lg animate-float-slow select-none opacity-45">★</div>
+      <div className="projects-parallax-item pointer-events-none absolute bottom-1/4 right-10 text-[#E85D8B] text-xl animate-float-slow select-none opacity-40">✦</div>
+      <div className="projects-parallax-item pointer-events-none absolute bottom-14 left-14 text-[#B9A1E8] text-base select-none opacity-35">✦</div>
 
       <div className="mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1600px] px-1 sm:px-4 relative z-10">
 
@@ -162,7 +178,7 @@ export default function FeaturedProjects() {
                 fill="none"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
                 <motion.path

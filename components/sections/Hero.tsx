@@ -53,28 +53,24 @@ export default function Hero() {
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.45 }
       )
-
       .fromTo(
         titleLine1Ref.current,
         { opacity: 0, y: 28 },
         { opacity: 1, y: 0, duration: 0.55 },
         "-=0.15"
       )
-
       .fromTo(
         titleLine2Ref.current,
         { opacity: 0, y: 28 },
         { opacity: 1, y: 0, duration: 0.55 },
         "-=0.35"
       )
-
       .fromTo(
         bioRef.current,
         { opacity: 0, y: 14 },
         { opacity: 1, y: 0, duration: 0.45 },
         "-=0.25"
       )
-
       .fromTo(
         ctaRef.current,
         { opacity: 0, y: 14 },
@@ -87,20 +83,33 @@ export default function Hero() {
         { opacity: 1, y: 0, duration: 0.4 },
         "-=0.2"
       )
-
       .fromTo(
         workspaceRef.current,
         { opacity: 0, x: 25, scale: 0.96 },
         { opacity: 1, x: 0, scale: 1, duration: 0.75, ease: "power2.out" },
         "-=0.45"
       )
-
       .fromTo(
         floatingLabelsRef.current?.querySelectorAll(".floating-chip") || [],
         { opacity: 0, scale: 0.8, y: 12 },
         { opacity: 1, scale: 1, y: 0, duration: 0.4, stagger: 0.08 },
         "-=0.35"
       );
+
+      // Scroll-driven parallax for hero background elements and decorative sparkles
+      const decorItems = containerRef.current?.querySelectorAll(".hero-parallax-item");
+      if (decorItems && decorItems.length > 0) {
+        gsap.to(decorItems, {
+          y: (i) => -30 * (i + 1),
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        });
+      }
     }, containerRef);
 
     return () => ctx.revert();
@@ -142,10 +151,10 @@ export default function Hero() {
         <div className="pointer-events-none absolute -bottom-10 left-10 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#E8DDF7]/45 via-[#FFF0F4]/60 to-transparent blur-3xl opacity-75 select-none -z-10" />
         <div className="pointer-events-none absolute top-1/3 right-1/3 w-[400px] h-[400px] rounded-full bg-[#DDF5F8]/40 blur-3xl opacity-50 select-none -z-10" />
 
-        <div className="pointer-events-none absolute top-28 right-1/4 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
-        <div className="pointer-events-none absolute top-44 left-14 text-[#FAD074] text-lg animate-float-slow select-none opacity-50">★</div>
-        <div className="pointer-events-none absolute bottom-24 right-12 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
-        <div className="pointer-events-none absolute top-36 right-12 text-[#B9A1E8] text-base select-none opacity-45">✿</div>
+        <div className="hero-parallax-item pointer-events-none absolute top-28 right-1/4 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
+        <div className="hero-parallax-item pointer-events-none absolute top-44 left-14 text-[#FAD074] text-lg animate-float-slow select-none opacity-50">★</div>
+        <div className="hero-parallax-item pointer-events-none absolute bottom-24 right-12 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
+        <div className="hero-parallax-item pointer-events-none absolute top-36 right-12 text-[#B9A1E8] text-base select-none opacity-45">✿</div>
 
         <div className="relative mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1600px] px-1 sm:px-4 z-10">
 

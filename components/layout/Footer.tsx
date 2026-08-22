@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { ArrowUp, Mail, Sparkles, Code2, ArrowUpRight, Globe } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -39,7 +40,13 @@ export default function Footer() {
       <div className="w-full bg-gradient-to-b from-[#FFE8EE] via-[#FFF0F4] to-[#FFEBF1] pb-10 sm:pb-14 pt-4 sm:pt-6 border-t border-[#FCD4DF]/50">
         <div className="relative mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1600px] px-1 sm:px-4">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start"
+          >
 
             <div className="sm:col-span-2 lg:col-span-5 flex flex-col items-start space-y-4">
               <div className="flex items-center gap-3.5 group cursor-default">
@@ -135,7 +142,7 @@ export default function Footer() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
           <div className="mt-10 sm:mt-12 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 border-t border-[#F0DCE3] pt-5 text-center sm:text-left">
             <p className="flex flex-wrap items-center justify-center sm:justify-start gap-1 text-[11px] sm:text-xs text-[#756875] font-normal">

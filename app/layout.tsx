@@ -5,6 +5,7 @@ import MeshBackground from "@/components/common/MeshBackground";
 import SmoothScroll from "@/components/common/SmoothScroll";
 import CustomCursor from "@/components/common/CustomCursor";
 import MouseSpotlight from "@/components/common/MouseSpotlight";
+import ScrollProgress from "@/components/common/ScrollProgress";
 
 import { nunito, kalam, jetbrainsMono, display, creative, caveat } from "@/lib/fonts";
 
@@ -49,6 +50,7 @@ export default function RootLayout({
       </head>
       <body className="bg-[#FFF8F6] text-[#2E2234] antialiased selection:bg-[#FF5E86]/20 selection:text-[#FF5E86] min-h-screen">
         <SmoothScroll>
+          <ScrollProgress />
           <CustomCursor />
           <MouseSpotlight />
           <MeshBackground />

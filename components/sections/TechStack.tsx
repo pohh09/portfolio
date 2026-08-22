@@ -164,7 +164,7 @@ export default function TechStack() {
                 fill="none"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               >
                 <motion.path
@@ -182,7 +182,13 @@ export default function TechStack() {
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-12 lg:gap-8 items-start">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="grid gap-6 lg:grid-cols-12 lg:gap-8 items-start"
+        >
 
           <div className="lg:col-span-5 flex flex-col space-y-2.5 sm:space-y-3.5">
             <div className="text-[11px] font-mono font-bold text-[#A396A3] uppercase tracking-wider px-1 flex items-center justify-between">
@@ -372,9 +378,15 @@ export default function TechStack() {
             </div>
           </div>
 
-        </div>
+        </motion.div>
 
-        <div className="mt-12 sm:mt-14 pt-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mt-12 sm:mt-14 pt-3"
+        >
 
           <div className="flex items-center justify-between gap-4 mb-3.5">
             <span className="text-xs font-mono font-bold text-[#756875] uppercase tracking-wider">
@@ -424,7 +436,7 @@ export default function TechStack() {
 
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </div>
