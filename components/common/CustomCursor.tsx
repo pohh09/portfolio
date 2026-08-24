@@ -1,111 +1,222 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { gsap } from "@/lib/animations/gsapSetup";
 
 export default function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    if (
+    // Strict detection: disable completely on mobile, tablets, coarse pointers & touch devices
+    const isTouch =
       window.matchMedia("(pointer: coarse)").matches ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (isTouch || prefersReducedMotion) {
       return;
     }
 
-    const dot = dotRef.current;
-    const ring = ringRef.current;
-    if (!dot || !ring) return;
+    const cursor = cursorRef.current;
+    const badge = badgeRef.current;
+    const label = labelRef.current;
 
-    let mouseX = -100;
-    let mouseY = -100;
-    let ringX = -100;
-    let ringY = -100;
-    let isHovering = false;
-    let isClicking = false;
-    let rafId: number;
+    if (!cursor || !badge || !label) return;
 
-    const onMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      dot.style.transform = `translate3d(${mouseX - 3}px, ${mouseY - 3}px, 0)`;
-    };
+    // Show cursor on desktop
+    cursor.style.display = "block";
 
-    const onMouseDown = () => {
-      isClicking = true;
-    };
+    // Setup high-performance GSAP quickTo setters with a subtle trailing lag
+    const setCursorX = gsap.quickTo(cursor, "x", { duration: 0.22, ease: "power3.out" });
+    const setCursorY = gsap.quickTo(cursor, "y", { duration: 0.22, ease: "power3.out" });
 
-    const onMouseUp = () => {
-      isClicking = false;
-    };
+    let currentMode = "normal";
+    let activeMagneticElement: HTMLElement | null = null;
 
-    const render = () => {
-      // Butter-smooth lerp interpolation
-      ringX += (mouseX - ringX) * 0.16;
-      ringY += (mouseY - ringY) * 0.16;
+    const setCursorState = (mode: string, text: string) => {
+      if (currentMode === mode) return;
+      currentMode = mode;
 
-      const size = isHovering ? 44 : 26;
-      const offset = size / 2;
-      const scale = isClicking ? 0.85 : isHovering ? 1.2 : 1;
-
-      ring.style.transform = `translate3d(${ringX - offset}px, ${ringY - offset}px, 0) scale(${scale})`;
-
-      rafId = requestAnimationFrame(render);
-    };
-
-    const handlePointerOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (
-        target &&
-        (target.tagName === "A" ||
-          target.tagName === "BUTTON" ||
-          target.closest("a") ||
-          target.closest("button") ||
-          target.getAttribute("role") === "button" ||
-          target.classList.contains("cursor-pointer") ||
-          target.closest(".cursor-pointer"))
-      ) {
-        isHovering = true;
-        ring.classList.add("border-[#E85D8B]", "bg-[#E85D8B]/12", "backdrop-blur-2xs");
-        dot.classList.add("scale-125", "bg-[#E85D8B]");
+      if (mode === "normal") {
+        label.style.opacity = "0";
+        label.textContent = "";
+        badge.style.width = "9px";
+        badge.style.height = "9px";
+        badge.style.padding = "0px";
+        badge.style.backgroundColor = "#E85D8B";
+        badge.style.borderRadius = "9999px";
+        badge.style.boxShadow = "0 3px 12px rgba(232, 93, 139, 0.4)";
       } else {
-        isHovering = false;
-        ring.classList.remove("border-[#E85D8B]", "bg-[#E85D8B]/12", "backdrop-blur-2xs");
-        dot.classList.remove("scale-125", "bg-[#E85D8B]");
+        label.textContent = text;
+        label.style.opacity = "1";
+        badge.style.width = "auto";
+        badge.style.height = "24px";
+        badge.style.padding = "2px 10px";
+        badge.style.backgroundColor = mode === "try" ? "#8B72D8" : "#E85D8B";
+        badge.style.borderRadius = "9999px";
+        badge.style.boxShadow = "0 6px 18px rgba(232, 93, 139, 0.45)";
       }
     };
 
+    const onMouseMove = (e: MouseEvent) => {
+      // Keep center offset for smoothness
+      setCursorX(e.clientX);
+      setCursorY(e.clientY);
+
+      // Subtle magnetic pull for primary CTA buttons
+      if (activeMagneticElement) {
+        const rect = activeMagneticElement.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const dx = e.clientX - centerX;
+        const dy = e.clientY - centerY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 60) {
+          gsap.to(activeMagneticElement, {
+            x: dx * 0.25,
+            y: dy * 0.25,
+            duration: 0.25,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        } else {
+          gsap.to(activeMagneticElement, {
+            x: 0,
+            y: 0,
+            duration: 0.4,
+            ease: "elastic.out(1, 0.4)",
+            overwrite: "auto",
+          });
+          activeMagneticElement = null;
+        }
+      }
+    };
+
+    const onMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      // 1. Draggable / Interactive Playground
+      if (
+        target.closest("[data-cursor='try']") ||
+        target.closest("#playground .rounded-2xl") ||
+        target.closest(".interactive-stage")
+      ) {
+        setCursorState("try", "TRY →");
+        return;
+      }
+
+      // 2. Project Image
+      if (
+        target.closest(".proj-image") ||
+        target.closest("[data-cursor='explore']") ||
+        target.closest(".group\\/shot")
+      ) {
+        setCursorState("explore", "EXPLORE");
+        return;
+      }
+
+      // 3. Project Card
+      if (
+        target.closest("[data-cursor='project']") ||
+        target.closest(".group\\/preview") ||
+        target.closest(".proj-frame")
+      ) {
+        setCursorState("project", "VIEW");
+        return;
+      }
+
+      // 4. Primary CTA Magnetic Buttons
+      const magneticBtn = target.closest(".btn-primary, [data-magnetic], button[type='submit']") as HTMLElement | null;
+      if (magneticBtn) {
+        activeMagneticElement = magneticBtn;
+        setCursorState("button", "CLICK →");
+        return;
+      }
+
+      // 5. Button
+      if (
+        target.tagName === "BUTTON" ||
+        target.closest("button") ||
+        target.getAttribute("role") === "button"
+      ) {
+        setCursorState("button", "CLICK →");
+        return;
+      }
+
+      // 6. Link
+      if (target.tagName === "A" || target.closest("a")) {
+        setCursorState("link", "OPEN →");
+        return;
+      }
+
+      // Default
+      setCursorState("normal", "");
+    };
+
+    const onMouseLeave = () => {
+      if (activeMagneticElement) {
+        gsap.to(activeMagneticElement, {
+          x: 0,
+          y: 0,
+          duration: 0.35,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+        activeMagneticElement = null;
+      }
+      cursor.style.opacity = "0";
+    };
+
+    const onMouseEnter = () => {
+      cursor.style.opacity = "1";
+    };
+
     window.addEventListener("mousemove", onMouseMove, { passive: true });
-    window.addEventListener("mousedown", onMouseDown, { passive: true });
-    window.addEventListener("mouseup", onMouseUp, { passive: true });
-    window.addEventListener("mouseover", handlePointerOver, { passive: true });
-    rafId = requestAnimationFrame(render);
+    window.addEventListener("mouseover", onMouseOver, { passive: true });
+    document.addEventListener("mouseleave", onMouseLeave);
+    document.addEventListener("mouseenter", onMouseEnter);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mousedown", onMouseDown);
-      window.removeEventListener("mouseup", onMouseUp);
-      window.removeEventListener("mouseover", handlePointerOver);
-      cancelAnimationFrame(rafId);
+      window.removeEventListener("mouseover", onMouseOver);
+      document.removeEventListener("mouseleave", onMouseLeave);
+      document.removeEventListener("mouseenter", onMouseEnter);
+      if (activeMagneticElement) {
+        gsap.killTweensOf(activeMagneticElement);
+      }
     };
   }, []);
 
   return (
-    <>
+    <div
+      ref={cursorRef}
+      className="pointer-events-none fixed left-0 top-0 z-[99999] hidden -translate-x-1/2 -translate-y-1/2 select-none"
+      style={{
+        transform: "translate3d(-100px, -100px, 0)",
+        willChange: "transform",
+      }}
+    >
       <div
-        ref={dotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[9999] h-1.5 w-1.5 rounded-full bg-[#E85D8B] transition-transform duration-150 ease-out hidden md:block"
-        style={{ transform: "translate3d(-100px, -100px, 0)", willChange: "transform" }}
-      />
-      <div
-        ref={ringRef}
-        className="pointer-events-none fixed left-0 top-0 z-[9998] h-6.5 w-6.5 rounded-full border-[1.5px] border-[#E85D8B]/50 shadow-[0_0_12px_rgba(232,93,139,0.15)] transition-[border-color,background-color] duration-200 ease-out hidden md:block"
-        style={{ transform: "translate3d(-100px, -100px, 0)", willChange: "transform" }}
-      />
-    </>
+        ref={badgeRef}
+        className="relative flex items-center justify-center rounded-full bg-[#E85D8B] text-white shadow-[0_3px_12px_rgba(232,93,139,0.4)] transition-[width,height,background-color,box-shadow,padding] duration-200 ease-out"
+        style={{
+          width: "9px",
+          height: "9px",
+        }}
+      >
+        <span
+          ref={labelRef}
+          className="whitespace-nowrap font-mono text-[9px] font-extrabold uppercase tracking-wider text-white opacity-0 transition-opacity duration-150"
+        />
+      </div>
+    </div>
   );
 }
-
