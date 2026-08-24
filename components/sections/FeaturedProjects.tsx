@@ -55,6 +55,9 @@ const projectStyles = [
 export default function FeaturedProjects() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const tagRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const projectRowsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -62,22 +65,34 @@ export default function FeaturedProjects() {
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (prefersReducedMotion) return;
 
-      gsap.fromTo(
-        headerRef.current,
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.65,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 88%",
-            once: true,
-            toggleActions: "play none none none",
-          },
-        }
-      );
+      const headerTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: "top 88%",
+          once: true,
+          toggleActions: "play none none none",
+        },
+        defaults: { ease: "power3.out" },
+      });
+
+      headerTl
+        .fromTo(
+          tagRef.current,
+          { opacity: 0, y: 14, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.4 }
+        )
+        .fromTo(
+          headingRef.current,
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.5 },
+          "-=0.2"
+        )
+        .fromTo(
+          subtitleRef.current,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.45 },
+          "-=0.25"
+        );
 
       projectRowsRef.current.forEach((row) => {
         if (!row) return;
@@ -160,18 +175,22 @@ export default function FeaturedProjects() {
 
         <div ref={headerRef} className="max-w-3xl mb-8 sm:mb-14 text-left">
 
-          <div className="inline-flex items-center gap-2 mb-4 sm:mb-5 rounded-full bg-[#FCE8E8] border border-[#F8D2D9] px-3.5 py-0.5 text-xs font-kalam font-bold text-[#E85D8B] shadow-2xs">
+          <div
+            ref={tagRef}
+            className="inline-flex items-center gap-2 mb-4 sm:mb-5 rounded-full bg-[#FCE8E8] border border-[#F8D2D9] px-3.5 py-0.5 text-xs font-kalam font-bold text-[#E85D8B] shadow-2xs"
+          >
             <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B] animate-ping" />
-            <span>PROJECTS</span>
+            <span>SELECTED WORK / 03</span>
           </div>
 
           <h2
+            ref={headingRef}
             className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#302535] font-kalam leading-[1.15]"
             style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
           >
             Things I&apos;ve{" "}
             <span className="text-[#E85D8B] relative inline-block">
-              Built.
+              built.
               <motion.svg
                 className="absolute -bottom-1.5 left-0 w-full h-3.5 overflow-visible pointer-events-none text-[#E85D8B]"
                 viewBox="0 0 200 12"
@@ -191,8 +210,11 @@ export default function FeaturedProjects() {
             </span>
           </h2>
 
-          <p className="mt-3 text-xs sm:text-sm lg:text-base text-[#756875] font-normal leading-relaxed">
-            From full-stack AI applications to interactive component design systems, each project represents clean engineering, scalable architecture, and thoughtful user experience.
+          <p
+            ref={subtitleRef}
+            className="mt-3 text-xs sm:text-sm lg:text-base text-[#756875] font-normal leading-relaxed"
+          >
+            Some experiments, some products, all built from scratch.
           </p>
         </div>
 
