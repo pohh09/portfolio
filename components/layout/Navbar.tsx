@@ -17,7 +17,40 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#home");
   const [scrolled, setScrolled] = useState(false);
+  const [easterEggActive, setEasterEggActive] = useState(false);
+  const [discoveredCount, setDiscoveredCount] = useState(0);
   const navRef = useRef<HTMLDivElement>(null);
+  const clickCountRef = useRef(0);
+  const clickTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const hideTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    clickCountRef.current += 1;
+
+    if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
+    clickTimerRef.current = setTimeout(() => {
+      clickCountRef.current = 0;
+    }, 1500);
+
+    if (clickCountRef.current >= 3) {
+      e.preventDefault();
+      clickCountRef.current = 0;
+      setEasterEggActive(true);
+      setDiscoveredCount((prev) => prev + 1);
+
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = setTimeout(() => {
+        setEasterEggActive(false);
+      }, 2200);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -93,23 +126,60 @@ export default function Navbar() {
         `}
       >
 
+        {/* Easter Egg Floating Message */}
+        <AnimatePresence>
+          {easterEggActive && (
+            <motion.div
+              initial={{ opacity: 0, y: -6, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -6, scale: 0.9 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="absolute top-12 sm:top-14 left-2 sm:left-4 z-50 pointer-events-none flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 border border-[#F8D2D9] text-[#E85D8B] text-xs font-mono font-bold shadow-[0_8px_20px_rgba(232,93,139,0.22)] backdrop-blur-md"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B] animate-ping" />
+              <span>{discoveredCount > 1 ? "Okay, you found it. 👀" : "You found something. ✦"}</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <div className="relative z-10 flex h-9 sm:h-11 items-center justify-between">
 
           <div className="flex items-center justify-start min-w-0">
             <a
               href="#home"
-              onClick={() => setOpen(false)}
-              className="group flex items-center gap-2 sm:gap-2.5"
+              onClick={(e) => {
+                handleLogoClick(e);
+                if (open) setOpen(false);
+              }}
+              className="group relative flex items-center gap-2 sm:gap-2.5 cursor-pointer"
             >
 
-              <div className="flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-[#E85D8B] to-[#F29AB2] text-white font-bold text-[11px] sm:text-xs shadow-[0_3px_10px_rgba(232,93,139,0.3)] transition-transform duration-200 group-hover:scale-105">
+              {/* Sparkle bursts when Easter Egg is active */}
+              {easterEggActive && (
+                <>
+                  <span className="pointer-events-none absolute -top-2 -left-1 text-[10px] text-[#E85D8B] animate-bounce">✦</span>
+                  <span className="pointer-events-none absolute -bottom-1 -right-2 text-[10px] text-[#B9A1E8] animate-pulse">★</span>
+                  <span className="pointer-events-none absolute -top-2 right-1 text-[10px] text-[#8DDDE5] animate-ping">✨</span>
+                </>
+              )}
+
+              <motion.div
+                animate={easterEggActive ? { scale: [1, 1.15, 1], rotate: [0, 6, -6, 0] } : {}}
+                transition={{ duration: 0.45 }}
+                className="flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-[#E85D8B] to-[#F29AB2] text-white font-bold text-[11px] sm:text-xs shadow-[0_3px_10px_rgba(232,93,139,0.3)] transition-transform duration-200 group-hover:scale-105"
+              >
                 PD
-              </div>
+              </motion.div>
+
               <div className="flex flex-col justify-center min-w-0">
                 <div className="flex items-center gap-1 leading-tight">
-                  <span className="text-sm sm:text-base font-bold tracking-tight text-[#302535] font-kalam truncate">
+                  <motion.span
+                    animate={easterEggActive ? { scale: [1, 1.08, 1] } : {}}
+                    transition={{ duration: 0.35 }}
+                    className="text-sm sm:text-base font-bold tracking-tight text-[#302535] font-kalam truncate"
+                  >
                     Pooja Daki
-                  </span>
+                  </motion.span>
                 </div>
                 <span className="text-[7.5px] sm:text-[9px] font-mono font-extrabold uppercase tracking-wider sm:tracking-widest text-[#E85D8B] leading-none truncate">
                   Full Stack Dev
