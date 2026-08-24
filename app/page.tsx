@@ -4,6 +4,7 @@ import About from "@/components/sections/About";
 import FeaturedProjects from "@/components/sections/FeaturedProjects";
 import DesignToCode from "@/components/sections/DesignToCode";
 import TechStack from "@/components/sections/TechStack";
+import Playground from "@/components/sections/Playground";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 
@@ -18,6 +19,7 @@ export default function Home() {
         <FeaturedProjects />
         <DesignToCode />
         <TechStack />
+        <Playground />
         <Contact />
       </main>
 
