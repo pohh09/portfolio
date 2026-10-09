@@ -29,6 +29,8 @@ const projectStyles = [
     badge: "AI POWERED WORKSPACE &bull; GEMINI AI",
     domain: "nyra-ai-chatbot.vercel.app",
     role: "Full-Stack + AI",
+    imageBg: "bg-[#06040A]",
+    imageClass: "object-contain",
   },
   {
     wash: "from-[#FAF7FE]/80 via-[#FFFDFC] to-transparent",
@@ -393,13 +395,13 @@ export default function FeaturedProjects() {
                           </span>
                         </div>
 
-                        <div className="proj-image relative aspect-[16/10] w-full overflow-hidden bg-slate-50">
+                        <div className={`proj-image relative aspect-[16/10] w-full overflow-hidden ${style.imageBg || "bg-slate-50"}`}>
                           <Image
                             src={project.image}
                             alt={project.title}
                             fill
                             sizes="(max-width: 1024px) 100vw, 450px"
-                            className="object-cover object-top transition-transform duration-500 ease-out group-hover/preview:scale-103 will-change-transform"
+                            className={`${style.imageClass || "object-cover object-top"} transition-transform duration-500 ease-out group-hover/preview:scale-103 will-change-transform`}
                             priority={idx === 0}
                             loading={idx === 0 ? "eager" : "lazy"}
                           />
