@@ -103,10 +103,9 @@ export default function CustomCursor() {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      // 1. Draggable / Interactive Playground
+      // 1. Draggable / Interactive elements
       if (
         target.closest("[data-cursor='try']") ||
-        target.closest("#playground .rounded-2xl") ||
         target.closest(".interactive-stage")
       ) {
         setCursorState("try", "TRY →");

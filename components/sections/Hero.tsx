@@ -53,48 +53,48 @@ export default function Hero() {
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.45 }
       )
-      .fromTo(
-        titleLine1Ref.current,
-        { opacity: 0, y: 28 },
-        { opacity: 1, y: 0, duration: 0.55 },
-        "-=0.15"
-      )
-      .fromTo(
-        titleLine2Ref.current,
-        { opacity: 0, y: 28 },
-        { opacity: 1, y: 0, duration: 0.55 },
-        "-=0.35"
-      )
-      .fromTo(
-        bioRef.current,
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.45 },
-        "-=0.25"
-      )
-      .fromTo(
-        ctaRef.current,
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.45 },
-        "-=0.25"
-      )
-      .fromTo(
-        metricsRef.current,
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: 0.4 },
-        "-=0.2"
-      )
-      .fromTo(
-        workspaceRef.current,
-        { opacity: 0, x: 25, scale: 0.96 },
-        { opacity: 1, x: 0, scale: 1, duration: 0.75, ease: "power2.out" },
-        "-=0.45"
-      )
-      .fromTo(
-        floatingLabelsRef.current?.querySelectorAll(".floating-chip") || [],
-        { opacity: 0, scale: 0.8, y: 12 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.4, stagger: 0.08 },
-        "-=0.35"
-      );
+        .fromTo(
+          titleLine1Ref.current,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.55 },
+          "-=0.15"
+        )
+        .fromTo(
+          titleLine2Ref.current,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.55 },
+          "-=0.35"
+        )
+        .fromTo(
+          bioRef.current,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.45 },
+          "-=0.25"
+        )
+        .fromTo(
+          ctaRef.current,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.45 },
+          "-=0.25"
+        )
+        .fromTo(
+          metricsRef.current,
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.4 },
+          "-=0.2"
+        )
+        .fromTo(
+          workspaceRef.current,
+          { opacity: 0, x: 25, scale: 0.96 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.75, ease: "power2.out" },
+          "-=0.45"
+        )
+        .fromTo(
+          floatingLabelsRef.current?.querySelectorAll(".floating-chip") || [],
+          { opacity: 0, scale: 0.8, y: 12 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.4, stagger: 0.08 },
+          "-=0.35"
+        );
 
       // Scroll-driven parallax for hero background elements and decorative sparkles
       const decorItems = containerRef.current?.querySelectorAll(".hero-parallax-item");
@@ -307,31 +307,28 @@ export default function Hero() {
                     <div className="flex items-center gap-0.5 sm:gap-1 p-0.5 rounded-full bg-[#FFF5F7] border border-[#F0DCE3] shrink-0">
                       <button
                         onClick={() => setActiveTab("ui")}
-                        className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
-                          activeTab === "ui"
+                        className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${activeTab === "ui"
                             ? "bg-[#E85D8B] text-white shadow-2xs"
                             : "text-[#756875] hover:text-[#302535]"
-                        }`}
+                          }`}
                       >
                         Frontend
                       </button>
                       <button
                         onClick={() => setActiveTab("fullstack")}
-                        className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
-                          activeTab === "fullstack"
+                        className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${activeTab === "fullstack"
                             ? "bg-[#8B72D8] text-white shadow-2xs"
                             : "text-[#756875] hover:text-[#302535]"
-                        }`}
+                          }`}
                       >
                         Backend
                       </button>
                       <button
                         onClick={() => setActiveTab("motion")}
-                        className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
-                          activeTab === "motion"
+                        className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${activeTab === "motion"
                             ? "bg-[#F29AB2] text-white shadow-2xs"
                             : "text-[#756875] hover:text-[#302535]"
-                        }`}
+                          }`}
                       >
                         Motion
                       </button>

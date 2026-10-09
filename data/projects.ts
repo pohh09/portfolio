@@ -105,6 +105,38 @@ export const projects: Project[] = [
 
   {
     id: 2,
+    slug: "nyra-ai",
+    title: "Nyra AI – AI Powered Workspace",
+    subtitle: "Full-Stack AI Workspace & Studio",
+    description:
+      "A full-stack AI workspace unifying conversational AI, document/image analysis, and prompt tooling into a single product, replacing the need for multiple disjointed AI tools.",
+    image: "/projects/nyra-ai.png",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Zustand",
+      "TanStack Query",
+      "JWT",
+      "Gemini AI",
+    ],
+    features: [
+      "Unified Multi-Modal AI Workspace & Tooling",
+      "REST APIs with Node.js, Express.js & MongoDB",
+      "JWT Authentication & Protected API Routes",
+      "Dual State Architecture (Zustand + TanStack Query)",
+      "Gemini AI Multi-Turn Conversations & Prompt Tools",
+      "Document/Image Intelligence & Context Workflows",
+    ],
+    github: "https://github.com/pohh09/nyra-ai",
+    live: "https://nyra-ai-chatbot.vercel.app/",
+  },
+
+  {
+    id: 3,
     title: "Design System",
     subtitle: "Figma to Code Implementation",
     description:
@@ -135,7 +167,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: 3,
+    id: 4,
     title: "Personal Developer Portfolio",
     subtitle: "Interactive Engineering Portfolio",
     description:
@@ -165,7 +197,7 @@ export const projects: Project[] = [
   },
 
   {
-    id: 4,
+    id: 5,
     title: "Gym Website",
     subtitle: "Frontend React Application",
     description:

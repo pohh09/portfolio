@@ -8,33 +8,43 @@
    DESIGN TOKENS — Soft Illustrated Warm Pastel Reference Theme
    ============================================================ */
 :root {
-  --font-outfit:     'Outfit', 'Plus Jakarta Sans', sans-serif;
-  --font-jakarta:    'Plus Jakarta Sans', sans-serif;
-  --font-syne:       'Syne', sans-serif;
-  --font-kalam:      'Kalam', cursive, sans-serif;
-  --font-caveat:     'Caveat', cursive, sans-serif;
-  --font-nunito:     'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono:       'JetBrains Mono', monospace;
+  --font-outfit: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-syne: 'Syne', sans-serif;
+  --font-kalam: 'Kalam', cursive, sans-serif;
+  --font-caveat: 'Caveat', cursive, sans-serif;
+  --font-nunito: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  --bg-page:         #FFF8F5; /* Warm cream / pearl foundation */
-  --bg-surface:      #FFFFFF;
-  --bg-blush:        #FCE8E8;
-  --bg-peach:        #FFF1EC;
-  --bg-card:         #FFFFFF;
+  --bg-page: #FFF8F5;
+  /* Warm cream / pearl foundation */
+  --bg-surface: #FFFFFF;
+  --bg-blush: #FCE8E8;
+  --bg-peach: #FFF1EC;
+  --bg-card: #FFFFFF;
 
-  --text-primary:    #302535; /* Dark charcoal plum */
-  --text-secondary:  #756875; /* Soft plum gray */
-  --text-muted:      #A396A3;
+  --text-primary: #302535;
+  /* Dark charcoal plum */
+  --text-secondary: #756875;
+  /* Soft plum gray */
+  --text-muted: #A396A3;
 
-  --accent-pink:     #E85D8B; /* Primary personality pink from reference */
-  --accent-coral:    #F29AB2; /* Rose pink */
-  --accent-purple:   #B9A1E8; /* Soft lavender / purple */
-  --accent-cyan:     #8DDDE5; /* Tiny cyan highlight */
-  --accent-yellow:   #FAD074; /* Warm sunny accent */
-  --accent-green:    #82D9A7; /* Soft pastel green */
+  --accent-pink: #E85D8B;
+  /* Primary personality pink from reference */
+  --accent-coral: #F29AB2;
+  /* Rose pink */
+  --accent-purple: #B9A1E8;
+  /* Soft lavender / purple */
+  --accent-cyan: #8DDDE5;
+  /* Tiny cyan highlight */
+  --accent-yellow: #FAD074;
+  /* Warm sunny accent */
+  --accent-green: #82D9A7;
+  /* Soft pastel green */
 
-  --border-subtle:   #F5E6EB; /* Delicate pink-cream border */
-  --border-card:     #EADDE3;
+  --border-subtle: #F5E6EB;
+  /* Delicate pink-cream border */
+  --border-card: #EADDE3;
 }
 
 /* ============================================================
@@ -55,26 +65,43 @@ body {
 }
 
 /* Expressive handwritten display headings matching reference */
-h1, h2, h3, h4, h5, h6, .font-display, .font-heading, .font-kalam {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display,
+.font-heading,
+.font-kalam {
   font-family: var(--font-kalam), 'Kalam', cursive, sans-serif;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.01em;
 }
 
-.font-kalam, .font-kalam span {
+.font-kalam,
+.font-kalam span {
   font-family: var(--font-kalam), 'Kalam', cursive, sans-serif !important;
 }
 
-.font-caveat, .font-caveat span {
+.font-caveat,
+.font-caveat span {
   font-family: var(--font-caveat), 'Caveat', cursive, sans-serif !important;
 }
 
-.font-outfit, .font-outfit span {
+.font-outfit,
+.font-outfit span {
   font-family: var(--font-outfit), 'Outfit', sans-serif !important;
 }
 
-.font-sans, p, button, a, input, textarea, .font-body {
+.font-sans,
+p,
+button,
+a,
+input,
+textarea,
+.font-body {
   font-family: var(--font-nunito), 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -82,7 +109,9 @@ span {
   font-family: inherit;
 }
 
-code, pre, .font-mono {
+code,
+pre,
+.font-mono {
   font-family: var(--font-mono), 'JetBrains Mono', monospace;
 }
 
@@ -98,7 +127,9 @@ body::-webkit-scrollbar {
 /* ============================================================
    SOFT ILLUSTRATED PASTEL CARDS & SURFACES (Reference Match)
    ============================================================ */
-.pastel-card, .editorial-card, .pearl-card {
+.pastel-card,
+.editorial-card,
+.pearl-card {
   background: #FFFFFF;
   border: 1.5px solid var(--border-card);
   border-radius: 24px;
@@ -150,7 +181,8 @@ body::-webkit-scrollbar {
   box-shadow: 0 10px 24px -3px rgba(232, 93, 139, 0.48);
 }
 
-.btn-secondary, .btn-ghost {
+.btn-secondary,
+.btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -167,7 +199,8 @@ body::-webkit-scrollbar {
   cursor: pointer;
 }
 
-.btn-secondary:hover, .btn-ghost:hover {
+.btn-secondary:hover,
+.btn-ghost:hover {
   background: #FFF5F7;
   border-color: #F29AB2;
   color: #E85D8B;
@@ -212,31 +245,52 @@ body::-webkit-scrollbar {
    ORGANIC WAVE BACKGROUNDS
    ============================================================ */
 .wave-bg-about {
-  background-image: 
+  background-image:
     radial-gradient(ellipse 90% 70% at 85% 15%, #FCE8E8 0%, transparent 60%),
     radial-gradient(ellipse 80% 60% at 15% 85%, #FFF1EC 0%, transparent 60%);
 }
 
 .wave-bg-design {
-  background-image: 
+  background-image:
     radial-gradient(ellipse 90% 70% at 15% 20%, #FCE8E8 0%, transparent 60%),
     radial-gradient(ellipse 80% 60% at 85% 80%, #F3EDFC 0%, transparent 60%);
 }
 
 /* Keyframe animations */
 @keyframes floatSlow {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-  50% { transform: translate3d(0, -6px, 0) rotate(2deg); }
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(0, -6px, 0) rotate(2deg);
+  }
 }
 
 @keyframes floatHarmonic {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(0, -8px, 0); }
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
 }
 
 @keyframes floatDelayed {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-  50% { transform: translate3d(0, -5px, 0) rotate(-2deg); }
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(0, -5px, 0) rotate(-2deg);
+  }
 }
 
 .animate-float-slow {
@@ -255,8 +309,15 @@ body::-webkit-scrollbar {
 }
 
 @keyframes pulseDoodle {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
 }
 
 .animate-doodle {
@@ -264,8 +325,13 @@ body::-webkit-scrollbar {
 }
 
 @keyframes shimmerRibbon {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
 }
 
 .animate-shimmer {
@@ -274,13 +340,23 @@ body::-webkit-scrollbar {
 
 /* GPU Accelerated Infinite Marquee Keyframes */
 @keyframes marqueeScrollLeft {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 @keyframes marqueeScrollRight {
-  0% { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .animate-marquee-left {

@@ -6,11 +6,11 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const navLinks = [
-  { name: "Home",     href: "#home" },
-  { name: "About",    href: "#about" },
-  { name: "Skills",   href: "#skills" },
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Contact",  href: "#contact" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -198,9 +198,8 @@ export default function Navbar() {
                   className="group relative rounded-full px-3 py-1 text-xs font-bold tracking-wide transition-colors duration-200"
                 >
                   <span
-                    className={`relative z-10 transition-colors duration-200 ${
-                      isActive ? "text-[#E85D8B] font-extrabold" : "text-[#756875] group-hover:text-[#E85D8B]"
-                    }`}
+                    className={`relative z-10 transition-colors duration-200 ${isActive ? "text-[#E85D8B] font-extrabold" : "text-[#756875] group-hover:text-[#E85D8B]"
+                      }`}
                   >
                     {item.name}
                   </span>

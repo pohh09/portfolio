@@ -1,3 +1,12 @@
+export const pixel = {
+  variable: "--font-pixel",
+  className: "font-pixel",
+};
+
+export const silkscreen = {
+  variable: "--font-silkscreen",
+  className: "font-silkscreen",
+};
 
 export const display = {
   variable: "--font-display",

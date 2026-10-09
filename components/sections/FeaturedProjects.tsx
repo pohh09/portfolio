@@ -21,6 +21,16 @@ const projectStyles = [
     role: "Full-Stack + AI",
   },
   {
+    wash: "from-[#FDF2F8]/80 via-[#FFFDFC] to-transparent",
+    glow: "rgba(217, 38, 136, 0.16)",
+    tagBg: "bg-[#FCE7F3]",
+    tagText: "text-[#BE185D]",
+    tagBorder: "border-[#FBCFE8]",
+    badge: "AI POWERED WORKSPACE &bull; GEMINI AI",
+    domain: "nyra-ai-chatbot.vercel.app",
+    role: "Full-Stack + AI",
+  },
+  {
     wash: "from-[#FAF7FE]/80 via-[#FFFDFC] to-transparent",
     glow: "rgba(157, 128, 228, 0.12)",
     tagBg: "bg-[#E8DDF7]",
@@ -47,7 +57,7 @@ const projectStyles = [
     tagText: "text-[#B8860B]",
     tagBorder: "border-[#F8DC82]",
     badge: "FITNESS WEB APPLICATION &bull; REACT",
-    domain: "gym-website-react.vercel.app",
+    domain: "gym-website-three-sable.vercel.app",
     role: "Frontend Web",
   },
 ];
