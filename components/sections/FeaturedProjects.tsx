@@ -448,15 +448,29 @@ export default function FeaturedProjects() {
               </div>
             </div>
 
-            <a
-              href="https://github.com/pohh09"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full bg-[#302535] group-hover/git:bg-[#E85D8B] text-white px-4 py-1.5 text-xs font-bold shadow-2xs transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
-            >
-              <span>Explore GitHub</span>
-              <ArrowUpRight size={13} className="transition-transform duration-200 group-hover/git:translate-x-0.5 group-hover/git:-translate-y-0.5" />
-            </a>
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <a
+                href="https://github.com/pohh09"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full bg-[#302535] group-hover/git:bg-[#E85D8B] text-white px-4 py-1.5 text-xs font-bold shadow-2xs transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                <FaGithub size={13} />
+                <span>GitHub</span>
+                <ArrowUpRight size={12} className="transition-transform duration-200 group-hover/git:translate-x-0.5 group-hover/git:-translate-y-0.5" />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/pooja-daki/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full bg-[#0A66C2] hover:bg-[#084e96] text-white px-4 py-1.5 text-xs font-bold shadow-2xs transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                <FaLinkedin size={13} />
+                <span>LinkedIn</span>
+                <ArrowUpRight size={12} className="transition-transform duration-200" />
+              </a>
+            </div>
 
           </div>
         </div>
