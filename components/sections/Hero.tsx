@@ -10,13 +10,11 @@ import {
   Lightbulb,
   Code2,
   BookOpen,
-  RotateCcw,
 } from "lucide-react";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLampOn, setIsLampOn] = useState<boolean>(true);
-  const [nameMode, setNameMode] = useState<"pooja" | "manisha">("pooja");
   const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   // Subtle interactive parallax for illustration
@@ -97,11 +95,11 @@ export default function Hero() {
       <div className="pointer-events-none absolute top-1/4 left-0 w-[450px] h-[450px] rounded-full bg-gradient-to-tr from-[#F8E7EE]/60 via-[#FFF5F2]/40 to-transparent blur-3xl opacity-70 -z-10" />
       <div className="pointer-events-none absolute -bottom-10 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFE8EE]/50 blur-3xl opacity-60 -z-10" />
 
-      {/* Floating Cute Doodle Stars & Hearts */}
+      {/* Floating Whimsical Doodle Stars & Sparkles (matching portfolio style) */}
       <motion.div
         animate={{ y: [0, -8, 0], rotate: [0, 4, 0] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute top-28 left-[15%] text-[#FBBF24] text-xl font-bold opacity-60 select-none z-10"
+        className="pointer-events-none absolute top-28 left-[15%] text-[#E85D8B] text-xl font-bold opacity-45 select-none z-10"
       >
         ✦
       </motion.div>
@@ -109,7 +107,7 @@ export default function Hero() {
       <motion.div
         animate={{ y: [0, 9, 0], rotate: [0, -6, 0] }}
         transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        className="pointer-events-none absolute top-40 right-[42%] text-[#FF527B] text-lg font-bold opacity-50 select-none z-10"
+        className="pointer-events-none absolute top-40 right-[42%] text-[#FF527B] text-lg font-bold opacity-45 select-none z-10"
       >
         ♡
       </motion.div>
@@ -117,7 +115,7 @@ export default function Hero() {
       <motion.div
         animate={{ y: [0, -7, 0], scale: [1, 1.08, 1] }}
         transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="pointer-events-none absolute top-24 right-[28%] text-[#F59E0B] text-2xl font-bold opacity-55 select-none z-10"
+        className="pointer-events-none absolute top-24 right-[28%] text-[#FAD074] text-xl font-bold opacity-50 select-none z-10"
       >
         ★
       </motion.div>
@@ -127,66 +125,71 @@ export default function Hero() {
         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 xl:gap-8">
 
           {/* Center-Left Content Column */}
-          <div className="w-full lg:w-[48%] xl:w-[48%] flex flex-col items-start text-left z-20">
+          <div className="w-full lg:w-[50%] xl:w-[48%] flex flex-col items-start text-left z-20">
 
-            {/* "Hello, I'm ♡" Handwritten Badge */}
+            {/* Availability Badge (matches portfolio-wide badge style) */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative inline-flex items-center gap-1.5 mb-1.5 text-sm sm:text-base font-bold text-[#2D1E2F]"
+              className="inline-flex items-center gap-2 mb-4 sm:mb-5 rounded-full bg-[#FCE8E8] border border-[#F8D2D9] px-3.5 py-0.5 text-xs font-kalam font-bold text-[#E85D8B] shadow-2xs"
+              style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
             >
-              {/* Pink doodle rays above */}
-              <div className="absolute -top-3.5 left-5 text-[#FF527B] select-none pointer-events-none">
-                <svg width="22" height="13" viewBox="0 0 22 13" fill="none">
-                  <path d="M4 11 C5 6 6 2 7 1" stroke="#FF527B" strokeWidth="2.4" strokeLinecap="round" />
-                  <path d="M11 11 C11 5 11.5 2 12 1" stroke="#FF527B" strokeWidth="2.4" strokeLinecap="round" />
-                  <path d="M18 11 C17 6 16.5 2 16 1" stroke="#FF527B" strokeWidth="2.4" strokeLinecap="round" />
-                </svg>
-              </div>
-
-              <span
-                className="font-kalam text-lg sm:text-xl font-bold tracking-tight text-[#2D1E2F]"
-                style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
-              >
-                Hello, I&apos;m
-              </span>
-              <span className="text-[#FF527B] font-kalam text-lg font-bold">♡</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B] animate-ping" />
+              <span className="tracking-wide">✦ AVAILABLE FOR FULL-STACK &amp; FRONTEND ROLES</span>
             </motion.div>
 
-            {/* Massive Bold Playful Heading */}
+            {/* Signature Kalam Heading: "Hello, I'm Full Stack Developer." */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
               className="w-full mb-3 sm:mb-4 select-none"
             >
-              <h1 className="font-extrabold tracking-tight leading-[0.98] flex flex-col items-start font-outfit">
-                {/* Line 1: First Name in Hot Pink */}
-                <span className="text-[#FF527B] text-[clamp(3.1rem,7.2vw,5.6rem)] font-extrabold font-outfit tracking-tight drop-shadow-xs">
-                  {nameMode === "pooja" ? "Pooja" : "Manisha"}
+              <h1
+                className="font-kalam font-bold tracking-tight leading-[1.08] flex flex-col items-start text-left"
+                style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+              >
+                {/* Line 1: "Hello, I'm" in pink Kalam cursive */}
+                <span
+                  className="text-[#E85D8B] block font-kalam font-bold text-[clamp(2.2rem,5.2vw,3.8rem)] leading-[1.12]"
+                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                >
+                  Hello, I&apos;m
                 </span>
 
-                {/* Line 2: Last Name in Dark Espresso + Cute Heart */}
-                <span className="text-[#2D1E2F] text-[clamp(3.1rem,7.2vw,5.6rem)] font-extrabold font-outfit tracking-tight inline-flex items-center gap-2">
-                  <span>{nameMode === "pooja" ? "Daki" : "Roy"}</span>
-                  <motion.span
-                    animate={{ scale: [1, 1.15, 1] }}
-                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                    className="inline-block text-[#FF527B]"
+                {/* Line 2: "Full Stack" in dark espresso Kalam */}
+                <span
+                  className="text-[#302535] block font-kalam font-bold text-[clamp(2.7rem,6.4vw,5.2rem)] leading-[1.04]"
+                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                >
+                  Full Stack
+                </span>
+
+                {/* Line 3: "Developer." in warm coral pink with hand-drawn underline and heart */}
+                <span
+                  className="text-[#FF5E86] inline-flex items-center gap-2 sm:gap-3 relative pb-1 font-kalam font-bold text-[clamp(2.7rem,6.4vw,5.2rem)] leading-[1.04]"
+                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                >
+                  <span style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}>Developer.</span>
+
+                  <motion.svg
+                    className="absolute -bottom-2 left-0 w-[95%] h-4 overflow-visible pointer-events-none text-[#FF5E86]"
+                    viewBox="0 0 240 14"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                   >
-                    <svg
-                      className="w-8 h-8 sm:w-11 sm:h-11 overflow-visible -mt-1 sm:-mt-2"
-                      viewBox="0 0 24 24"
-                      fill="none"
+                    <motion.path
+                      d="M3,8 C70,2 170,12 236,6"
                       stroke="currentColor"
-                      strokeWidth="2.6"
+                      strokeWidth="3.5"
                       strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                    </svg>
-                  </motion.span>
+                    />
+                  </motion.svg>
+
+                  <span className="text-[#FF5E86] text-3xl sm:text-4xl -mt-1 sm:-mt-2 select-none">♡</span>
                 </span>
               </h1>
             </motion.div>
@@ -196,12 +199,13 @@ export default function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 rounded-full bg-[#FCE8ED] border border-[#F8D2DC] px-4 py-1.5 text-xs sm:text-sm font-extrabold text-[#473444] mb-3.5 shadow-2xs"
+              className="inline-flex items-center gap-2 rounded-full bg-[#FCE8ED] border border-[#F8D2DC] px-4 py-1 text-xs sm:text-sm font-kalam font-bold text-[#473444] mb-3.5 shadow-2xs"
+              style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
             >
               <span className="tracking-wide">Developer</span>
-              <span className="text-[#FF527B] text-xs">&bull;</span>
+              <span className="text-[#E85D8B] text-xs">&bull;</span>
               <span className="tracking-wide">Creator</span>
-              <span className="text-[#FF527B] text-xs">&bull;</span>
+              <span className="text-[#E85D8B] text-xs">&bull;</span>
               <span className="tracking-wide">Problem Solver</span>
             </motion.div>
 
@@ -210,9 +214,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="text-[#6D5D70] text-sm sm:text-base leading-relaxed mb-6 max-w-lg font-medium"
+              className="text-[#5A4D5D] text-sm sm:text-base lg:text-[17px] leading-relaxed mb-6 max-w-lg font-normal"
             >
-              I build modern, responsive and user-friendly websites that help brands grow and make an impact.
+              Hi, I&apos;m <strong className="text-[#302535] font-bold">Pooja Daki</strong> — a Full Stack Developer building modern, responsive, and user-friendly web applications that help brands grow and make an impact.
             </motion.p>
 
             {/* Action Buttons: View My Work & Download CV */}
@@ -224,32 +228,19 @@ export default function Hero() {
             >
               <a
                 href="#projects"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#FF527B] hover:bg-[#E84069] text-white px-6 sm:px-7 py-3 text-xs sm:text-sm font-extrabold shadow-[0_8px_20px_-4px_rgba(255,82,123,0.45)] hover:shadow-[0_12px_26px_-4px_rgba(255,82,123,0.55)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#E85D8B] to-[#F29AB2] hover:from-[#D44775] hover:to-[#E85D8B] text-white px-6 sm:px-7 py-3 text-xs sm:text-sm font-extrabold shadow-[0_8px_20px_-4px_rgba(232,93,139,0.38)] hover:shadow-[0_12px_26px_-4px_rgba(232,93,139,0.48)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
               >
                 <span>View My Work</span>
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
               </a>
 
               <a
-                href="https://github.com/pohh09"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-white hover:bg-[#FFF5F8] text-[#2D1E2F] hover:text-[#FF527B] border-2 border-[#2D1E2F] hover:border-[#FF527B] px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-extrabold shadow-2xs hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                href="#contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-white hover:bg-[#FFF5F7] text-[#302535] hover:text-[#E85D8B] border border-[#EADDE3] hover:border-[#F29AB2] px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-extrabold shadow-2xs hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
               >
-                <span>Download CV</span>
-                <Download size={14} className="transition-transform group-hover:translate-y-0.5" />
+                <span>Let&apos;s Connect</span>
+                <Download size={14} className="transition-transform group-hover:translate-y-0.5 text-[#E85D8B]" />
               </a>
-
-              {/* Name Variant Switcher (Pooja / Manisha) */}
-              <button
-                type="button"
-                onClick={() => setNameMode((prev) => (prev === "pooja" ? "manisha" : "pooja"))}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 hover:bg-white border border-[#F4DEE4] text-[10px] font-mono font-bold text-[#756875] hover:text-[#FF527B] transition-all shadow-2xs cursor-pointer ml-auto sm:ml-0"
-                title="Toggle between user name and original mockup name"
-              >
-                <RotateCcw size={10} className="text-[#FF527B]" />
-                <span>Name: {nameMode === "pooja" ? "Pooja Daki" : "Manisha Roy"}</span>
-              </button>
             </motion.div>
 
             {/* Cute "Scroll Down" Indicator with Hand-Drawn Arrow & Mouse */}
@@ -261,13 +252,13 @@ export default function Hero() {
             >
               <div className="flex flex-col items-center">
                 <span
-                  className="font-kalam text-xs sm:text-sm font-bold text-[#FF527B] tracking-wide"
+                  className="font-kalam text-xs sm:text-sm font-bold text-[#E85D8B] tracking-wide"
                   style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
                 >
                   Scroll Down
                 </span>
                 {/* Hand-drawn dotted curved arrow */}
-                <svg width="42" height="34" viewBox="0 0 42 34" fill="none" className="text-[#FF527B]">
+                <svg width="42" height="34" viewBox="0 0 42 34" fill="none" className="text-[#E85D8B]">
                   <path
                     d="M6 4 C14 18 24 24 32 26"
                     stroke="currentColor"
@@ -286,11 +277,11 @@ export default function Hero() {
               </div>
 
               {/* Animated Cute Mouse */}
-              <div className="flex h-8 w-5 sm:h-9 sm:w-5.5 items-start justify-center rounded-full border-2 border-[#2D1E2F] p-1 bg-white/80 shadow-2xs">
+              <div className="flex h-8 w-5 sm:h-9 sm:w-5.5 items-start justify-center rounded-full border-2 border-[#302535] p-1 bg-white/80 shadow-2xs">
                 <motion.span
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="h-1.5 w-1 rounded-full bg-[#FF527B]"
+                  className="h-1.5 w-1 rounded-full bg-[#E85D8B]"
                 />
               </div>
             </motion.div>
@@ -298,7 +289,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Cozy Anime Desk Illustration Scene */}
-          <div className="w-full lg:w-[52%] xl:w-[54%] relative flex items-center justify-center">
+          <div className="w-full lg:w-[50%] xl:w-[52%] relative flex items-center justify-center">
 
             {/* Soft Pink Fluid Circle Backdrop Behind Character */}
             <div className="pointer-events-none absolute w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] lg:w-[540px] lg:h-[540px] rounded-full bg-gradient-to-tr from-[#FFE2EC]/90 via-[#FFF0F4]/80 to-[#FFE8EE]/40 blur-2xl opacity-90 -z-10" />
@@ -329,7 +320,8 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => setIsLampOn((prev) => !prev)}
-                className="absolute top-4 right-4 z-30 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 hover:bg-white text-[10px] font-mono font-bold text-[#473444] border border-[#F4DEE4] shadow-sm hover:scale-105 transition-all cursor-pointer backdrop-blur-md"
+                className="absolute top-4 right-4 z-30 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 hover:bg-white text-[10px] font-kalam font-bold text-[#473444] border border-[#F4DEE4] shadow-sm hover:scale-105 transition-all cursor-pointer backdrop-blur-md"
+                style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
                 title="Click to toggle desk lamp"
               >
                 <span className={`h-2 w-2 rounded-full ${isLampOn ? "bg-[#F59E0B] shadow-[0_0_8px_#F59E0B]" : "bg-neutral-300"}`} />
@@ -338,13 +330,19 @@ export default function Hero() {
 
               {/* Interactive Sticky Note Tooltip Badges */}
               <div className="absolute top-[42%] left-[45%] z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <span className="inline-block bg-[#FEF08A] text-[#422006] text-[10px] font-bold font-kalam px-2 py-0.5 rounded shadow-sm rotate-[-4deg]">
+                <span
+                  className="inline-block bg-[#FEF08A] text-[#422006] text-[11px] font-bold font-kalam px-2.5 py-0.5 rounded shadow-sm rotate-[-4deg]"
+                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                >
                   Keep Growing 🌱
                 </span>
               </div>
 
               <div className="absolute bottom-[24%] right-[28%] z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <span className="inline-block bg-[#1F2937] text-white text-[10px] font-bold font-mono px-2 py-0.5 rounded shadow-sm">
+                <span
+                  className="inline-block bg-[#1F2937] text-white text-[11px] font-bold font-kalam px-2.5 py-0.5 rounded shadow-sm"
+                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                >
                   Code &amp; Coffee ☕
                 </span>
               </div>
@@ -367,7 +365,7 @@ export default function Hero() {
 
         </div>
 
-        {/* Bottom Bento Deck: 5 Quick-Navigation Cards */}
+        {/* Bottom Bento Deck: 5 Quick-Navigation Cards with unified Kalam typography */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
@@ -378,7 +376,7 @@ export default function Hero() {
           <div className="pointer-events-none absolute -inset-x-6 -top-8 -bottom-6 bg-gradient-to-b from-white/70 via-white/90 to-white/95 rounded-[36px] blur-xl -z-10" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-3.5 w-full">
-            {navCards.map((card, idx) => {
+            {navCards.map((card) => {
               const FallbackIcon = card.fallbackIcon;
               return (
                 <motion.a
@@ -419,7 +417,10 @@ export default function Hero() {
 
                     {/* Card Title & Description */}
                     <div className="flex flex-col min-w-0">
-                      <h3 className="text-xs sm:text-sm font-extrabold text-[#2D1E2F] group-hover:text-[#FF527B] transition-colors leading-tight truncate">
+                      <h3
+                        className="text-sm sm:text-[15px] font-bold text-[#302535] group-hover:text-[#E85D8B] font-kalam transition-colors leading-tight truncate"
+                        style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                      >
                         {card.title}
                       </h3>
                       <p className="text-[11px] text-[#7A6B7D] leading-tight mt-0.5 line-clamp-2">
