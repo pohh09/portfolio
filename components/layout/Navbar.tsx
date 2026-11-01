@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Send } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const navLinks = [
@@ -10,6 +10,7 @@ const navLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Blog", href: "#featured-projects" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -180,6 +181,7 @@ export default function Navbar() {
                   >
                     Pooja Daki
                   </motion.span>
+                  <span className="text-[#FF527B] font-kalam text-sm">♡</span>
                 </div>
                 <span className="text-[7.5px] sm:text-[9px] font-mono font-extrabold uppercase tracking-wider sm:tracking-widest text-[#E85D8B] leading-none truncate">
                   Full Stack Dev
@@ -237,11 +239,11 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#E85D8B] to-[#F29AB2] hover:from-[#D44775] hover:to-[#E85D8B] px-2.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold text-white transition-all hover:-translate-y-0.5 shadow-[0_4px_14px_rgba(232,93,139,0.28)] active:translate-y-0"
+              className="inline-flex items-center gap-1.5 rounded-full bg-[#FF527B] hover:bg-[#E84069] px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold text-white transition-all hover:-translate-y-0.5 shadow-[0_4px_14px_rgba(255,82,123,0.32)] active:translate-y-0"
             >
               <span className="hidden xs:inline">Let&apos;s Connect</span>
               <span className="xs:hidden">Connect</span>
-              <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <Send size={11} className="-rotate-12 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
             <button
