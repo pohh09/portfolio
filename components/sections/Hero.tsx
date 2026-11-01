@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Download,
@@ -10,7 +11,6 @@ import {
   Code2,
   BookOpen,
 } from "lucide-react";
-import HeroDeskScene from "@/components/sections/HeroDeskScene";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,74 +31,55 @@ export default function Hero() {
       title: "About Me",
       description: "Get to know me better and my journey.",
       href: "#about",
+      avatarImg: "/avatar-chibi.png",
       badgeColor: "bg-[#F3E8FA]",
       borderColor: "border-[#E8D6F2] hover:border-[#D1B8E2]",
       arrowColor: "text-[#985BB5]",
       glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(152,91,181,0.22)]",
-      customIcon: (
-        <svg viewBox="0 0 36 36" className="w-9 h-9 rounded-full overflow-hidden" fill="none">
-          <circle cx="18" cy="18" r="18" fill="#F3E8FA" />
-          {/* Hair Bun */}
-          <circle cx="18" cy="7" r="5.5" fill="#3D231E" />
-          <ellipse cx="18" cy="11" rx="4.5" ry="1.5" fill="#FF8DA8" />
-          {/* Head */}
-          <circle cx="18" cy="18" r="8.5" fill="#FFEAE0" />
-          {/* Bangs */}
-          <path d="M10 16 C12 11 16 10 18 13 C20 10 24 11 26 16 C23 18 21 15 18 15 C15 15 13 18 10 16 Z" fill="#3D231E" />
-          {/* Eyes */}
-          <ellipse cx="15.5" cy="18" rx="1.3" ry="1.7" fill="#1E293B" />
-          <circle cx="15.1" cy="17.4" r="0.5" fill="#FFFFFF" />
-          <ellipse cx="20.5" cy="18" rx="1.3" ry="1.7" fill="#1E293B" />
-          <circle cx="20.1" cy="17.4" r="0.5" fill="#FFFFFF" />
-          {/* Cheeks */}
-          <circle cx="13.5" cy="20.5" r="1.4" fill="#FDA4AF" />
-          <circle cx="22.5" cy="20.5" r="1.4" fill="#FDA4AF" />
-          {/* Smile */}
-          <path d="M16.8 21.5 Q18 23 19.2 21.5" stroke="#D65D7A" strokeWidth="1.2" strokeLinecap="round" />
-          {/* Sweater Collar */}
-          <path d="M11 29 C13 25 16 24 18 25 C20 24 23 25 25 29 Z" fill="#FF8DA8" />
-        </svg>
-      ),
     },
     {
       title: "Skills",
       description: "Technologies and tools I work with.",
       href: "#skills",
+      iconImg: "/icon-skills.png",
+      fallbackIcon: Code2,
       badgeColor: "bg-[#E8F8ED]",
       borderColor: "border-[#D6EFE0] hover:border-[#B7E2C6]",
       arrowColor: "text-[#2EA043]",
       glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(46,160,67,0.22)]",
-      icon: Code2,
     },
     {
       title: "Projects",
       description: "Explore my latest work and case studies.",
       href: "#projects",
+      iconImg: "/icon-projects.png",
+      fallbackIcon: Lightbulb,
       badgeColor: "bg-[#FFF4E0]",
       borderColor: "border-[#FBE8C4] hover:border-[#F6D394]",
       arrowColor: "text-[#E69138]",
       glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(230,145,56,0.22)]",
-      icon: Lightbulb,
     },
     {
       title: "Blog",
       description: "Thoughts, tutorials and things I learn.",
       href: "#featured-projects",
+      iconImg: "/icon-blog.png",
+      fallbackIcon: BookOpen,
       badgeColor: "bg-[#EDF2FE]",
       borderColor: "border-[#DCE6FC] hover:border-[#B5CCFA]",
       arrowColor: "text-[#3D7BD9]",
       glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(61,123,217,0.22)]",
-      icon: BookOpen,
     },
     {
       title: "Contact",
       description: "Let's connect and build something amazing.",
       href: "#contact",
+      iconImg: "/icon-contact.png",
+      fallbackIcon: Mail,
       badgeColor: "bg-[#FFE8EE]",
       borderColor: "border-[#FCD3DE] hover:border-[#F7AEC3]",
       arrowColor: "text-[#FF527B]",
       glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(255,82,123,0.22)]",
-      icon: Mail,
     },
   ];
 
@@ -144,7 +125,7 @@ export default function Hero() {
         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 xl:gap-8">
 
           {/* Center-Left Content Column */}
-          <div className="w-full lg:w-[48%] xl:w-[46%] flex flex-col items-start text-left z-20">
+          <div className="w-full lg:w-[50%] xl:w-[48%] flex flex-col items-start text-left z-20">
 
             {/* Availability Badge (matches portfolio-wide badge style) */}
             <motion.div
@@ -255,7 +236,7 @@ export default function Hero() {
 
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-white hover:bg-[#FFF5F8] text-[#302535] hover:text-[#E85D8B] border border-[#EADDE3] hover:border-[#F29AB2] px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-extrabold shadow-2xs hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                className="group inline-flex items-center gap-2 rounded-full bg-white hover:bg-[#FFF5F7] text-[#302535] hover:text-[#E85D8B] border border-[#EADDE3] hover:border-[#F29AB2] px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-extrabold shadow-2xs hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
               >
                 <span>Let&apos;s Connect</span>
                 <Download size={14} className="transition-transform group-hover:translate-y-0.5 text-[#E85D8B]" />
@@ -307,20 +288,79 @@ export default function Hero() {
 
           </div>
 
-          {/* Right Column: Real Coded Vector Anime Desk Scene */}
-          <div className="w-full lg:w-[52%] xl:w-[54%] relative flex items-center justify-center">
+          {/* Right Column: Cozy Anime Desk Illustration Scene */}
+          <div className="w-full lg:w-[50%] xl:w-[52%] relative flex items-center justify-center">
+
+            {/* Soft Pink Fluid Circle Backdrop Behind Character */}
+            <div className="pointer-events-none absolute w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] lg:w-[540px] lg:h-[540px] rounded-full bg-gradient-to-tr from-[#FFE2EC]/90 via-[#FFF0F4]/80 to-[#FFE8EE]/40 blur-2xl opacity-90 -z-10" />
+
+            {/* Illustration Frame with Interactive Parallax */}
             <motion.div
               style={{
                 transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0)`,
                 transition: "transform 0.25s ease-out",
               }}
-              className="relative w-full flex items-center justify-center"
+              className="relative w-full max-w-[620px] rounded-[32px] overflow-hidden group"
             >
-              <HeroDeskScene
-                isLampOn={isLampOn}
-                onToggleLamp={() => setIsLampOn((prev) => !prev)}
-              />
+
+              {/* Desk Lamp Ambient Glow (Clickable to Toggle!) */}
+              <AnimatePresence>
+                {isLampOn && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.85 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.35 }}
+                    className="pointer-events-none absolute top-[28%] right-[8%] w-[260px] h-[260px] rounded-full bg-gradient-to-br from-[#FEF08A]/45 via-[#FDE047]/20 to-transparent blur-2xl z-20 mix-blend-screen"
+                  />
+                )}
+              </AnimatePresence>
+
+              {/* Lamp Switch Floating Interactive Pill */}
+              <button
+                type="button"
+                onClick={() => setIsLampOn((prev) => !prev)}
+                className="absolute top-4 right-4 z-30 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 hover:bg-white text-[10px] font-kalam font-bold text-[#473444] border border-[#F4DEE4] shadow-sm hover:scale-105 transition-all cursor-pointer backdrop-blur-md"
+                style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                title="Click to toggle desk lamp"
+              >
+                <span className={`h-2 w-2 rounded-full ${isLampOn ? "bg-[#F59E0B] shadow-[0_0_8px_#F59E0B]" : "bg-neutral-300"}`} />
+                <span>Lamp: {isLampOn ? "On" : "Off"}</span>
+              </button>
+
+              {/* Interactive Sticky Note Tooltip Badges */}
+              <div className="absolute top-[42%] left-[45%] z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <span
+                  className="inline-block bg-[#FEF08A] text-[#422006] text-[11px] font-bold font-kalam px-2.5 py-0.5 rounded shadow-sm rotate-[-4deg]"
+                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                >
+                  Keep Growing 🌱
+                </span>
+              </div>
+
+              <div className="absolute bottom-[24%] right-[28%] z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <span
+                  className="inline-block bg-[#1F2937] text-white text-[11px] font-bold font-kalam px-2.5 py-0.5 rounded shadow-sm"
+                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                >
+                  Code &amp; Coffee ☕
+                </span>
+              </div>
+
+              {/* The Hero Desk Illustration */}
+              <div className="relative w-full aspect-[475/352] rounded-[28px] overflow-hidden">
+                <Image
+                  src="/hero-desk@2x.png"
+                  alt="Developer working at desk with laptop, books, succulent plant, and coffee mug"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 620px"
+                  priority
+                  className="object-contain object-right drop-shadow-[0_16px_36px_rgba(232,93,139,0.14)]"
+                />
+              </div>
+
             </motion.div>
+
           </div>
 
         </div>
@@ -337,7 +377,7 @@ export default function Hero() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-3.5 w-full">
             {navCards.map((card) => {
-              const Icon = card.icon;
+              const FallbackIcon = card.fallbackIcon;
               return (
                 <motion.a
                   key={card.title}
@@ -348,13 +388,31 @@ export default function Hero() {
                   className={`group relative flex items-center justify-between p-3.5 sm:p-4 rounded-[22px] bg-white/90 hover:bg-white border ${card.borderColor} shadow-[0_4px_16px_rgba(0,0,0,0.03)] ${card.glowColor} transition-all duration-300 cursor-pointer overflow-hidden`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    {/* Card Icon or Vector Avatar */}
+                    {/* Card Icon or Avatar */}
                     <div className={`relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${card.badgeColor} p-1 shadow-2xs group-hover:scale-108 transition-transform duration-300`}>
-                      {card.customIcon ? (
-                        card.customIcon
-                      ) : Icon ? (
-                        <Icon size={20} className={card.arrowColor} />
-                      ) : null}
+                      {card.avatarImg ? (
+                        <div className="relative h-9 w-9 rounded-full overflow-hidden border border-[#D8C4E8]">
+                          <Image
+                            src={card.avatarImg}
+                            alt="About Me Chibi Avatar"
+                            fill
+                            sizes="36px"
+                            className="object-cover"
+                          />
+                        </div>
+                      ) : card.iconImg ? (
+                        <div className="relative h-7 w-7">
+                          <Image
+                            src={card.iconImg}
+                            alt={card.title}
+                            fill
+                            sizes="28px"
+                            className="object-contain"
+                          />
+                        </div>
+                      ) : (
+                        <FallbackIcon size={18} className={card.arrowColor} />
+                      )}
                     </div>
 
                     {/* Card Title & Description */}
