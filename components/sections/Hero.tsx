@@ -1,174 +1,192 @@
 "use client";
 
-import { useRef, useState } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
-  Download,
-  Mail,
-  Lightbulb,
+  ArrowUpRight,
   Code2,
-  BookOpen,
+  Zap,
+  Sparkles,
+  MousePointerClick,
+  Layout,
+  Database,
+  Server,
+  CheckCircle2,
+  Layers,
+  ShieldCheck,
 } from "lucide-react";
+import { FaReact, FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiTypescript, SiNextdotjs } from "react-icons/si";
+import { gsap } from "@/lib/animations/gsapSetup";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {
+  const [activeTab, setActiveTab] = useState<"ui" | "fullstack" | "motion">("ui");
+  const [fluidityPercent, setFluidityPercent] = useState<number>(96);
+  const [apiPing, setApiPing] = useState<number>(24);
+  const [motionTrigger, setMotionTrigger] = useState<boolean>(false);
+
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isLampOn, setIsLampOn] = useState<boolean>(true);
-  const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const titleLine1Ref = useRef<HTMLSpanElement>(null);
+  const titleLine2Ref = useRef<HTMLSpanElement>(null);
+  const bioRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const metricsRef = useRef<HTMLDivElement>(null);
+  const workspaceRef = useRef<HTMLDivElement>(null);
+  const floatingLabelsRef = useRef<HTMLDivElement>(null);
 
-  // Subtle interactive parallax for illustration
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 8;
-    setMousePos({ x, y });
-  };
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReducedMotion) return;
 
-  const navCards = [
-    {
-      title: "About Me",
-      description: "Get to know me better and my journey.",
-      href: "#about",
-      avatarImg: "/avatar-chibi.png",
-      badgeColor: "bg-[#F3E8FA]",
-      borderColor: "border-[#E8D6F2] hover:border-[#D1B8E2]",
-      arrowColor: "text-[#985BB5]",
-      glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(152,91,181,0.22)]",
-    },
-    {
-      title: "Skills",
-      description: "Technologies and tools I work with.",
-      href: "#skills",
-      iconImg: "/icon-skills.png",
-      fallbackIcon: Code2,
-      badgeColor: "bg-[#E8F8ED]",
-      borderColor: "border-[#D6EFE0] hover:border-[#B7E2C6]",
-      arrowColor: "text-[#2EA043]",
-      glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(46,160,67,0.22)]",
-    },
-    {
-      title: "Projects",
-      description: "Explore my latest work and case studies.",
-      href: "#projects",
-      iconImg: "/icon-projects.png",
-      fallbackIcon: Lightbulb,
-      badgeColor: "bg-[#FFF4E0]",
-      borderColor: "border-[#FBE8C4] hover:border-[#F6D394]",
-      arrowColor: "text-[#E69138]",
-      glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(230,145,56,0.22)]",
-    },
-    {
-      title: "Blog",
-      description: "Thoughts, tutorials and things I learn.",
-      href: "#featured-projects",
-      iconImg: "/icon-blog.png",
-      fallbackIcon: BookOpen,
-      badgeColor: "bg-[#EDF2FE]",
-      borderColor: "border-[#DCE6FC] hover:border-[#B5CCFA]",
-      arrowColor: "text-[#3D7BD9]",
-      glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(61,123,217,0.22)]",
-    },
-    {
-      title: "Contact",
-      description: "Let's connect and build something amazing.",
-      href: "#contact",
-      iconImg: "/icon-contact.png",
-      fallbackIcon: Mail,
-      badgeColor: "bg-[#FFE8EE]",
-      borderColor: "border-[#FCD3DE] hover:border-[#F7AEC3]",
-      arrowColor: "text-[#FF527B]",
-      glowColor: "group-hover:shadow-[0_12px_28px_-6px_rgba(255,82,123,0.22)]",
-    },
-  ];
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.fromTo(
+        badgeRef.current,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.45 }
+      )
+        .fromTo(
+          titleLine1Ref.current,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.55 },
+          "-=0.15"
+        )
+        .fromTo(
+          titleLine2Ref.current,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.55 },
+          "-=0.35"
+        )
+        .fromTo(
+          bioRef.current,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.45 },
+          "-=0.25"
+        )
+        .fromTo(
+          ctaRef.current,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.45 },
+          "-=0.25"
+        )
+        .fromTo(
+          metricsRef.current,
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.4 },
+          "-=0.2"
+        )
+        .fromTo(
+          workspaceRef.current,
+          { opacity: 0, x: 25, scale: 0.96 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.75, ease: "power2.out" },
+          "-=0.45"
+        )
+        .fromTo(
+          floatingLabelsRef.current?.querySelectorAll(".floating-chip") || [],
+          { opacity: 0, scale: 0.8, y: 12 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.4, stagger: 0.08 },
+          "-=0.35"
+        );
+
+      // Scroll-driven parallax for hero background elements and decorative sparkles
+      const decorItems = containerRef.current?.querySelectorAll(".hero-parallax-item");
+      if (decorItems && decorItems.length > 0) {
+        gsap.to(decorItems, {
+          y: (i) => -30 * (i + 1),
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        });
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (prefersReducedMotion || isTouch || !workspaceRef.current) return;
+
+    const xTo = gsap.quickTo(workspaceRef.current, "x", { duration: 0.6, ease: "power2.out" });
+    const yTo = gsap.quickTo(workspaceRef.current, "y", { duration: 0.6, ease: "power2.out" });
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!workspaceRef.current) return;
+      const rect = workspaceRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const moveX = ((e.clientX - centerX) / (window.innerWidth / 2)) * 6;
+      const moveY = ((e.clientY - centerY) / (window.innerHeight / 2)) * 6;
+      xTo(moveX);
+      yTo(moveY);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
     <section
       id="home"
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      className="relative w-full bg-[#FEF3EF] text-[#2D1E2F] pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-12 overflow-hidden select-none transition-colors duration-500"
+      className="relative w-full overflow-hidden select-none"
     >
-      {/* Soft Ambient Background Highlights */}
-      <div className="pointer-events-none absolute -top-24 right-0 w-[620px] h-[620px] rounded-full bg-gradient-to-bl from-[#FFE6EE]/80 via-[#FFF0F4]/40 to-transparent blur-3xl opacity-80 -z-10" />
-      <div className="pointer-events-none absolute top-1/4 left-0 w-[450px] h-[450px] rounded-full bg-gradient-to-tr from-[#F8E7EE]/60 via-[#FFF5F2]/40 to-transparent blur-3xl opacity-70 -z-10" />
-      <div className="pointer-events-none absolute -bottom-10 right-1/4 w-[500px] h-[500px] rounded-full bg-[#FFE8EE]/50 blur-3xl opacity-60 -z-10" />
+      <div className="w-full bg-[#FFE8EE] pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-20 relative">
+        <div className="pointer-events-none absolute -top-20 right-10 w-[650px] h-[650px] rounded-full bg-gradient-to-bl from-[#FFF0F4]/90 via-white/40 to-transparent blur-3xl opacity-80 select-none -z-10" />
+        <div className="pointer-events-none absolute -bottom-10 left-10 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#E8DDF7]/45 via-[#FFF0F4]/60 to-transparent blur-3xl opacity-75 select-none -z-10" />
+        <div className="pointer-events-none absolute top-1/3 right-1/3 w-[400px] h-[400px] rounded-full bg-[#DDF5F8]/40 blur-3xl opacity-50 select-none -z-10" />
 
-      {/* Floating Whimsical Doodle Stars & Sparkles (matching portfolio style) */}
-      <motion.div
-        animate={{ y: [0, -8, 0], rotate: [0, 4, 0] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute top-28 left-[15%] text-[#E85D8B] text-xl font-bold opacity-45 select-none z-10"
-      >
-        ✦
-      </motion.div>
+        <div className="hero-parallax-item pointer-events-none absolute top-28 right-1/4 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
+        <div className="hero-parallax-item pointer-events-none absolute top-44 left-14 text-[#FAD074] text-lg animate-float-slow select-none opacity-50">★</div>
+        <div className="hero-parallax-item pointer-events-none absolute bottom-24 right-12 text-[#E85D8B] text-xl animate-float-slow select-none opacity-45">✦</div>
+        <div className="hero-parallax-item pointer-events-none absolute top-36 right-12 text-[#B9A1E8] text-base select-none opacity-45">✿</div>
 
-      <motion.div
-        animate={{ y: [0, 9, 0], rotate: [0, -6, 0] }}
-        transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        className="pointer-events-none absolute top-40 right-[42%] text-[#FF527B] text-lg font-bold opacity-45 select-none z-10"
-      >
-        ♡
-      </motion.div>
+        <div className="relative mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1600px] px-1 sm:px-4 z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-10 items-center justify-between">
 
-      <motion.div
-        animate={{ y: [0, -7, 0], scale: [1, 1.08, 1] }}
-        transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="pointer-events-none absolute top-24 right-[28%] text-[#FAD074] text-xl font-bold opacity-50 select-none z-10"
-      >
-        ★
-      </motion.div>
+            {/* Left Column: Heading, Bio, CTAs, Metrics */}
+            <div className="lg:col-span-6 flex flex-col items-start text-left w-full">
+              <div
+                ref={badgeRef}
+                className="inline-flex items-center gap-2 mb-5 sm:mb-6 rounded-full bg-white/95 border border-[#F8D2D9] px-3 sm:px-4 py-1 text-xs font-bold text-[#E85D8B] shadow-2xs transition-all hover:scale-102 max-w-full"
+              >
+                <span className="h-2 w-2 shrink-0 rounded-full bg-[#E85D8B] animate-ping" />
+                <span className="font-mono text-[10px] sm:text-[11px] tracking-wide font-extrabold uppercase truncate">
+                  ✦ Available for Full-Stack &amp; Frontend Roles
+                </span>
+              </div>
 
-      {/* Main Hero Container */}
-      <div className="relative mx-auto w-[94%] sm:w-[90%] lg:w-[86%] max-w-[1550px] px-2 sm:px-4 z-20">
-        <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 xl:gap-8">
-
-          {/* Center-Left Content Column */}
-          <div className="w-full lg:w-[50%] xl:w-[48%] flex flex-col items-start text-left z-20">
-
-            {/* Availability Badge (matches portfolio-wide badge style) */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 mb-4 sm:mb-5 rounded-full bg-[#FCE8E8] border border-[#F8D2D9] px-3.5 py-0.5 text-xs font-kalam font-bold text-[#E85D8B] shadow-2xs"
-              style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B] animate-ping" />
-              <span className="tracking-wide">✦ AVAILABLE FOR FULL-STACK &amp; FRONTEND ROLES</span>
-            </motion.div>
-
-            {/* Signature Kalam Heading: "Hello, I'm Full Stack Developer." */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.1 }}
-              className="w-full mb-3 sm:mb-4 select-none"
-            >
+              {/* Signature Kalam Heading: "Hello, I'm Full Stack Developer." */}
               <h1
-                className="font-kalam font-bold tracking-tight leading-[1.08] flex flex-col items-start text-left"
+                className="font-kalam font-bold tracking-tight leading-[1.06] mb-4 sm:mb-5 select-none w-full"
                 style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
               >
-                {/* Line 1: "Hello, I'm" in pink Kalam cursive */}
                 <span
-                  className="text-[#E85D8B] block font-kalam font-bold text-[clamp(2.2rem,5.2vw,3.8rem)] leading-[1.12]"
+                  className="text-[#E85D8B] block font-kalam font-bold text-[clamp(2rem,5vw,3.6rem)] leading-[1.12]"
                   style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
                 >
                   Hello, I&apos;m
                 </span>
 
-                {/* Line 2: "Full Stack" in dark espresso Kalam */}
                 <span
-                  className="text-[#302535] block font-kalam font-bold text-[clamp(2.7rem,6.4vw,5.2rem)] leading-[1.04]"
+                  ref={titleLine1Ref}
+                  className="text-[#2E2234] block will-change-transform font-kalam font-bold text-[clamp(2.5rem,6.2vw,5.4rem)] leading-[1.05]"
                   style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
                 >
                   Full Stack
                 </span>
 
-                {/* Line 3: "Developer." in warm coral pink with hand-drawn underline and heart */}
                 <span
-                  className="text-[#FF5E86] inline-flex items-center gap-2 sm:gap-3 relative pb-1 font-kalam font-bold text-[clamp(2.7rem,6.4vw,5.2rem)] leading-[1.04]"
+                  ref={titleLine2Ref}
+                  className="text-[#FF5E86] inline-flex items-center gap-2 sm:gap-3 relative pb-1 will-change-transform font-kalam font-bold text-[clamp(2.5rem,6.2vw,5.4rem)] leading-[1.05]"
                   style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
                 >
                   <span style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}>Developer.</span>
@@ -188,278 +206,354 @@ export default function Hero() {
                       strokeLinecap="round"
                     />
                   </motion.svg>
-
-                  <span className="text-[#FF5E86] text-3xl sm:text-4xl -mt-1 sm:-mt-2 select-none">♡</span>
                 </span>
               </h1>
-            </motion.div>
 
-            {/* Subtitle Pill: Developer • Creator • Problem Solver */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 rounded-full bg-[#FCE8ED] border border-[#F8D2DC] px-4 py-1 text-xs sm:text-sm font-kalam font-bold text-[#473444] mb-3.5 shadow-2xs"
-              style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
-            >
-              <span className="tracking-wide">Developer</span>
-              <span className="text-[#E85D8B] text-xs">&bull;</span>
-              <span className="tracking-wide">Creator</span>
-              <span className="text-[#E85D8B] text-xs">&bull;</span>
-              <span className="tracking-wide">Problem Solver</span>
-            </motion.div>
-
-            {/* Description Text */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="text-[#5A4D5D] text-sm sm:text-base lg:text-[17px] leading-relaxed mb-6 max-w-lg font-normal"
-            >
-              Hi, I&apos;m <strong className="text-[#302535] font-bold">Pooja Daki</strong> — a Full Stack Developer building modern, responsive, and user-friendly web applications that help brands grow and make an impact.
-            </motion.p>
-
-            {/* Action Buttons: View My Work & Download CV */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-8 w-full"
-            >
-              <a
-                href="#projects"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#E85D8B] to-[#F29AB2] hover:from-[#D44775] hover:to-[#E85D8B] text-white px-6 sm:px-7 py-3 text-xs sm:text-sm font-extrabold shadow-[0_8px_20px_-4px_rgba(232,93,139,0.38)] hover:shadow-[0_12px_26px_-4px_rgba(232,93,139,0.48)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+              <p
+                ref={bioRef}
+                className="text-sm sm:text-base lg:text-[1.05rem] leading-relaxed text-[#6D5D70] font-normal mb-5 w-full"
               >
-                <span>View My Work</span>
-                <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-              </a>
+                Hi, I&apos;m <strong className="text-[#302535] font-bold">Pooja Daki</strong> — a Full Stack Developer building modern, responsive, and user-friendly web applications with <strong className="text-[#302535] font-bold">React</strong>, <strong className="text-[#302535] font-bold">Next.js</strong>, <strong className="text-[#302535] font-bold">TypeScript</strong>, <strong className="text-[#302535] font-bold">Node.js</strong>, and <strong className="text-[#302535] font-bold">MongoDB</strong>.
+              </p>
 
-              <a
-                href="#contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-white hover:bg-[#FFF5F7] text-[#302535] hover:text-[#E85D8B] border border-[#EADDE3] hover:border-[#F29AB2] px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-extrabold shadow-2xs hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+              <div
+                ref={ctaRef}
+                className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 mb-5 w-full"
               >
-                <span>Let&apos;s Connect</span>
-                <Download size={14} className="transition-transform group-hover:translate-y-0.5 text-[#E85D8B]" />
-              </a>
-            </motion.div>
-
-            {/* Cute "Scroll Down" Indicator with Hand-Drawn Arrow & Mouse */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center gap-3 pt-1 select-none"
-            >
-              <div className="flex flex-col items-center">
-                <span
-                  className="font-kalam text-xs sm:text-sm font-bold text-[#E85D8B] tracking-wide"
-                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                <a
+                  href="#projects"
+                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#E85D8B] to-[#F29AB2] text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-extrabold shadow-[0_8px_20px_-4px_rgba(232,93,139,0.38)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_26px_-4px_rgba(232,93,139,0.48)] active:translate-y-0"
                 >
-                  Scroll Down
-                </span>
-                {/* Hand-drawn dotted curved arrow */}
-                <svg width="42" height="34" viewBox="0 0 42 34" fill="none" className="text-[#E85D8B]">
-                  <path
-                    d="M6 4 C14 18 24 24 32 26"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeDasharray="3 3"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M26 21 L33 26 L29 32"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                  <span>View My Work</span>
+                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+                </a>
+
+                <a
+                  href="#contact"
+                  className="group inline-flex items-center gap-1.5 rounded-full border border-[#EADDE3] bg-white px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-extrabold text-[#302535] shadow-2xs transition-all duration-200 hover:border-[#F29AB2] hover:bg-[#FFF5F7] hover:text-[#E85D8B] hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <span>Let&apos;s Connect</span>
+                  <ArrowUpRight size={15} className="text-[#E85D8B] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+
+                <div className="flex items-center gap-2 pl-0 sm:pl-1">
+                  <a
+                    href="https://github.com/pohh09"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Profile"
+                    className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-[#EADDE3] bg-white text-[#756875] hover:bg-[#FCE8E8] hover:border-[#F8D2D9] hover:text-[#E85D8B] hover:-translate-y-0.5 hover:scale-105 transition-all shadow-2xs"
+                  >
+                    <FaGithub size={15} />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/pooja-daki/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn Profile"
+                    className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-[#EADDE3] bg-white text-[#756875] hover:bg-[#FCE8E8] hover:border-[#F8D2D9] hover:text-[#E85D8B] hover:-translate-y-0.5 hover:scale-105 transition-all shadow-2xs"
+                  >
+                    <FaLinkedin size={15} />
+                  </a>
+                </div>
               </div>
 
-              {/* Animated Cute Mouse */}
-              <div className="flex h-8 w-5 sm:h-9 sm:w-5.5 items-start justify-center rounded-full border-2 border-[#302535] p-1 bg-white/80 shadow-2xs">
-                <motion.span
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="h-1.5 w-1 rounded-full bg-[#E85D8B]"
-                />
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* Right Column: Cozy Anime Desk Illustration Scene */}
-          <div className="w-full lg:w-[50%] xl:w-[52%] relative flex items-center justify-center">
-
-            {/* Soft Pink Fluid Circle Backdrop Behind Character */}
-            <div className="pointer-events-none absolute w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] lg:w-[540px] lg:h-[540px] rounded-full bg-gradient-to-tr from-[#FFE2EC]/90 via-[#FFF0F4]/80 to-[#FFE8EE]/40 blur-2xl opacity-90 -z-10" />
-
-            {/* Illustration Frame with Interactive Parallax */}
-            <motion.div
-              style={{
-                transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0)`,
-                transition: "transform 0.25s ease-out",
-              }}
-              className="relative w-full max-w-[620px] rounded-[32px] overflow-hidden group"
-            >
-
-              {/* Desk Lamp Ambient Glow (Clickable to Toggle!) */}
-              <AnimatePresence>
-                {isLampOn && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.85 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.35 }}
-                    className="pointer-events-none absolute top-[28%] right-[8%] w-[260px] h-[260px] rounded-full bg-gradient-to-br from-[#FEF08A]/45 via-[#FDE047]/20 to-transparent blur-2xl z-20 mix-blend-screen"
-                  />
-                )}
-              </AnimatePresence>
-
-              {/* Lamp Switch Floating Interactive Pill */}
-              <button
-                type="button"
-                onClick={() => setIsLampOn((prev) => !prev)}
-                className="absolute top-4 right-4 z-30 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 hover:bg-white text-[10px] font-kalam font-bold text-[#473444] border border-[#F4DEE4] shadow-sm hover:scale-105 transition-all cursor-pointer backdrop-blur-md"
-                style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
-                title="Click to toggle desk lamp"
+              <div
+                ref={metricsRef}
+                className="w-full pt-4 sm:pt-5 border-t border-[#F5D8E2]/90 flex flex-wrap items-center gap-2 sm:gap-2.5"
               >
-                <span className={`h-2 w-2 rounded-full ${isLampOn ? "bg-[#F59E0B] shadow-[0_0_8px_#F59E0B]" : "bg-neutral-300"}`} />
-                <span>Lamp: {isLampOn ? "On" : "Off"}</span>
-              </button>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#E85D8B] transition-colors">
+                  <Layers size={13} className="text-[#E85D8B]" />
+                  <span>Component-driven UI</span>
+                </div>
 
-              {/* Interactive Sticky Note Tooltip Badges */}
-              <div className="absolute top-[42%] left-[45%] z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <span
-                  className="inline-block bg-[#FEF08A] text-[#422006] text-[11px] font-bold font-kalam px-2.5 py-0.5 rounded shadow-sm rotate-[-4deg]"
-                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
-                >
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#8B72D8] transition-colors">
+                  <ShieldCheck size={13} className="text-[#8B72D8]" />
+                  <span>Type-safe with TypeScript</span>
+                </div>
+
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#F0DCE3] shadow-2xs text-[11px] font-bold text-[#302535] hover:border-[#27AE60] transition-colors">
+                  <CheckCircle2 size={13} className="text-[#27AE60]" />
+                  <span>Built with modern React tooling</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Real Interactive Studio Workspace (No Raster Images) */}
+            <div className="lg:col-span-6 relative flex items-center justify-center w-full">
+              <div
+                ref={workspaceRef}
+                className="relative w-full rounded-[24px] sm:rounded-[30px] p-4 sm:p-6 lg:p-7 bg-[#FFFDFC] border-2 border-[#F0DCE3] shadow-[0_20px_55px_-12px_rgba(232,93,139,0.16)] transition-shadow duration-300 hover:shadow-[0_24px_60px_-10px_rgba(232,93,139,0.22)] min-h-[420px] sm:min-h-[490px] flex flex-col justify-between"
+              >
+                <div className="absolute -top-3.5 -right-2 bg-[#FDEEB8] text-[#302535] font-kalam font-bold text-xs px-3 py-0.5 rounded-md shadow-xs rotate-6 border border-[#F8DC82] select-none z-20">
                   Keep Growing 🌱
-                </span>
-              </div>
+                </div>
 
-              <div className="absolute bottom-[24%] right-[28%] z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <span
-                  className="inline-block bg-[#1F2937] text-white text-[11px] font-bold font-kalam px-2.5 py-0.5 rounded shadow-sm"
-                  style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
-                >
-                  Code &amp; Coffee ☕
-                </span>
-              </div>
-
-              {/* The Hero Desk Illustration */}
-              <div className="relative w-full aspect-[475/352] rounded-[28px] overflow-hidden">
-                <Image
-                  src="/hero-desk@2x.png"
-                  alt="Developer working at desk with laptop, books, succulent plant, and coffee mug"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 620px"
-                  priority
-                  className="object-contain object-right drop-shadow-[0_16px_36px_rgba(232,93,139,0.14)]"
-                />
-              </div>
-
-            </motion.div>
-
-          </div>
-
-        </div>
-
-        {/* Bottom Bento Deck: 5 Quick-Navigation Cards with unified Kalam typography */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="mt-12 sm:mt-16 w-full relative z-20"
-        >
-          {/* Subtle cloud backdrop for the cards */}
-          <div className="pointer-events-none absolute -inset-x-6 -top-8 -bottom-6 bg-gradient-to-b from-white/70 via-white/90 to-white/95 rounded-[36px] blur-xl -z-10" />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-3.5 w-full">
-            {navCards.map((card) => {
-              const FallbackIcon = card.fallbackIcon;
-              return (
-                <motion.a
-                  key={card.title}
-                  href={card.href}
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
-                  className={`group relative flex items-center justify-between p-3.5 sm:p-4 rounded-[22px] bg-white/90 hover:bg-white border ${card.borderColor} shadow-[0_4px_16px_rgba(0,0,0,0.03)] ${card.glowColor} transition-all duration-300 cursor-pointer overflow-hidden`}
-                >
-                  <div className="flex items-center gap-3 min-w-0">
-                    {/* Card Icon or Avatar */}
-                    <div className={`relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${card.badgeColor} p-1 shadow-2xs group-hover:scale-108 transition-transform duration-300`}>
-                      {card.avatarImg ? (
-                        <div className="relative h-9 w-9 rounded-full overflow-hidden border border-[#D8C4E8]">
-                          <Image
-                            src={card.avatarImg}
-                            alt="About Me Chibi Avatar"
-                            fill
-                            sizes="36px"
-                            className="object-cover"
-                          />
-                        </div>
-                      ) : card.iconImg ? (
-                        <div className="relative h-7 w-7">
-                          <Image
-                            src={card.iconImg}
-                            alt={card.title}
-                            fill
-                            sizes="28px"
-                            className="object-contain"
-                          />
-                        </div>
-                      ) : (
-                        <FallbackIcon size={18} className={card.arrowColor} />
-                      )}
+                <div>
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-3 sm:pb-3.5 mb-3 sm:mb-4 border-b border-[#F5E6EB]">
+                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                      <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
+                        <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#E85D8B]" />
+                        <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#FAD074]" />
+                        <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#82D9A7]" />
+                      </div>
+                      <span className="text-[11px] sm:text-xs font-mono font-bold text-[#756875] truncate">
+                        poojadaki.dev/studio
+                      </span>
                     </div>
 
-                    {/* Card Title & Description */}
-                    <div className="flex flex-col min-w-0">
-                      <h3
-                        className="text-sm sm:text-[15px] font-bold text-[#302535] group-hover:text-[#E85D8B] font-kalam transition-colors leading-tight truncate"
-                        style={{ fontFamily: "var(--font-kalam), 'Kalam', cursive, sans-serif" }}
+                    <div className="flex items-center gap-0.5 sm:gap-1 p-0.5 rounded-full bg-[#FFF5F7] border border-[#F0DCE3] shrink-0">
+                      <button
+                        onClick={() => setActiveTab("ui")}
+                        className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+                          activeTab === "ui"
+                            ? "bg-[#E85D8B] text-white shadow-2xs"
+                            : "text-[#756875] hover:text-[#302535]"
+                        }`}
                       >
-                        {card.title}
-                      </h3>
-                      <p className="text-[11px] text-[#7A6B7D] leading-tight mt-0.5 line-clamp-2">
-                        {card.description}
-                      </p>
+                        Frontend
+                      </button>
+                      <button
+                        onClick={() => setActiveTab("fullstack")}
+                        className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+                          activeTab === "fullstack"
+                            ? "bg-[#8B72D8] text-white shadow-2xs"
+                            : "text-[#756875] hover:text-[#302535]"
+                        }`}
+                      >
+                        Backend
+                      </button>
+                      <button
+                        onClick={() => setActiveTab("motion")}
+                        className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+                          activeTab === "motion"
+                            ? "bg-[#F29AB2] text-white shadow-2xs"
+                            : "text-[#756875] hover:text-[#302535]"
+                        }`}
+                      >
+                        Motion
+                      </button>
                     </div>
                   </div>
 
-                  {/* Arrow Indicator */}
-                  <div className="shrink-0 pl-1.5">
-                    <ArrowRight
-                      size={15}
-                      className={`${card.arrowColor} transition-transform duration-200 group-hover:translate-x-1`}
-                    />
-                  </div>
-                </motion.a>
-              );
-            })}
-          </div>
-        </motion.div>
+                  <AnimatePresence mode="wait">
+                    {activeTab === "ui" && (
+                      <motion.div
+                        key="ui-tab"
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="space-y-3"
+                      >
+                        <div className="rounded-2xl border border-[#F0DCE3] bg-gradient-to-r from-[#FFF8F5] via-[#FFF5F7] to-[#FFF8F5] p-3.5 shadow-2xs flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FCE8E8] text-[#E85D8B] font-bold text-xs shadow-2xs">
+                              <Layout size={18} />
+                            </div>
+                            <div>
+                              <div className="flex items-center gap-1.5">
+                                <h4 className="text-xs sm:text-sm font-bold text-[#302535]">Interactive UI Engine</h4>
+                                <span className="h-1.5 w-1.5 rounded-full bg-[#E85D8B] animate-pulse" />
+                              </div>
+                              <p className="text-[11px] font-mono text-[#8B72D8]">React 19 &bull; Next.js 15 &bull; TS</p>
+                            </div>
+                          </div>
 
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              setFluidityPercent((l) => (l >= 98 ? 88 : l + 2));
+                              setMotionTrigger((prev) => !prev);
+                            }}
+                            className="px-3 py-1.5 rounded-full bg-white border border-[#EADDE3] text-[11px] font-bold text-[#302535] hover:border-[#F29AB2] hover:bg-[#FFF5F7] transition-colors shadow-2xs flex items-center gap-1.5 cursor-pointer"
+                          >
+                            <MousePointerClick
+                              size={12}
+                              className={`text-[#E85D8B] transition-transform duration-300 ${
+                                motionTrigger ? "rotate-12 scale-110" : ""
+                              }`}
+                            />
+                            <span>Fluidity: {fluidityPercent}%</span>
+                          </motion.button>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3">
+                          <motion.div
+                            whileHover={{ y: -2 }}
+                            className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white shadow-2xs transition-colors hover:border-[#F8DC82]"
+                          >
+                            <div className="flex items-center justify-between mb-1.5">
+                              <span className="text-[10px] font-mono text-[#756875] font-bold uppercase">Architecture</span>
+                              <Zap size={14} className="text-[#FAD074]" />
+                            </div>
+                            <p className="text-xs sm:text-sm font-bold text-[#302535]">Full-Stack App</p>
+                            <span className="text-[11px] text-[#27AE60] font-bold mt-1 inline-block">✓ Node + Express</span>
+                          </motion.div>
+
+                          <motion.div
+                            whileHover={{ y: -2 }}
+                            className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white shadow-2xs transition-colors hover:border-[#F8D2D9]"
+                          >
+                            <div className="flex items-center justify-between mb-1.5">
+                              <span className="text-[10px] font-mono text-[#756875] font-bold uppercase">Kinetic UI</span>
+                              <Sparkles size={14} className="text-[#E85D8B]" />
+                            </div>
+                            <p className="text-xs sm:text-sm font-bold text-[#302535]">Motion &amp; Transitions</p>
+                            <span className="text-[11px] text-[#8B72D8] font-bold mt-1 inline-block">GSAP &amp; Framer</span>
+                          </motion.div>
+                        </div>
+
+                        <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] shadow-2xs flex items-center justify-between">
+                          <div className="flex items-center gap-2.5">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FCE8E8] text-[#E85D8B]">
+                              <Code2 size={16} />
+                            </div>
+                            <div>
+                              <p className="text-xs sm:text-sm font-bold text-[#302535]">Clean Component Architecture</p>
+                              <p className="text-[10px] font-mono text-[#756875]">TypeScript &bull; Tailwind CSS</p>
+                            </div>
+                          </div>
+                          <span className="text-[10px] font-mono font-bold text-[#E85D8B] px-2.5 py-1 rounded-full bg-white border border-[#F0DCE3]">
+                            Modular &amp; Clean
+                          </span>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === "fullstack" && (
+                      <motion.div
+                        key="fullstack-tab"
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="space-y-3"
+                      >
+                        <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#E8DDF7] text-[#8B72D8]">
+                              <Server size={16} />
+                            </div>
+                            <div>
+                              <p className="text-xs sm:text-sm font-bold text-[#302535]">Node.js &amp; Express REST API</p>
+                              <p className="text-[10px] font-mono text-[#8B72D8]">JWT Auth &bull; Structured Controllers</p>
+                            </div>
+                          </div>
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setApiPing((p) => (p === 24 ? 18 : 24))}
+                            className="text-[10px] font-mono font-bold text-[#27AE60] px-2.5 py-1 rounded-md bg-white border border-[#F0DCE3] flex items-center gap-1 cursor-pointer shadow-2xs"
+                          >
+                            <span>200 OK</span>
+                            <span className="text-[9px] text-[#756875]">({apiPing}ms)</span>
+                          </motion.button>
+                        </div>
+
+                        <div className="p-3.5 rounded-2xl border border-[#F0DCE3] bg-white flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#DDF5F8] text-[#2EA043]">
+                              <Database size={16} />
+                            </div>
+                            <div>
+                              <p className="text-xs sm:text-sm font-bold text-[#302535]">MongoDB &amp; Mongoose</p>
+                              <p className="text-[10px] font-mono text-[#756875]">Indexed Collections &bull; Schemas</p>
+                            </div>
+                          </div>
+                          <span className="text-[10px] font-mono font-bold text-[#8B72D8] px-2.5 py-1 rounded-md bg-[#FFF5F7] border border-[#F0DCE3]">
+                            Database Connected
+                          </span>
+                        </div>
+
+                        <div className="p-3 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between text-xs">
+                          <span className="font-mono text-[10px] text-[#302535] font-bold">
+                            GET /api/v1/projects → 200 Success
+                          </span>
+                          <span className="text-[10px] font-mono text-[#E85D8B] font-bold">
+                            REST Endpoint
+                          </span>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === "motion" && (
+                      <motion.div
+                        key="motion-tab"
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="space-y-3"
+                      >
+                        {[
+                          { label: "Hardware Easing", value: "power3.out / cubic-bezier", tech: "GPU Layer" },
+                          { label: "Mask Clip-Path", value: "polygon(0 0, 100% 0...)", tech: "CSS Mask" },
+                          { label: "ScrollTrigger", value: "Timeline choreography", tech: "GSAP Engine" },
+                        ].map((item) => (
+                          <div key={item.label} className="p-3 rounded-2xl border border-[#F0DCE3] bg-[#FFF5F7] flex items-center justify-between">
+                            <div>
+                              <p className="text-xs sm:text-sm font-bold text-[#302535]">{item.label}</p>
+                              <p className="text-[10px] font-mono text-[#8B72D8]">{item.value}</p>
+                            </div>
+                            <span className="text-[10px] font-mono font-bold text-[#E85D8B] px-2.5 py-1 rounded-md bg-white border border-[#F0DCE3]">
+                              {item.tech}
+                            </span>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[#F5E6EB] flex items-center justify-between text-xs font-bold">
+                  <span className="flex items-center gap-2 text-[#756875] text-[11px] sm:text-xs">
+                    <span className="h-2 w-2 rounded-full bg-[#27AE60] animate-pulse" />
+                    <span>Full-Stack Architecture</span>
+                  </span>
+                  <span className="font-mono text-[11px] text-[#8B72D8]">Responsive Design</span>
+                </div>
+              </div>
+
+              {/* Floating Tech Chips */}
+              <div ref={floatingLabelsRef} className="pointer-events-none">
+                <div className="floating-chip absolute -bottom-3 -left-3 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3.5 py-1 text-xs font-bold text-[#302535] shadow-xs animate-float-harmonic">
+                  <FaReact size={14} className="text-[#38BDF8]" />
+                  <span>React 19</span>
+                </div>
+
+                <div className="floating-chip absolute -top-3 left-4 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3.5 py-1 text-xs font-bold text-[#302535] shadow-xs animate-float-delayed">
+                  <SiTypescript size={13} className="text-[#3178C6]" />
+                  <span>TypeScript</span>
+                </div>
+
+                <div className="floating-chip absolute -bottom-3 right-4 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3.5 py-1 text-xs font-bold text-[#302535] shadow-xs animate-float-slow">
+                  <SiNextdotjs size={13} className="text-[#302535]" />
+                  <span>Next.js 15</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
 
-      {/* Gentle Scalloped Cloud Curve Transition to Next Section */}
-      <div className="w-full overflow-hidden leading-none select-none pointer-events-none mt-8 -mb-[1px] relative z-10">
+      {/* Scalloped Wave Bottom Transition */}
+      <div className="w-full overflow-hidden leading-none select-none pointer-events-none -mt-[1px] relative z-20">
         <svg
-          viewBox="0 0 1440 80"
+          viewBox="0 0 1440 100"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-8 sm:h-12 md:h-16 block text-[#FFF8F6]"
+          className="w-full h-12 sm:h-16 md:h-20 lg:h-24 block"
           preserveAspectRatio="none"
         >
           <path
-            d="M0,40 C320,80 540,10 720,45 C900,80 1120,15 1440,50 L1440,80 L0,80 Z"
-            fill="currentColor"
+            d="M0,0 L1440,0 L1440,35 C1180,95 900,10 650,60 C420,100 200,20 0,55 Z"
+            fill="#FFE8EE"
           />
         </svg>
       </div>
-
     </section>
   );
 }
