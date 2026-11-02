@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Send, Home, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 import { gsap } from "@/lib/animations/gsapSetup";
-import HeroDeskScene from "./HeroDeskScene";
 
 // ─── Bottom Bento Quick-Nav Cards ───────────────────────────────────────────
 const bentoCards = [
@@ -112,15 +112,15 @@ export default function Hero() {
       className="relative w-full overflow-hidden select-none"
     >
       {/* ── Main Hero Panel ─────────────────────────────────────────────────── */}
-      <div className="relative w-full bg-[#FFF0EE] pt-28 sm:pt-36 lg:pt-28 pb-0 overflow-hidden">
+      <div className="relative w-full bg-[#FDF4EF] pt-28 sm:pt-36 lg:pt-28 pb-0 overflow-hidden">
 
         {/* Ambient blobs */}
-        <div className="pointer-events-none absolute -top-32 -right-24 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#FFD6E5]/60 to-transparent" />
-        <div className="pointer-events-none absolute -bottom-16 -left-20 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[#FFE8D0]/50 to-transparent" />
-        <div className="pointer-events-none absolute top-1/3 left-1/3 w-[300px] h-[300px] rounded-full bg-[#FFF0F4]/40" />
+        <div className="pointer-events-none absolute -top-32 -right-24 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#FFD6E5]/50 to-transparent" />
+        <div className="pointer-events-none absolute -bottom-16 -left-20 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[#FFE8D0]/40 to-transparent" />
+        <div className="pointer-events-none absolute top-1/3 left-1/3 w-[300px] h-[300px] rounded-full bg-[#FFF0F4]/30" />
 
         {/* Floating doodle decorations */}
-        <span className="hero-sparkle pointer-events-none absolute top-32 left-[12%] text-2xl opacity-0">✦</span>
+        <span className="hero-sparkle pointer-events-none absolute top-32 left-[12%] text-2xl opacity-0 text-[#FAD074]">✦</span>
         <span className="hero-sparkle pointer-events-none absolute top-48 left-[8%] text-base text-[#E94F83] opacity-0">♡</span>
         <span className="hero-sparkle pointer-events-none absolute top-28 right-[32%] text-xl text-[#FAD074] opacity-0">★</span>
         <span className="hero-sparkle pointer-events-none absolute bottom-40 right-[38%] text-sm text-[#B9A1E8] opacity-0">✦</span>
@@ -153,7 +153,6 @@ export default function Hero() {
 
               {/* Greeting badge */}
               <div ref={badgeRef} className="opacity-0 mb-5 flex items-center gap-2">
-                {/* Hand-drawn rays doodle */}
                 <span className="font-kalam text-[15px] italic text-[#542B43] font-bold tracking-wide">
                   Hello, I&apos;m
                 </span>
@@ -218,7 +217,7 @@ export default function Hero() {
                 </a>
               </div>
 
-              {/* Social row */}
+              {/* Social row for mobile */}
               <div ref={socialRef} className="opacity-0 flex items-center gap-3 lg:hidden">
                 {[
                   { href: "https://github.com/pohh09", icon: FaGithub, label: "GitHub" },
@@ -242,34 +241,40 @@ export default function Hero() {
 
               {/* Scroll down hint */}
               <div ref={scrollHintRef} className="opacity-0 mt-8 hidden sm:flex items-center gap-2 text-[#A38898]">
-                {/* Doodle arrow */}
                 <svg width="30" height="20" viewBox="0 0 30 20" fill="none" className="text-[#E94F83]">
                   <path d="M2 6 C8 4, 14 14, 22 10" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeDasharray="3 2" />
                   <path d="M18 8 L22 10 L20 14" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <span className="font-kalam text-[13px] font-bold italic text-[#E94F83]">Scroll Down</span>
-                {/* Mini scroll mouse */}
                 <div className="ml-1 flex h-7 w-4 items-center justify-center rounded-full border-2 border-[#D8B4C0]">
                   <div className="h-1.5 w-0.5 rounded-full bg-[#E94F83] animate-bounce" />
                 </div>
               </div>
             </div>
 
-            {/* ──────────── RIGHT COLUMN — Illustration ──────────── */}
-            <div className="relative flex items-end justify-center lg:justify-end h-[360px] sm:h-[420px] lg:h-[540px] xl:h-[560px]">
-              {/* Soft pink blob behind illustration */}
-              <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
-                <div className="w-[90%] h-[90%] rounded-[50%_50%_45%_45%/60%_60%_40%_40%] bg-gradient-to-b from-[#FFD6E5]/70 to-[#FFEBF3]/30" />
-              </div>
-
-              {/* Desk Scene illustration */}
-              <div className="relative z-10 w-full h-full max-w-[520px]">
-                <HeroDeskScene />
-              </div>
+            {/* ──────────── RIGHT COLUMN — Exact Anime Illustration ──────────── */}
+            <div className="relative flex items-end justify-center lg:justify-end h-[360px] sm:h-[440px] lg:h-[520px] xl:h-[560px]">
+              <motion.div
+                initial={{ opacity: 0, x: 25, scale: 0.96 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                className="relative z-10 w-full max-w-[560px] flex items-end justify-center lg:justify-end"
+              >
+                <div className="relative w-full">
+                  <Image
+                    src="/hero-anime.png"
+                    alt="Pooja Daki - Full Stack Developer Workspace Illustration"
+                    width={560}
+                    height={440}
+                    priority
+                    className="w-full h-auto object-contain select-none drop-shadow-sm"
+                  />
+                </div>
+              </motion.div>
 
               {/* Floating sparkle chips around illustration */}
               <motion.div
-                className="pointer-events-none absolute top-12 right-6 flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3 py-1 text-[11px] font-bold text-[#302535] shadow-sm"
+                className="pointer-events-none absolute top-12 right-6 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white/95 backdrop-blur-sm px-3.5 py-1 text-[11px] font-bold text-[#302535] shadow-sm z-20"
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -278,7 +283,7 @@ export default function Hero() {
               </motion.div>
 
               <motion.div
-                className="pointer-events-none absolute top-28 left-4 sm:left-2 flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3 py-1 text-[11px] font-bold text-[#302535] shadow-sm"
+                className="pointer-events-none absolute top-28 left-4 sm:left-2 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white/95 backdrop-blur-sm px-3.5 py-1 text-[11px] font-bold text-[#302535] shadow-sm z-20"
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
               >
@@ -287,7 +292,7 @@ export default function Hero() {
               </motion.div>
 
               <motion.div
-                className="pointer-events-none absolute bottom-24 right-4 flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white px-3 py-1 text-[11px] font-bold text-[#302535] shadow-sm"
+                className="pointer-events-none absolute bottom-24 right-4 hidden sm:flex items-center gap-1.5 rounded-full border border-[#F0DCE3] bg-white/95 backdrop-blur-sm px-3.5 py-1 text-[11px] font-bold text-[#302535] shadow-sm z-20"
                 animate={{ y: [0, -7, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
               >
