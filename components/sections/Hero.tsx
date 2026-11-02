@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Send, Home, Mail } from "lucide-react";
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import { ArrowRight, Download } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { gsap } from "@/lib/animations/gsapSetup";
 
 // ─── Bottom Bento Quick-Nav Cards ───────────────────────────────────────────
@@ -54,16 +54,6 @@ const bentoCards = [
     color: "#F3EDFC",
     accent: "#9A6FD8",
   },
-];
-
-// ─── Left Social Dock ────────────────────────────────────────────────────────
-const socialDock = [
-  { href: "#home", icon: Home, label: "Home", size: 14 },
-  { href: "https://github.com/pohh09", icon: FaGithub, label: "GitHub", size: 14, external: true },
-  { href: "https://www.linkedin.com/in/pooja-daki/", icon: FaLinkedin, label: "LinkedIn", size: 14, external: true },
-  { href: "#", icon: FaTwitter, label: "Twitter", size: 13, external: false },
-  { href: "#", icon: FaInstagram, label: "Instagram", size: 13, external: false },
-  { href: "mailto:poojadaki@gmail.com", icon: Mail, label: "Email", size: 13, external: false },
 ];
 
 export default function Hero() {
@@ -125,24 +115,6 @@ export default function Hero() {
         <span className="hero-sparkle pointer-events-none absolute top-28 right-[32%] text-xl text-[#FAD074] opacity-0">★</span>
         <span className="hero-sparkle pointer-events-none absolute bottom-40 right-[38%] text-sm text-[#B9A1E8] opacity-0">✦</span>
         <span className="hero-sparkle pointer-events-none absolute bottom-32 left-[40%] text-base text-[#82D9A7] opacity-0">♡</span>
-
-        {/* ── Left Social Dock ────────────────────────────────────────────────── */}
-        <div className="hidden lg:flex fixed left-4 xl:left-6 top-1/2 -translate-y-1/2 z-30 flex-col items-center gap-2">
-          <div className="flex flex-col items-center gap-1.5 bg-white/80 backdrop-blur-xl border border-[#F0DCE3] rounded-full px-2.5 py-4 shadow-[0_4px_20px_rgba(232,93,139,0.1)]">
-            {socialDock.map(({ href, icon: Icon, label, size, external }) => (
-              <a
-                key={label}
-                href={href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer" : undefined}
-                aria-label={label}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-[#756875] hover:text-[#E94F83] hover:bg-[#FCE8EE] transition-all hover:scale-110 duration-200"
-              >
-                <Icon size={size} />
-              </a>
-            ))}
-          </div>
-        </div>
 
         {/* ── Content grid ────────────────────────────────────────────────────── */}
         <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-16 xl:px-20 pb-0">
