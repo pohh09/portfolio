@@ -113,7 +113,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-2.5 sm:top-4 z-50 mx-auto w-[92%] sm:w-[88%] lg:w-[80%] max-w-[1500px] select-none">
+    <header className="fixed inset-x-0 top-2.5 sm:top-4 z-50 mx-auto w-[94%] sm:w-[90%] max-w-[1750px] select-none">
       <div
         ref={navRef}
         className={`
